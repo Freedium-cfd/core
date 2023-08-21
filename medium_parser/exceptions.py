@@ -1,13 +1,18 @@
-class InvalidURL(Exception):
+class MediumParserException(Exception):
     pass
 
 
-class InvalidMediumPostURL(Exception):
+class InvalidURL(MediumParserException):
     pass
 
 
-class InvalidMediumPostID(Exception):
+class InvalidMediumPostURL(MediumParserException):
     pass
 
-class MediumPostQueryError(Exception):
+
+class InvalidMediumPostID(MediumParserException):
+    pass
+
+
+class MediumPostQueryError(MediumParserException):
     pass

@@ -8,7 +8,7 @@ from .time import convert_datetime_to_human_readable
 from . import jinja_env
 from .medium_api import query_post_by_id
 from .models.html_result import HtmlResult
-from .exceptions import InvalidURL, InvalidMediumPostURL, InvalidMediumPostID, MediumPostQueryError
+from .exceptions import InvalidURL, InvalidMediumPostURL, InvalidMediumPostID, MediumPostQueryError, MediumParserException
 
 
 class MediumParser:
@@ -240,7 +240,15 @@ class MediumParser:
 
         return out_paragraphs, title, subtitle
 
-    async def render_as_html(self, minify: bool = True, template_folder: str = './templates') -> 'HtmlResult':
+    async def render_as_html(self, minify: bool = True, template_folder: str = './templates'):
+        try:
+            result = await self._render_as_html(minify, template_folder)
+        except Exception as ex:
+            raise MediumParserException(ex)
+        else:
+            return result
+
+    async def _render_as_html(self, minify: bool = True, template_folder: str = './templates') -> 'HtmlResult':
         if not self.post_data:
             logger.warning(f'No post data found for post ID: {self.post_id}. Querying...')
             await self.query()

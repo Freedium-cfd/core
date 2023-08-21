@@ -1,6 +1,7 @@
 from medium_parser.core import MediumParser
 import jinja2
 import asyncio
+import sys
 
 jinja2_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader("./"),
@@ -16,6 +17,7 @@ async def main():
         f.write(template_result)
 
     print("See medium.html for the result. Press CTRL-C to exit.")
+    sys.exit()
 
 
 if __name__ == "__main__":
