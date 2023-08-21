@@ -2,15 +2,15 @@ import textwrap
 import jinja2
 import math
 from loguru import logger
-from .utils import is_valid_medium_url, sanitize_url, get_medium_post_id_by_url, is_valid_medium_post_id_hexadecimal, getting_percontage_of_match
+from .utils import is_valid_medium_url, sanitize_url, get_medium_post_id_by_url, is_valid_medium_post_id_hexadecimal, getting_percontage_of_match, is_valid_url
 from .toolkits.rl_string_helper.rl_string_helper import RLStringHelper, quote_html
 from .time import convert_datetime_to_human_readable
 from . import jinja_env
 from .medium_api import query_post_by_id
 from .models.html_result import HtmlResult
+from .exceptions import InvalidURL, InvalidMediumPostURL, InvalidMediumPostID, MediumPostQueryError
 
 
-# TODO: add custom exceptions
 class MediumParser:
     __slots__ = ('__post_id', 'post_data', 'jinja')
 
@@ -20,13 +20,16 @@ class MediumParser:
 
     @classmethod
     async def from_url(cls, url: str) -> 'MediumParser':
+        if not is_valid_url(url):
+            raise InvalidURL(f'Invalid URL: {url}')
+
         sanitized_url = sanitize_url(url)
         if not await is_valid_medium_url(sanitized_url):
-            raise ValueError(f'Invalid medium URL: {sanitized_url}')
+            raise InvalidURL(f'Invalid medium URL: {sanitized_url}')
 
         post_id = await get_medium_post_id_by_url(sanitized_url)
         if not post_id:
-            raise ValueError(f'Could not find medium post ID for URL: {sanitized_url}')
+            raise InvalidMediumPostURL(f'Could not find medium post ID for URL: {sanitized_url}')
 
         return cls(post_id)
 
@@ -37,7 +40,7 @@ class MediumParser:
     @post_id.setter
     def post_id(self, value):
         if not is_valid_medium_post_id_hexadecimal(value):
-            raise ValueError(f'Invalid medium post ID: {value}')
+            raise InvalidMediumPostID(f'Invalid medium post ID: {value}')
 
         self.__post_id = value
 
@@ -46,11 +49,14 @@ class MediumParser:
         return self.__post_id
 
     async def query(self, use_cache: bool = True):
-        post_data = await query_post_by_id(self.post_id, use_cache)
+        try:
+            post_data = await query_post_by_id(self.post_id, use_cache)
+        except Exception as ex:
+            logger.exception(ex)
+            post_data = None
 
-        # Verifying the post data result
-        if not isinstance(post_data, dict) or post_data.get("error") or not post_data.get("data") or not post_data.get("data").get("post"):
-            raise ValueError(f'Could not query post by ID from API: {self.post_id}')
+        if not post_data or not isinstance(post_data, dict) or post_data.get("error") or not post_data.get("data") or not post_data.get("data").get("post"):
+            raise MediumPostQueryError(f'Could not query post by ID from API: {self.post_id}')
 
         self.post_data = post_data
 
@@ -216,19 +222,19 @@ class MediumParser:
                 out_paragraphs.append(ol_template_rendered)
 
                 current_pos = _tmp_current_pos - 1
-
-                # elif paragraph["type"] == 'MIXTAPE_EMBED':
             elif paragraph["type"] == "PRE":
                 pre_template = jinja_env.from_string('<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">{{ text }}</span></pre>')
-                # pre_template = jinja_env.from_string('<pre class="p-5">{{ text }}</pre>')
                 pre_template_rendered = await pre_template.render_async(text=text_formater.get_text())
                 out_paragraphs.append(pre_template_rendered)
             elif paragraph["type"] == "BQ":
                 bq_template = jinja_env.from_string('<blockquote style="box-shadow: inset 3px 0 0 0 #242424;" class="px-5 pt-3 pb-3 mt-5"><p style="font-style: italic;">{{ text }}</p></blockquote>')
                 bq_template_rendered = await bq_template.render_async(text=text_formater.get_text())
                 out_paragraphs.append(bq_template_rendered)
+            elif paragraph["type"] == 'MIXTAPE_EMBED':
+                # TODO: implement
+                logger.error("Unsupported paragraph type: MIXTAPE_EMBED")
             else:
-                logger.warning(f"Unknown {paragraph['type']}: {paragraph}")
+                logger.error(f"Unknown {paragraph['type']}: {paragraph}")
 
             current_pos += 1
 

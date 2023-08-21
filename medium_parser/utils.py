@@ -15,6 +15,14 @@ import minify_html as mh
 KNOWN_MEDIUM_NETLOC = ("javascript.plainenglish.io")
 KNOWN_MEDIUM_DOMAINS = ("medium.com", "towardsdatascience.com", "eand.co")
 
+def is_valid_url(url):
+    fld = get_fld(url)
+    if not fld:
+        return False
+
+    parsed_url = urlparse(url)
+    return bool(parsed_url.scheme and parsed_url.netloc)
+
 
 def getting_percontage_of_match(string: str, matched_string: str) -> int:
     if matched_string in string:
