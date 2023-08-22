@@ -12,8 +12,9 @@ from functools import lru_cache
 from urllib.parse import urlparse
 import minify_html as mh
 
-KNOWN_MEDIUM_NETLOC = ("javascript.plainenglish.io")
-KNOWN_MEDIUM_DOMAINS = ("medium.com", "towardsdatascience.com", "eand.co")
+KNOWN_MEDIUM_NETLOC = ("javascript.plainenglish.io", "python.plainenglish.io")
+KNOWN_MEDIUM_DOMAINS = ("medium.com", "towardsdatascience.com", "eand.co", "betterprogramming.pub")
+
 
 def is_valid_url(url):
     fld = get_fld(url)
@@ -79,8 +80,8 @@ def is_valid_medium_post_id_hexadecimal(hex_string: str) -> bool:
         # if not hex_string.islower():
         #     return False
 
-        # Check if the length of the string is correct for a hexadecimal string (e.g., 11 or 12 characters)
-        if len(hex_string) not in [11, 12]:
+        # Check if the length of the string is correct for a hexadecimal string (e.g., 10, 11 or 12 characters)
+        if len(hex_string) not in [10, 11, 12]:
             return False
 
         return True
