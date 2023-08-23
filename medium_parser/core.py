@@ -119,13 +119,16 @@ class MediumParser:
                         logger.trace("Title was detected, ignore...")
                         current_pos += 1
                         continue
-                elif paragraph["type"] in ["H4", "P"]:
-                    if subtitle.endswith("…"):
+                elif paragraph["type"] in ["H4", "P"] and subtitle:
+                    if len(paragraph["text"]) > 200:
+                        logger.warning("Subtitle is too long")
+                        subtitle = None
+                    elif subtitle.endswith("…"):
                         logger.trace("Replace subtitle")
                         subtitle = paragraph["text"]
                         current_pos += 1
                         continue
-                    elif subtitle and getting_percontage_of_match(paragraph["text"], subtitle) > 75:
+                    elif getting_percontage_of_match(paragraph["text"], subtitle) > 75:
                         logger.trace("Subtitle was detected, ignore...")
                         current_pos += 1
                         continue
@@ -135,8 +138,11 @@ class MediumParser:
                         current_pos += 1
                         continue
 
-            if paragraph["type"] in ["H3", "H4", "P", "ULI", "OLI", "PRE", "BQ"]:
+            if paragraph["type"] in ["H3", "H4", "P", "ULI", "OLI", "PRE", "BQ", "PQ"]:
                 text_formater = parse_paragraph_text(paragraph["text"], paragraph["markups"])
+            else:
+                logger.warning(f"Ignore paragraph type: {paragraph['type']}")
+                text_formater = None
 
             for highlight in highlights:
                 for highlight_paragraph in highlight["paragraphs"]:
@@ -163,7 +169,7 @@ class MediumParser:
                 out_paragraphs.append(subheader_template_rendered)
             elif paragraph["type"] == "IMG":
                 image_template = jinja_env.from_string(
-                    '<img alt="{{ paragraph.metadata.alt }}" class="pt-5" loading="lazy" width="700" height="394" loading="eager" role="presentation" src="https://miro.medium.com/v2/resize:fit:700/{{ paragraph.metadata.id }}">'
+                        '<div class="mt-7"><img alt="{{ paragraph.metadata.alt }}" style="margin: auto;" class="pt-5" loading="lazy" loading="eager" role="presentation" src="https://miro.medium.com/v2/resize:fit:700/{{ paragraph.metadata.id }}"></div>'
                 )
                 if paragraph["layout"] == "OUTSET_ROW":
                     image_templates_row = []
@@ -240,13 +246,24 @@ class MediumParser:
 
                 current_pos = _tmp_current_pos - 1
             elif paragraph["type"] == "PRE":
-                pre_template = jinja_env.from_string('<pre style="overflow-x: auto;" class="p-4 mt-7"><span>{{ text }}</span></pre>')
-                pre_template_rendered = await pre_template.render_async(text=text_formater.get_text())
+                css_class = ["mt-7"]
+                code_css_class = []
+                if paragraph["codeBlockMetadata"] and paragraph["codeBlockMetadata"]["lang"] is not None:
+                    code_css_class.append(f'language-{paragraph["codeBlockMetadata"]["lang"]}')
+                else:
+                    code_css_class.append('nohighlight')
+                    css_class.append('p-4')
+                pre_template = jinja_env.from_string('<pre style="overflow-x: auto;" class="{{ css_class }}"><code class="{{ code_css_class }}">{{ text }}</code></pre>')
+                pre_template_rendered = await pre_template.render_async(text=text_formater.get_text(), css_class=" ".join(css_class), code_css_class=" ".join(code_css_class))
                 out_paragraphs.append(pre_template_rendered)
             elif paragraph["type"] == "BQ":
                 bq_template = jinja_env.from_string('<blockquote style="box-shadow: inset 3px 0 0 0 #242424;" class="px-5 pt-3 pb-3 mt-5"><p style="font-style: italic;">{{ text }}</p></blockquote>')
                 bq_template_rendered = await bq_template.render_async(text=text_formater.get_text())
                 out_paragraphs.append(bq_template_rendered)
+            elif paragraph["type"] == "PQ":
+                pq_template = jinja_env.from_string('<blockquote class="mt-7 text-2xl ml-5" style="color: #6B6B6B;"><p>{{ text }}</p></blockquote>')
+                pq_template_rendered = await pq_template.render_async(text=text_formater.get_text())
+                out_paragraphs.append(pq_template_rendered)
             elif paragraph["type"] == 'MIXTAPE_EMBED':
                 # TODO: implement
                 logger.error("Unsupported paragraph type: MIXTAPE_EMBED")
