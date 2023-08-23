@@ -120,7 +120,7 @@ class MediumParser:
                         current_pos += 1
                         continue
                 elif paragraph["type"] in ["H4", "P"] and subtitle:
-                    if len(paragraph["text"]) > 200:
+                    if len(paragraph["text"]) > 120:
                         logger.warning("Subtitle is too long")
                         subtitle = None
                     elif subtitle.endswith("…"):
@@ -138,11 +138,11 @@ class MediumParser:
                         current_pos += 1
                         continue
 
-            if paragraph["type"] in ["H3", "H4", "P", "ULI", "OLI", "PRE", "BQ", "PQ"]:
-                text_formater = parse_paragraph_text(paragraph["text"], paragraph["markups"])
-            else:
+            if paragraph["type"] in ["IMG"]:
                 logger.warning(f"Ignore paragraph type: {paragraph['type']}")
                 text_formater = None
+            else:
+                text_formater = parse_paragraph_text(paragraph["text"], paragraph["markups"])
 
             for highlight in highlights:
                 for highlight_paragraph in highlight["paragraphs"]:
@@ -253,7 +253,7 @@ class MediumParser:
                 else:
                     code_css_class.append('nohighlight')
                     css_class.append('p-4')
-                pre_template = jinja_env.from_string('<pre style="overflow-x: auto;" class="{{ css_class }}"><code class="{{ code_css_class }}">{{ text }}</code></pre>')
+                pre_template = jinja_env.from_string('<pre style="overflow-x: auto; display: flex; flex-direction: column; justify-content: center;" class="{{ css_class }}"><code class="{{ code_css_class }}">{{ text }}</code></pre>')
                 pre_template_rendered = await pre_template.render_async(text=text_formater.get_text(), css_class=" ".join(css_class), code_css_class=" ".join(code_css_class))
                 out_paragraphs.append(pre_template_rendered)
             elif paragraph["type"] == "BQ":
@@ -265,8 +265,18 @@ class MediumParser:
                 pq_template_rendered = await pq_template.render_async(text=text_formater.get_text())
                 out_paragraphs.append(pq_template_rendered)
             elif paragraph["type"] == 'MIXTAPE_EMBED':
-                # TODO: implement
-                logger.error("Unsupported paragraph type: MIXTAPE_EMBED")
+                embed_template = jinja_env.from_string("""
+<div class="border border-gray-300 mt-7">
+<a rel="noopener follow" target="_blank" href="{{ paragraph.mixtapeMetadata.href }}">
+    <div class="flex h-36">{{ text }}<div class="w-44 bg-cover bg-center no-lightense" style='background-image: url("https://miro.medium.com/v2/resize:fit:160/{{ paragraph.mixtapeMetadata.thumbnailImageId }}");'>
+</div>
+    </div>
+</a>
+</div>
+""")
+                embed_template_rendered = await embed_template.render_async(paragraph=paragraph, text=text_formater.get_text())
+                out_paragraphs.append(embed_template_rendered)
+
             else:
                 logger.error(f"Unknown {paragraph['type']}: {paragraph}")
 

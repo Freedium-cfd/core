@@ -1,10 +1,9 @@
 import asyncio
-import sys
 import json
-
-from loguru import logger
+import sys
 
 import jinja2
+from loguru import logger
 from medium_parser.core import MediumParser
 
 jinja2_env = jinja2.Environment(
@@ -16,7 +15,7 @@ async def main():
     logger.remove()
     logger.add(sys.stderr, level="TRACE")
 
-    dl = await MediumParser.from_url("https://medium.com/@cameronjosephjones/building-a-kpi-dashboard-in-streamlit-using-python-c88ac63903f5")
+    dl = await MediumParser.from_url("https://medium.com/@cameronjosephjones/building-a-kpi-dashboard-in-streamlit-using-python-e582a814d8ef")
     query_result = await dl.query()
 
     with open("query_result.json", "w") as f:
