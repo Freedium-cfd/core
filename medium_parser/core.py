@@ -102,7 +102,7 @@ class MediumParser:
 
         while len(paragraphs) > current_pos:
             paragraph = paragraphs[current_pos]
-            logger.trace(f"Current paragraph data: {paragraph}")
+            logger.trace(f"Current paragraph #{current_pos} data: {paragraph}")
 
             # if paragraph["id"] != "9ffb82d1b0d8_36":
             #     current_pos += 1
@@ -119,7 +119,7 @@ class MediumParser:
                         logger.trace("Title was detected, ignore...")
                         current_pos += 1
                         continue
-                elif paragraph["type"] == "H4":
+                elif paragraph["type"] in ["H4", "P"]:
                     if subtitle.endswith("…"):
                         logger.trace("Replace subtitle")
                         subtitle = paragraph["text"]
@@ -154,11 +154,11 @@ class MediumParser:
                         break
 
             if paragraph["type"] == "H3":
-                header_template = jinja_env.from_string('<h1 class="font-bold font-sans break-normal text-gray-900 pt-5 text-1xl md:text-2xl">{{ text }}</h1>')
+                header_template = jinja_env.from_string('<h1 class="font-bold font-sans break-normal text-gray-900 pt-12 text-1xl md:text-2xl">{{ text }}</h1>')
                 header_template_rendered = await header_template.render_async(text=text_formater.get_text())
                 out_paragraphs.append(header_template_rendered)
             elif paragraph["type"] == "H4":
-                subheader_template = jinja_env.from_string('<h2 class="font-bold font-sans break-normal text-gray-900 pt-5 text-l md:text-xl">{{ text }}</h2>')
+                subheader_template = jinja_env.from_string('<h2 class="font-bold font-sans break-normal text-gray-900 pt-8 text-l md:text-xl">{{ text }}</h2>')
                 subheader_template_rendered = await subheader_template.render_async(text=text_formater.get_text())
                 out_paragraphs.append(subheader_template_rendered)
             elif paragraph["type"] == "IMG":
@@ -189,7 +189,7 @@ class MediumParser:
                     image_template_rendered = await image_template.render_async(paragraph=paragraph)
                     out_paragraphs.append(image_template_rendered)
             elif paragraph["type"] == "P":
-                css_class = []
+                css_class = ["leading-8"]
                 paragraph_template = jinja_env.from_string('<p class="{{ css_class }}">{{ text }}</p>')
                 if paragraphs[current_pos - 1]["type"] in ["H4", "H3"]:
                     css_class.append("mt-3")

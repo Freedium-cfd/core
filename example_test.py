@@ -20,7 +20,7 @@ async def main():
     query_result = await dl.query()
 
     with open("query_result.json", "w") as f:
-        json.dump(query_result, f)
+        json.dump(query_result, f, indent=2)
 
     result = await dl.render_as_html()
 

@@ -116,7 +116,83 @@
                 </div>
             </div>
         </div>
-        <pre style="overflow-x: auto;" class="p-4 mt-7"><span>def main():
+        <h2 class="font-bold font-sans break-normal text-gray-900 pt-5 text-l md:text-xl">A step-by-step guide to creating a Python data analyst portfolio project</h2><p class="mt-3">Follow me on Twitter and check out the source code on GitHub</p><p class="mt-7">Checkout the web app here: https://cameronjoejones-streamlit-sales-dashboard-app-3pmk71.streamlit.app/</p><p class="mt-7">In today’s data-driven world, the ability to quickly and effectively analyse data is crucial. Data analysts need powerful tools that can help them gain insights from data and share their findings with others. In this tutorial, I’ll walk you through the process of building an interactive sales dashboard using Streamlit, Pandas, and Plotly.</p><p class="mt-7">Streamlit is an open-source Python library that enables you to build interactive web applications quickly and easily. Pandas is a popular data manipulation library, and Plotly is a library for creating interactive visualisations. Together, these libraries make it simple to create an engaging and informative dashboard.</p><h2 class="font-bold font-sans break-normal text-gray-900 pt-5 text-l md:text-xl">Data for the project</h2><p class="mt-3">In this project, the data is from Kaggle — you can download the dataset from here: https://www.kaggle.com/datasets/kyanyoga/sample-sales-data or use your own dataset and rebuild the project yourself.</p><h2 class="font-bold font-sans break-normal text-gray-900 pt-5 text-l md:text-xl">Setting up your environment</h2><p class="mt-3">To get started, install the required packages:</p><pre style="overflow-x: auto;" class="p-4 mt-7"><span>pip install streamlit
+pip install pandas
+pip install plotly</span></pre><p class="mt-7">I’ll be using the following code to create our sales dashboard. In the sections below, I will explain each part of the code and how it contributes to the final product.</p><h1 class="font-bold font-sans break-normal text-gray-900 pt-5 text-1xl md:text-2xl">Code</h1><h2 class="font-bold font-sans break-normal text-gray-900 pt-5 text-l md:text-xl">Import libraries and set up the environment:</h2><pre style="overflow-x: auto;" class="p-4 mt-7"><span>from typing import List, Tuple
+
+import pandas as pd
+import plotly.express as px
+import streamlit as st</span></pre><p class="mt-7">This section imports the necessary libraries: pandas, plotly.express, and streamlit. Additionally, it imports List and Tuple from the typing module for type hinting.</p><h2 class="font-bold font-sans break-normal text-gray-900 pt-5 text-l md:text-xl">Set up the page configuration:</h2><pre style="overflow-x: auto;" class="p-4 mt-7"><span>def set_page_config():
+    st.set_page_config(
+        page_title=&quot;Sales Dashboard&quot;,
+        page_icon=&quot;:bar_chart:&quot;,
+        layout=&quot;wide&quot;,
+        initial_sidebar_state=&quot;expanded&quot;,
+    )
+    st.markdown(&quot;&lt;style&gt; footer {visibility: hidden;} &lt;/style&gt;&quot;, unsafe_allow_html=True)</span></pre><p class="mt-7">The set_page_config() function sets the page title, icon, layout, and initial sidebar state for the Streamlit app. It also hides the default footer using custom CSS.</p><h2 class="font-bold font-sans break-normal text-gray-900 pt-5 text-l md:text-xl">Load and cache data</h2><pre style="overflow-x: auto;" class="p-4 mt-7"><span>@st.cache_data
+def load_data() -&gt; pd.DataFrame:
+    data = pd.read_csv(&#39data/sales_data_sample.csv&#39, encoding=&#39latin1&#39)
+    data[&#39ORDERDATE&#39] = pd.to_datetime(data[&#39ORDERDATE&#39])
+    return data</span></pre><p class="mt-7">The load_data() function reads a CSV file containing sales data and converts the ORDERDATE column to a datetime format. The @st.cache_data decorator caches the result of this function, ensuring that the data is only loaded once.</p><h2 class="font-bold font-sans break-normal text-gray-900 pt-5 text-l md:text-xl">Data filtering and KPI calculation:</h2><pre style="overflow-x: auto;" class="p-4 mt-7"><span>def filter_data(data: pd.DataFrame, column: str, values: List[str]) -&gt; pd.DataFrame:
+    return data[data[column].isin(values)] if values else data
+
+
+@st.cache_data
+def calculate_kpis(data: pd.DataFrame) -&gt; List[float]:
+    total_sales = data[&#39SALES&#39].sum()
+    sales_in_m = f&quot;{total_sales / 1000000:.2f}M&quot;
+    total_orders = data[&#39ORDERNUMBER&#39].nunique()
+    average_sales_per_order = f&quot;{total_sales / total_orders / 1000:.2f}K&quot;
+    unique_customers = data[&#39CUSTOMERNAME&#39].nunique()
+    return [sales_in_m, total_orders, average_sales_per_order, unique_customers]</span></pre><p class="mt-7">The filter_data() function filters a DataFrame based on the given column and list of values. The calculate_kpis() function calculates four key performance indicators (KPIs): total sales, total orders, average sales per order, and the number of unique customers.</p><h2 class="font-bold font-sans break-normal text-gray-900 pt-5 text-l md:text-xl">Display KPI metrics:</h2><pre style="overflow-x: auto;" class="p-4 mt-7"><span>def display_kpi_metrics(kpis: List[float], kpi_names: List[str]):
+    st.header(&quot;KPI Metrics&quot;)
+    for i, (col, (kpi_name, kpi_value)) in enumerate(zip(st.columns(4), zip(kpi_names, kpis))):
+        col.metric(label=kpi_name, value=kpi_value)</span></pre><p class="mt-7">The display_kpi_metrics() function takes a list of KPIs and their corresponding names and displays them as metric cards in a row using Streamlit&#39s st.metric() function.</p><h2 class="font-bold font-sans break-normal text-gray-900 pt-5 text-l md:text-xl">Display the sidebar and filters:</h2><pre style="overflow-x: auto;" class="p-4 mt-7"><span>def display_sidebar(data: pd.DataFrame) -&gt; Tuple[List[str], List[str], List[str]]:
+    st.sidebar.header(&quot;Filters&quot;)
+    start_date = pd.Timestamp(st.sidebar.date_input(&quot;Start date&quot;, data[&#39ORDERDATE&#39].min().date()))
+    end_date = pd.Timestamp(st.sidebar.date_input(&quot;End date&quot;, data[&#39ORDERDATE&#39].max().date()))
+
+    product_lines = sorted(data[&#39PRODUCTLINE&#39].unique())
+    selected_product_lines = st.sidebar.multiselect(&quot;Product lines&quot;, product_lines, product_lines)
+
+    selected_countries = st.sidebar.multiselect(&quot;Select Countries&quot;, data[&#39COUNTRY&#39].unique())
+
+    selected_statuses = st.sidebar.multiselect(&quot;Select Order Statuses&quot;, data[&#39STATUS&#39].unique())
+
+    return selected_product_lines, selected_countries, selected_statuses</span></pre><p class="mt-7">The display_sidebar() function creates a sidebar with various filters (date range, product lines, countries, order statuses).</p><h2 class="font-bold font-sans break-normal text-gray-900 pt-5 text-l md:text-xl">Display charts and data tables:</h2><pre style="overflow-x: auto;" class="p-4 mt-7"><span>def display_charts(data: pd.DataFrame):
+    combine_product_lines = st.checkbox(&quot;Combine Product Lines&quot;, value=True)
+
+    if combine_product_lines:
+        fig = px.area(data, x=&#39ORDERDATE&#39, y=&#39SALES&#39,
+                      title=&quot;Sales by Product Line Over Time&quot;, width=900, height=500)
+    else:
+        fig = px.area(data, x=&#39ORDERDATE&#39, y=&#39SALES&#39, color=&#39PRODUCTLINE&#39,
+                      title=&quot;Sales by Product Line Over Time&quot;, width=900, height=500)
+
+    fig.update_layout(margin=dict(l=20, r=20, t=50, b=20))
+    fig.update_xaxes(rangemode=&#39tozero&#39, showgrid=False)
+    fig.update_yaxes(rangemode=&#39tozero&#39, showgrid=True)
+    st.plotly_chart(fig, use_container_width=True)
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.subheader(&quot;Top 10 Customers&quot;)
+        top_customers = data.groupby(&#39CUSTOMERNAME&#39)[&#39SALES&#39].sum().reset_index().sort_values(&#39SALES&#39,
+                                                                                              ascending=False).head(10)
+        st.write(top_customers)
+
+    with col2:
+        st.subheader(&quot;Top 10 Products by Sales&quot;)
+        top_products = data.groupby([&#39PRODUCTCODE&#39, &#39PRODUCTLINE&#39])[&#39SALES&#39].sum().reset_index().sort_values(&#39SALES&#39,
+                                                                                                             ascending=False).head(
+            10)
+        st.write(top_products)
+
+    with col3:
+        st.subheader(&quot;Total Sales by Product Line&quot;)
+        total_sales_by_product_line = data.groupby(&#39PRODUCTLINE&#39)[&#39SALES&#39].sum().reset_index()
+        st.write(total_sales_by_product_line)</span></pre><p class="mt-7">The display_charts() function creates and displays interactive charts and data tables using Plotly and Streamlit. It includes an area chart for sales by product line over time, a top 10 customers table, a top 10 products by sales table, and a total sales by product line table.</p><h2 class="font-bold font-sans break-normal text-gray-900 pt-5 text-l md:text-xl">The main function:</h2><pre style="overflow-x: auto;" class="p-4 mt-7"><span>def main():
     set_page_config()
 
     data = load_data()
@@ -138,7 +214,7 @@
 
 
 if __name__ == &#39__main__&#39:
-    main()</span></pre>
+    main()</span></pre><p class="mt-7">The main() function ties everything together. It sets up the page configuration, loads the data, and displays the title, sidebar, KPI metrics, and charts. The data is filtered based on the selected filters in the sidebar, and the KPIs are recalculated and displayed accordingly. The dashboard is executed by calling the main() function when the script is run.</p><h1 class="font-bold font-sans break-normal text-gray-900 pt-5 text-1xl md:text-2xl">Testing the app/ running locally</h1><p class="mt-3">To run the app, save the code in a file named app.py, and then run the following command:</p><pre style="overflow-x: auto;" class="p-4 mt-7"><span>streamlit run app.py</span></pre><p class="mt-7">Your app will open in a web browser and allow you to see the dashboard in a local environement.</p><h1 class="font-bold font-sans break-normal text-gray-900 pt-5 text-1xl md:text-2xl">Deploying the App to the web</h1><p class="mt-3">Simply follow Streamlit’s simple documentation on how to deploy your app to the web https://docs.streamlit.io/streamlit-community-cloud/get-started/deploy-an-app</p><p class="mt-7">Happy coding!</p>
         <div class="flex flex-wrap gap-2 mt-5">
             <a title="Python" target="_blank" href="https://medium.com/tag/python"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#python</span></a><a title="Streamlit" target="_blank" href="https://medium.com/tag/streamlit"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#streamlit</span></a><a title="Portfolio" target="_blank" href="https://medium.com/tag/portfolio"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#portfolio</span></a><a title="Data Science" target="_blank" href="https://medium.com/tag/data-science"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#data-science</span></a><a title="Data Analysis" target="_blank" href="https://medium.com/tag/data-analysis"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#data-analysis</span></a>
         </div>
