@@ -1,14 +1,27 @@
-from medium_parser.core import MediumParser
-import jinja2
 import asyncio
 import sys
+import json
+
+from loguru import logger
+
+import jinja2
+from medium_parser.core import MediumParser
 
 jinja2_env = jinja2.Environment(
     loader=jinja2.FileSystemLoader("./"),
 )
 
+
 async def main():
-    dl = await MediumParser.from_url("https://medium.com/@jogarcia/breaking-the-proxy-walls-with-redsocks-in-linux-f4c1bfb6fb6a")
+    logger.remove()
+    logger.add(sys.stderr, level="TRACE")
+
+    dl = await MediumParser.from_url("https://medium.com/@cameronjosephjones/building-a-kpi-dashboard-in-streamlit-using-python-c88ac63903f5")
+    query_result = await dl.query()
+
+    with open("query_result.json", "w") as f:
+        json.dump(query_result, f)
+
     result = await dl.render_as_html()
 
     with open("medium.html", "w") as f:

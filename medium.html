@@ -65,205 +65,86 @@
 
 
 <div class="container w-full md:max-w-3xl mx-auto pt-20 break-words">
+    <div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal" style="font-family:Georgia,serif">
+        <div class="font-sans">
+            <p class="text-base md:text-sm text-green-500 font-bold pb-3">
+                <a href="https://medium.com/@cameronjosephjones/building-a-kpi-dashboard-in-streamlit-using-python-c88ac63903f5" class="text-sm md:text-sm text-green-500 font-bold no-underline hover:underline ">&lt; Go to the original</a>
+            </p>
+            
+                <img alt="Preview image"
+                     style="max-height: 65vh;
+                            width: auto;
+                            margin: auto"
+                     loading="eager"
+                     role="presentation"
+                     src="https://miro.medium.com/v2/resize:fit:700/1*8ASf5xmZQ3v6ckh_3tyWqQ.png">
+            
+            <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl">Building a KPI dashboard in Streamlit using Python</h1>
+            <h2 class="font-medium font-sans break-normal text-gray-600 pt-1 pb-3 text-1xl md:text-1xl">A step-by-step guide to creating a data analyst portfolio project</h2>
+        </div>
+        <div class="bg-gray-100 border border-gray-300 m-2">
+            <div class="flex items-center space-x-4 p-4">
+                <div class="flex-shrink-0">
+                    <a href="https://medium.com/@cameronjosephjones" target="_blank" title="Data Analyst @ HelloFresh: https://www.linkedin.com/in/cameronjones08/" class="block relative">
+                        <img src="https://miro.medium.com/v2/resize:fill:88:88/1*nH63d3HiTnSVVgVcdoL8-g.jpeg"
+                             alt="Cameron Jones"
+                             class="rounded-full h-11 w-11 no-lightense">
+                        <div class="absolute bottom-0 right-0 h-3 w-3 border-2 border-white bg-green-500 rounded-full"></div>
+                    </a>
+                </div>
+                <div class="flex-grow">
+                    <a href="https://medium.com/@cameronjosephjones"
+                       target="_blank"
+                       title="Data Analyst @ HelloFresh: https://www.linkedin.com/in/cameronjones08/"
+                       class="block font-semibold text-gray-900">Cameron Jones</a>
+                    <button class="text-sm text-white bg-green-500 px-3 py-1 rounded-lg mt-1">
+                        <a href="https://medium.com/@cameronjosephjones"
+                           target="_blank"
+                           title="Data Analyst @ HelloFresh: https://www.linkedin.com/in/cameronjones08/"
+                           class="block text-sm text-white">Follow</a>
+                    </button>
+                </div>
+            </div>
+            <div class="px-4 pb-2">
+                <div class="flex flex-wrap items-center space-x-2 text-sm text-gray-500">
+                    
+                    <span class="text-gray-500">~4 min read</span>
+                    <span class="md:inline">·</span>
+                    <span class="text-gray-500">May 6, 2023 (Updated: May 6, 2023)</span>
+                    <span class="md:inline">·</span>
+                    <span class="text-yellow-500">Free: Yes</span>
+                </div>
+            </div>
+        </div>
+        <pre style="overflow-x: auto;" class="p-4 mt-7"><span>def main():
+    set_page_config()
 
-		<div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal" style="font-family:Georgia,serif;">
+    data = load_data()
 
-			<div class="font-sans">
-				<p class="text-base md:text-sm text-green-500 font-bold pb-3"><a href="https://medium.com/@jogarcia/breaking-the-proxy-walls-with-redsocks-in-linux-f4c1bfb6fb6a" class="text-sm md:text-sm text-green-500 font-bold no-underline hover:underline ">&lt; Go to the original</a></p>
-                
-                <img alt="Preview image" style="max-height: 65vh;width: auto;margin: auto;" loading="eager" role="presentation" src="https://miro.medium.com/v2/resize:fit:700/1*GTkU0Vq0Lwja_gWpLDZaBw.jpeg">
-                
-				<h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl">Breaking the proxy walls with Redsocks in Linux</h1>
-                
-                <h2 class="font-medium font-sans break-normal text-gray-600 pt-1 pb-3 text-1xl md:text-1xl">A guide on how to configure a global proxy in Linux with Redsocks</h2>
-                
-			</div>
+    st.title(&quot;📊 Sales Dashboard&quot;)
 
-			<div class="bg-gray-100 border border-gray-300 m-2">
-  <div class="flex items-center space-x-4 p-4">
-    <div class="flex-shrink-0">
-      <a href="https://medium.com/@jogarcia" target="_blank" title="Hello There! I am a fullstack developer, a fan of open source and crypto and an obssesive fella. Well met." class="block relative">
-        <img src="https://miro.medium.com/v2/resize:fill:88:88/1*CnLBjwI8NBbus2SI7s7sgQ.jpeg" alt="Jose Garcia" class="rounded-full h-11 w-11 no-lightense">
-        <div class="absolute bottom-0 right-0 h-3 w-3 border-2 border-white bg-green-500 rounded-full"></div>
-      </a>
+    selected_product_lines, selected_countries, selected_statuses = display_sidebar(data)
+
+    filtered_data = data.copy()
+    filtered_data = filter_data(filtered_data, &#39PRODUCTLINE&#39, selected_product_lines)
+    filtered_data = filter_data(filtered_data, &#39COUNTRY&#39, selected_countries)
+    filtered_data = filter_data(filtered_data, &#39STATUS&#39, selected_statuses)
+
+    kpis = calculate_kpis(filtered_data)
+    kpi_names = [&quot;Total Sales&quot;, &quot;Total Orders&quot;, &quot;Average Sales per Order&quot;, &quot;Unique Customers&quot;]
+    display_kpi_metrics(kpis, kpi_names)
+
+    display_charts(filtered_data)
+
+
+if __name__ == &#39__main__&#39:
+    main()</span></pre>
+        <div class="flex flex-wrap gap-2 mt-5">
+            <a title="Python" target="_blank" href="https://medium.com/tag/python"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#python</span></a><a title="Streamlit" target="_blank" href="https://medium.com/tag/streamlit"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#streamlit</span></a><a title="Portfolio" target="_blank" href="https://medium.com/tag/portfolio"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#portfolio</span></a><a title="Data Science" target="_blank" href="https://medium.com/tag/data-science"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#data-science</span></a><a title="Data Analysis" target="_blank" href="https://medium.com/tag/data-analysis"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#data-analysis</span></a>
+        </div>
+        <div class="container w-full md:max-w-3xl mx-auto pt-12"></div>
     </div>
-    <div class="flex-grow">
-      <a href="https://medium.com/@jogarcia" target="_blank" title="Hello There! I am a fullstack developer, a fan of open source and crypto and an obssesive fella. Well met." class="block font-semibold text-gray-900">Jose Garcia</a>
-      <button class="text-sm text-white bg-green-500 px-3 py-1 rounded-lg mt-1"><a href="https://medium.com/@jogarcia" target="_blank" title="Hello There! I am a fullstack developer, a fan of open source and crypto and an obssesive fella. Well met." class="block text-sm text-white">Follow</a></button>
-    </div>
-  </div>
-  <div class="px-4 pb-2">
-    <div class="flex flex-wrap items-center space-x-2 text-sm text-gray-500">
-      
-      <span class="text-gray-500">~5 min read</span>
-      <span class="md:inline">·</span>
-      <span class="text-gray-500">October 11, 2022 (Updated: October 11, 2022)</span>
-	  <span class="md:inline">·</span>
-	  <span class="text-yellow-500">Free: Yes</span>
-
-    </div>
-  </div>
-</div>
-
-
-	<p class="mt-7">Are you one of those unfortunate souls behind a corporate proxy? I was one of you, my brothers. In this article, I will show you how to infiltrate that pesky proxy that has been giving you headaches with Redsocks (not the baseball team).</p>
-
-	<p class="mt-7">The objective of this tutorial is to show you how to proxify your entire computer connection.</p>
-
-	<p class="mt-7">This tutorial is divided into two parts:</p>
-
-	<ol class="list-decimal pl-8 mt-2"><li>Redsocks. Software to be used to proxify your computer’s entire connection.</li><li>Iptables. Redirects all traffic thru Redsocks.</li></ol>
-
-	<p class="mt-7">You need both to get this done. Redsocks is a software that sits between your computer and the proxy (it lives in your computer). The software doesn’t control the traffic flow unless you manually give it to it to be handled. And to do that we are going to be using iptables.</p>
-
-	<p class="mt-7">Notes:</p>
-
-	<ul class="list-disc pl-8 mt-2"><li>The install command I am going to write about in Linux is going to be for Debian-based distros.</li></ul>
-
-	<p class="mt-7">Disclaimer:</p>
-
-	<ul class="list-disc pl-8 mt-2"><li>You may be doing something illegal by doing this. Ask away about your company’s policies concerning their proxy. I do not condone illegal activities.</li></ul>
-
-	<h1 class="font-bold font-sans break-normal text-gray-900 pt-5 text-1xl md:text-2xl">What is Redsocks?</h1>
-
-	<p class="mt-3">Redsocks is a software tool that allows you to redirect all connections leaving and entering your computer.</p>
-
-	<p class="mt-7">Where too? Anywhere.</p>
-
-	<p class="mt-7">Redsocks is a service that lives in your machine. It mediates between your computer and the proxy.</p>
-
-	<p class="mt-7">It is not included on your distro though. So, let’s install it.</p>
-
-	<h1 class="font-bold font-sans break-normal text-gray-900 pt-5 text-1xl md:text-2xl">Installing Redsocks</h1>
-
-	<p class="mt-3">This part is always a little tricky. If you are here trying to bypass a proxy it means that your computer doesn’t have internet access. Even so, the way to install Redsocks is by using your distro’s package manager.</p>
-
-	<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">sudo apt install redsocks</span></pre>
-
-	<p class="mt-7">So you are going to have to get a little creative. My suggestion is tethering with your phone.</p>
-
-	<p class="mt-7">Also in case you want to take a look at the code or check the documentation of Redsocks takes a look at their repo:</p>
-
-	<p class="mt-7">Let’s configure it.</p>
-
-	<h1 class="font-bold font-sans break-normal text-gray-900 pt-5 text-1xl md:text-2xl">Redsocks configuration</h1>
-
-	<p class="mt-3">Create the redsocks config file (by copying from here). The file should be named redsocks.conf. Make sure to name it correctly.</p>
-
-	<p class="mt-7">Now, this is quite long so let me explain briefly what each part does.</p>
-
-	<p class="mt-7">Inside base, the first three lines activate the logs. Logging allows you to check if errors occurred connecting.</p>
-
-	<p class="mt-7">Logging is optional but very recommended.</p>
-
-	<p class="mt-7">The next two lines activate logging.</p>
-
-	<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">log_debug = on; <br />log_info = on;</span></pre>
-
-	<p class="mt-7">The next snippet is were you can define the location of the log file.</p>
-
-	<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">log = &quot;file:/var/log/redsocks.log&quot;;</span></pre>
-
-	<p class="mt-7">Runs redsocks as a service.</p>
-
-	<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">daemon = on;</span></pre>
-
-	<p class="mt-7">Tells Redsocks about the redirector type. In this case it uses iptables to redirect the traffic your computer’s traffic.</p>
-
-	<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">redirector = iptables;</span></pre>
-
-	<p class="mt-7">About the redsocks option. You can have multiple of them. How much? As many as you need. Since what we want is to give access to the internet to our entire machine we are going to be using one for HTTPS and one for HTTP traffic. As they have the same options let’s go line by line.</p>
-
-	<p class="mt-7">The next line configures the service to listen on every interface.</p>
-
-	<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">local_ip = 0.0.0.0;</span></pre>
-
-	<p class="mt-7">The port I am opening on the computer to redirect the traffic thru.</p>
-
-	<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">local_port = 12345;</span></pre>
-
-	<p class="mt-7">Notice that I have a different port opened in each redsocks config object.</p>
-
-	<p class="mt-7">You can open many as you like (as long as it doesn’t conflict with the reserved opened ports). If you don’t know what I am talking about leave my port. It should work just fine.</p>
-
-	<p class="mt-7">The ip (url in this case, both are good) and port of the corporate proxy.</p>
-
-	<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">ip = proxy.uclv.cu;<br />port = 3128;</span></pre>
-
-	<p class="mt-7">The connection type that the corporate proxy allows. Usually http-connect or http-relay.</p>
-
-	<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">// Types: socks4, socks5, http-connect, http-relay<br />type = http-relay;</span></pre>
-
-	<p class="mt-7">There is no easy way of know which type you will have to use. In my case http-connect for the https connections and http-relay for http connection. But by all means it won’t be necessarily the same for you. If you want to know the difference take a look at this issue:</p>
-
-	<p class="mt-7">The next step is optional. If the proxy in your company requires an user you can use these options.</p>
-
-	<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">login = &quot;proxyUser&quot;;<br />password = &quot;proxyPassword&quot;;</span></pre>
-
-	<p class="mt-7">After creating the file with all the configurations, copy it to /etc/redsocks.con.</p>
-
-	<p class="mt-7">And with that Redsocks is covered. Now to the iptables</p>
-
-	<h1 class="font-bold font-sans break-normal text-gray-900 pt-5 text-1xl md:text-2xl">What are the iptables?</h1>
-
-	<p class="mt-3">The Iptables software is a utility that allows you to control the traffic flow of the internet in your computer. That’s oversimplifying it though. Take a look at this if you want to know more about it.</p>
-
-	<h1 class="font-bold font-sans break-normal text-gray-900 pt-5 text-1xl md:text-2xl">Installing Iptables</h1>
-
-	<p class="mt-3">Already installed in Linux. Nothing to do here my good man.</p>
-
-	<h1 class="font-bold font-sans break-normal text-gray-900 pt-5 text-1xl md:text-2xl">Iptables configuration</h1>
-
-	<p class="mt-3">Am going to create a .sh file to facilitate the process. Notice that everything in that file you could do by throwing commands in the terminal.</p>
-
-	<p class="mt-7">Again, a lot is going on here. And though almost every line of code is commented let’s go over it even so.</p>
-
-	<p class="mt-7">First, we create a new chain by doing:</p>
-
-	<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">iptables -t nat -N REDSOCKS</span></pre>
-
-	<p class="mt-7">Later on, we need to ignore LAN and reserved IPs by doing:</p>
-
-	<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">iptables -t nat -A REDSOCKS -d 0.0.0.0/8 -j RETURN                             iptables -t nat -A REDSOCKS -d 10.0.0.0/8 -j RETURN                             iptables -t nat -A REDSOCKS -d 100.64.0.0/10 -j RETURN                             iptables -t nat -A REDSOCKS -d 127.0.0.0/8 -j RETURN                             iptables -t nat -A REDSOCKS -d 169.254.0.0/16 -j RETURN                             iptables -t nat -A REDSOCKS -d 172.16.0.0/12 -j RETURN                             iptables -t nat -A REDSOCKS -d 192.168.0.0/16 -j RETURN                             iptables -t nat -A REDSOCKS -d 198.18.0.0/15 -j RETURN                             iptables -t nat -A REDSOCKS -d 224.0.0.0/4 -j RETURN                             iptables -t nat -A REDSOCKS -d 240.0.0.0/4 -j RETURN</span></pre>
-
-	<p class="mt-7">Now we need to redirect the rest of the traffic</p>
-
-	<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">iptables -t nat -A REDSOCKS -p tcp --dport 80 -j REDIRECT --to-ports 12346                             <br />iptables -t nat -A REDSOCKS -p tcp --dport 443 -j REDIRECT --to-ports 12345                             </span></pre>
-
-	<p class="mt-7">Am redirecting all HTTP traffic thru 12346 and all HTTPS traffic to 12345. The ports I opened with Redsocks.</p>
-
-	<p class="mt-7">The next one is a little truculent.</p>
-
-	<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">iptables -t nat -A REDSOCKS -p tcp -j REDIRECT --to-ports 12345</span></pre>
-
-	<p class="mt-7">This redirects everything that enters the REDSOCKS chain to the 12345 port.</p>
-
-	<p class="mt-7">Finally.</p>
-
-	<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">iptables -t nat -A OUTPUT -p tcp -j REDSOCKS</span></pre>
-
-	<p class="mt-7">Redirect every connection leaving your machine to the REDSOCKS chain to be handled there.</p>
-
-	<h1 class="font-bold font-sans break-normal text-gray-900 pt-5 text-1xl md:text-2xl">Conclusions</h1>
-
-	<ul class="list-disc pl-8 mt-2"><li>Bypassing a proxy is a little complicated… Unless you are a hardcore hacker.</li><li>You need both Redsocks and iptables to bypass the proxy.</li><li>Redsocks allows you to globally proxify your computer.</li><li>You need iptables to redirect all of your traffic throughout Redsocks’ service.</li></ul>
-
-	<p class="mt-7">I spent weeks finding out a utility to help me do this. The OS&#39 native proxy didn’t work for me at all. I hope that with this article you don’t waste the same time I did. Good luck with that proxy brother in the force.</p>
-
-
-	<div class="flex flex-wrap gap-2 mt-5">
-		
-        <a title="Linux" target="_blank" href="https://medium.com/tag/linux"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#linux</span></a>
-    
-        <a title="Proxy" target="_blank" href="https://medium.com/tag/proxy"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#proxy</span></a>
-    
-  </div>
-
-<div class="container w-full md:max-w-3xl mx-auto pt-12"></div>
-
-</div>
-
-<style>
+    <style>
 code {
     /*font-size: 75%;*/
     background-color: #e3e2e2;
@@ -272,7 +153,7 @@ pre {
     font-size: 75%;
     background-color: #e3e2e2;
 }
-</style>
+    </style>
 <script>
   function navigateToOrigin() {
     window.location.href = window.location.origin;

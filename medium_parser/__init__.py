@@ -33,8 +33,8 @@ medium_session = SQLiteBackend(
     cache_control=False,
 )
 
-from . import exceptions as medium_parser_exceptions
 from . import exceptions as exceptions
+from . import exceptions as medium_parser_exceptions
 
 # from .utils import minify_html
 

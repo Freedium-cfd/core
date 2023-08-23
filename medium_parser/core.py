@@ -1,14 +1,29 @@
-import textwrap
-import jinja2
 import math
+import textwrap
+
+import jinja2
 from loguru import logger
-from .utils import is_valid_medium_url, sanitize_url, get_medium_post_id_by_url, is_valid_medium_post_id_hexadecimal, getting_percontage_of_match, is_valid_url
-from .toolkits.rl_string_helper.rl_string_helper import RLStringHelper, quote_html
-from .time import convert_datetime_to_human_readable
+
 from . import jinja_env
+from .exceptions import (
+    InvalidMediumPostID,
+    InvalidMediumPostURL,
+    InvalidURL,
+    MediumParserException,
+    MediumPostQueryError,
+)
 from .medium_api import query_post_by_id
 from .models.html_result import HtmlResult
-from .exceptions import InvalidURL, InvalidMediumPostURL, InvalidMediumPostID, MediumPostQueryError, MediumParserException
+from .time import convert_datetime_to_human_readable
+from .toolkits.rl_string_helper.rl_string_helper import RLStringHelper
+from .utils import (
+    get_medium_post_id_by_url,
+    getting_percontage_of_match,
+    is_valid_medium_post_id_hexadecimal,
+    is_valid_medium_url,
+    is_valid_url,
+    sanitize_url,
+)
 
 
 class MediumParser:
@@ -59,6 +74,7 @@ class MediumParser:
             raise MediumPostQueryError(f'Could not query post by ID from API: {self.post_id}')
 
         self.post_data = post_data
+        return self.post_data
 
     @staticmethod
     async def _parse_and_render_content_html_post(content: dict, title: str, subtitle: str, preview_image_id: str, highlights: list) -> tuple[list, str, str]:
@@ -68,9 +84,6 @@ class MediumParser:
 
         def parse_paragraph_text(text: str, markups: list) -> str:
             text_formater = RLStringHelper(text)
-            html_quote_replace = quote_html(text)
-            for i in html_quote_replace:
-                text_formater.set_replace(i[0][0], i[0][1], i[1])
 
             # parse_markups(markups)
             # fixed_markups = split_overlapping_ranges(parsed_markups)
@@ -90,6 +103,10 @@ class MediumParser:
         while len(paragraphs) > current_pos:
             paragraph = paragraphs[current_pos]
             logger.trace(f"Current paragraph data: {paragraph}")
+
+            # if paragraph["id"] != "9ffb82d1b0d8_36":
+            #     current_pos += 1
+            #     continue
 
             if current_pos in range(4):
                 if paragraph["type"] == "H3":
@@ -223,7 +240,7 @@ class MediumParser:
 
                 current_pos = _tmp_current_pos - 1
             elif paragraph["type"] == "PRE":
-                pre_template = jinja_env.from_string('<pre class="p-4 mt-7"><span style="word-break: break-word; white-space: pre-wrap;">{{ text }}</span></pre>')
+                pre_template = jinja_env.from_string('<pre style="overflow-x: auto;" class="p-4 mt-7"><span>{{ text }}</span></pre>')
                 pre_template_rendered = await pre_template.render_async(text=text_formater.get_text())
                 out_paragraphs.append(pre_template_rendered)
             elif paragraph["type"] == "BQ":

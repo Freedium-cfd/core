@@ -1,9 +1,9 @@
 from aiohttp_client_cache import CachedSession
 from loguru import logger
 
-from . import medium_session, TIMEOUT, post_id_correlation
-from .utils import generate_random_sha256_hash
+from . import TIMEOUT, medium_session, post_id_correlation
 from .time import get_unix_ms
+from .utils import generate_random_sha256_hash
 
 
 # https://gist.github.com/vladar/a4e3afd608cfe8b13e5844d75447f0a4

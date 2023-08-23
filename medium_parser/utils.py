@@ -1,16 +1,17 @@
-import secrets
 import hashlib
-
-import aiohttp
-import tld
+import secrets
 import urllib.parse
 from datetime import datetime
-from . import TIMEOUT
-from bs4 import BeautifulSoup
-from loguru import logger
 from functools import lru_cache
 from urllib.parse import urlparse
+
+import aiohttp
 import minify_html as mh
+import tld
+from bs4 import BeautifulSoup
+from loguru import logger
+
+from . import TIMEOUT
 
 KNOWN_MEDIUM_NETLOC = ("javascript.plainenglish.io", "python.plainenglish.io")
 KNOWN_MEDIUM_DOMAINS = ("medium.com", "towardsdatascience.com", "eand.co", "betterprogramming.pub")
