@@ -130,6 +130,7 @@ class MediumParser:
                         continue
                     elif getting_percontage_of_match(paragraph["text"], subtitle) > 75:
                         logger.trace("Subtitle was detected, ignore...")
+                        subtitle = paragraph["text"]
                         current_pos += 1
                         continue
                 elif paragraph["type"] == "IMG":
