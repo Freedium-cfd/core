@@ -15,7 +15,7 @@ from .exceptions import (
 from .medium_api import query_post_by_id
 from .models.html_result import HtmlResult
 from .time import convert_datetime_to_human_readable
-from .toolkits.rl_string_helper.rl_string_helper import RLStringHelper
+from .toolkits.rl_string_helper.rl_string_helper import RLStringHelper, parse_markups, split_overlapping_ranges
 from .utils import (
     get_medium_post_id_by_url,
     getting_percontage_of_match,
@@ -85,18 +85,18 @@ class MediumParser:
         def parse_paragraph_text(text: str, markups: list) -> str:
             text_formater = RLStringHelper(text)
 
-            # parse_markups(markups)
-            # fixed_markups = split_overlapping_ranges(parsed_markups)
+            parsed_markups = parse_markups(markups)
+            fixed_markups = split_overlapping_ranges(parsed_markups)
 
-            # _last_fixed_markup = None
-            # for i in range(len(fixed_markups) * 7):
-            #     fixed_markups = split_overlapping_ranges(fixed_markups)
-            #     if _last_fixed_markup and len(fixed_markups) == len(fixed_markups):
-            #         break
-            #     _last_fixed_markup = fixed_markups
+            _last_fixed_markup = None
+            for i in range(len(fixed_markups) * 7):
+                fixed_markups = split_overlapping_ranges(fixed_markups)
+                if _last_fixed_markup and len(fixed_markups) == len(fixed_markups):
+                    break
+                _last_fixed_markup = fixed_markups
 
-            # for markup in fixed_markups:
-            #     text_formater.set_template(markup["start"], markup["end"], markup["template"])
+            for markup in fixed_markups:
+                text_formater.set_template(markup["start"], markup["end"], markup["template"])
 
             return text_formater
 
@@ -160,12 +160,18 @@ class MediumParser:
                         break
 
             if paragraph["type"] == "H3":
-                header_template = jinja_env.from_string('<h1 class="font-bold font-sans break-normal text-gray-900 pt-12 text-1xl md:text-2xl">{{ text }}</h1>')
-                header_template_rendered = await header_template.render_async(text=text_formater.get_text())
+                css_class = []
+                if out_paragraphs:
+                    css_class.append("pt-12")
+                header_template = jinja_env.from_string('<h1 class="font-bold font-sans break-normal text-gray-900 text-1xl md:text-2xl {{ css_class }}">{{ text }}</h1>')
+                header_template_rendered = await header_template.render_async(text=text_formater.get_text(), css_class="".join(css_class))
                 out_paragraphs.append(header_template_rendered)
             elif paragraph["type"] == "H4":
-                subheader_template = jinja_env.from_string('<h2 class="font-bold font-sans break-normal text-gray-900 pt-8 text-l md:text-xl">{{ text }}</h2>')
-                subheader_template_rendered = await subheader_template.render_async(text=text_formater.get_text())
+                css_class = []
+                if out_paragraphs:
+                    css_class.append("pt-8")
+                subheader_template = jinja_env.from_string('<h2 class="font-bold font-sans break-normal text-gray-900 text-l md:text-xl {{ css_class }}">{{ text }}</h2>')
+                subheader_template_rendered = await subheader_template.render_async(text=text_formater.get_text(), css_class="".join(css_class))
                 out_paragraphs.append(subheader_template_rendered)
             elif paragraph["type"] == "IMG":
                 image_template = jinja_env.from_string(
@@ -205,7 +211,7 @@ class MediumParser:
                 out_paragraphs.append(paragraph_template_rendered)
             elif paragraph["type"] == "ULI":
                 uli_template = jinja_env.from_string('<ul class="list-disc pl-8 mt-2">{{ li }}</ul>')
-                li_template = jinja_env.from_string("<li>{{ text }}</li>")
+                li_template = jinja_env.from_string("<li class='mt-3'>{{ text }}</li>")
                 li_templates = []
 
                 _tmp_current_pos = current_pos
@@ -226,7 +232,7 @@ class MediumParser:
                 current_pos = _tmp_current_pos - 1
             elif paragraph["type"] == "OLI":
                 ol_template = jinja_env.from_string('<ol class="list-decimal pl-8 mt-2">{{ li }}</ol>')
-                li_template = jinja_env.from_string("<li>{{ text }}</li>")
+                li_template = jinja_env.from_string("<li class='mt-3'>{{ text }}</li>")
                 li_templates = []
 
                 _tmp_current_pos = current_pos
@@ -275,7 +281,8 @@ class MediumParser:
 </div>
 """)
                 embed_template_rendered = await embed_template.render_async(paragraph=paragraph, text=text_formater.get_text())
-                out_paragraphs.append(embed_template_rendered)
+                # out_paragraphs.append(embed_template_rendered)
+                logger.warning("Ignore MIXTAPE_EMBED paragraph type")
 
             else:
                 logger.error(f"Unknown {paragraph['type']}: {paragraph}")
@@ -288,7 +295,7 @@ class MediumParser:
         try:
             result = await self._render_as_html(minify, template_folder)
         except Exception as ex:
-            raise MediumParserException(ex)
+            raise MediumParserException(ex) from ex
         else:
             return result
 
