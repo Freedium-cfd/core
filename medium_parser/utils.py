@@ -13,7 +13,7 @@ from loguru import logger
 
 from . import TIMEOUT
 
-KNOWN_MEDIUM_NETLOC = ("javascript.plainenglish.io", "python.plainenglish.io")
+KNOWN_MEDIUM_NETLOC = ("javascript.plainenglish.io", "python.plainenglish.io", "levelup.gitconnected.com")
 KNOWN_MEDIUM_DOMAINS = ("medium.com", "towardsdatascience.com", "eand.co", "betterprogramming.pub", "curiouse.co")
 
 
