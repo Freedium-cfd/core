@@ -82,7 +82,7 @@ def is_valid_medium_post_id_hexadecimal(hex_string: str) -> bool:
         #     return False
 
         # Check if the length of the string is correct for a hexadecimal string (e.g., 10, 11 or 12 characters)
-        if len(hex_string) not in [10, 11, 12]:
+        if len(hex_string) not in range(8, 13):
             return False
 
         return True
