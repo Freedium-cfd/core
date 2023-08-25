@@ -170,6 +170,10 @@ async def is_valid_medium_url(url: str) -> bool:
         response = await request.text()
 
     soup = BeautifulSoup(response, "html.parser")
+
+    if not soup.head:
+        return False
+
     site_name_meta_tag = soup.head.find("meta", property="og:site_name")
 
     if not site_name_meta_tag or site_name_meta_tag.get("content") != "Medium":
