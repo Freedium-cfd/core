@@ -152,7 +152,7 @@ class MediumParser:
                         if highlight_paragraph["text"] != text_formater.get_text():
                             logger.warning("Highlighted text and paragraph text are not the same! Skip...")
                             break
-                        quote_markup_template = '<mark style="background-color: rgb(200 227 200);">{text}</mark>'
+                        quote_markup_template = '<mark style="background-color: rgb(200 227 200);">{{ text }}</mark>'
                         text_formater.set_template(
                             highlight["startOffset"],
                             highlight["endOffset"],
