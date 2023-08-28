@@ -260,7 +260,7 @@ class MediumParser:
                 else:
                     code_css_class.append('nohighlight')
                     css_class.append('p-4')
-                pre_template = jinja_env.from_string('<pre style="overflow-x: auto; display: flex; flex-direction: column; justify-content: center;" class="{{ css_class }}"><code class="{{ code_css_class }}">{{ text }}</code></pre>')
+                pre_template = jinja_env.from_string('<pre style="display: flex; flex-direction: column; justify-content: center;" class="{{ css_class }}"><code style="overflow-x: auto;" class="{{ code_css_class }}">{{ text }}</code></pre>')
                 pre_template_rendered = await pre_template.render_async(text=text_formater.get_text(), css_class=" ".join(css_class), code_css_class=" ".join(code_css_class))
                 out_paragraphs.append(pre_template_rendered)
             elif paragraph["type"] == "BQ":
