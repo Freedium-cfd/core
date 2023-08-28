@@ -16,6 +16,8 @@ from . import TIMEOUT
 KNOWN_MEDIUM_NETLOC = ("javascript.plainenglish.io", "python.plainenglish.io", "levelup.gitconnected.com")
 KNOWN_MEDIUM_DOMAINS = ("medium.com", "towardsdatascience.com", "eand.co", "betterprogramming.pub", "curiouse.co")
 
+NOT_MEDIUM_DOMAINS = ("github.com", "yandex.ru", "google.com", "yandex.kz")
+
 
 def is_valid_url(url):
     fld = get_fld(url)
@@ -159,6 +161,10 @@ async def is_valid_medium_url(url: str) -> bool:
     # First stage
     domain = get_fld(url)
     parsed_url = urlparse(url)
+
+    if domain in NOT_MEDIUM_DOMAINS:
+        return False
+
     if domain in KNOWN_MEDIUM_DOMAINS or parsed_url.netloc in KNOWN_MEDIUM_NETLOC:
         return True
     else:

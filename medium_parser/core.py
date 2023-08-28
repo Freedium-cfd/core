@@ -63,9 +63,9 @@ class MediumParser:
     def post_id(self):
         return self.__post_id
 
-    async def query(self, use_cache: bool = True):
+    async def query(self, use_cache: bool = True, timeout: int = 3):
         try:
-            post_data = await query_post_by_id(self.post_id, use_cache)
+            post_data = await query_post_by_id(self.post_id, use_cache, timeout)
         except Exception as ex:
             logger.exception(ex)
             post_data = None
