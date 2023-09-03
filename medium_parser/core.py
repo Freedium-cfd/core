@@ -120,14 +120,16 @@ class MediumParser:
                         current_pos += 1
                         continue
                 elif paragraph["type"] in ["H4", "P"] and subtitle:
-                    if len(paragraph["text"]) > 120:
-                        logger.warning("Subtitle is too long")
-                        subtitle = None
-                    elif subtitle.endswith("…"):
-                        logger.trace("Replace subtitle")
-                        subtitle = paragraph["text"]
-                        current_pos += 1
-                        continue
+                    is_paragraph_subtitle = getting_percontage_of_match(paragraph["text"], title) > 70
+                    if is_paragraph_subtitle:  #  and subtitle.endswith("…")
+                        if len(paragraph["text"]) > 100:
+                            logger.warning("Subtitle is too long")
+                            subtitle = None
+                        else:
+                            logger.trace("Replace subtitle")
+                            subtitle = paragraph["text"]
+                            current_pos += 1
+                            continue
                     elif getting_percontage_of_match(paragraph["text"], subtitle) > 75:
                         logger.trace("Subtitle was detected, ignore...")
                         subtitle = paragraph["text"]
@@ -140,7 +142,7 @@ class MediumParser:
                         continue
 
             if paragraph["type"] in ["IMG"]:
-                logger.warning(f"Ignore paragraph type: {paragraph['type']}")
+                logger.trace(f"Ignore paragraph type from parsing text_formater: {paragraph['type']}")
                 text_formater = None
             else:
                 text_formater = parse_paragraph_text(paragraph["text"], paragraph["markups"])
@@ -300,6 +302,26 @@ class MediumParser:
         else:
             return result
 
+    async def generate_metadata(self, as_dict: bool = False) -> tuple:
+        title = self.post_data["data"]["post"]["title"]
+        subtitle = self.post_data["data"]["post"]["previewContent"]["subtitle"]
+        description = textwrap.shorten(subtitle, width=100, placeholder="...")
+        preview_image_id = self.post_data["data"]["post"]["previewImage"]["id"]
+        creator = self.post_data["data"]["post"]["creator"]
+        collection = self.post_data["data"]["post"]["collection"]
+        url = self.post_data["data"]["post"]["mediumUrl"]
+
+        reading_time = math.ceil(self.post_data["data"]["post"]["readingTime"])
+        free_access = "No" if self.post_data["data"]["post"]["isLocked"] else "Yes"
+        updated_at = convert_datetime_to_human_readable(self.post_data["data"]["post"]["updatedAt"])
+        first_published_at = convert_datetime_to_human_readable(self.post_data["data"]["post"]["firstPublishedAt"])
+        tags = self.post_data["data"]["post"]["tags"]
+
+        if as_dict:
+            return {"post_id": self.post_id, "title": title, "subtitle": subtitle, "description": description, "url": url, "creator": creator, "collection": collection, "reading_time": reading_time, "free_access": free_access, "updated_at": updated_at, "first_published_at": first_published_at, "preview_image_id": preview_image_id, "tags": tags}
+
+        return title, subtitle, description, url, creator, collection, reading_time, free_access, updated_at, first_published_at, preview_image_id, tags
+
     async def _render_as_html(self, minify: bool = True, template_folder: str = './templates') -> 'HtmlResult':
         if not self.post_data:
             logger.warning(f'No post data found for post ID: {self.post_id}. Querying...')
@@ -308,13 +330,7 @@ class MediumParser:
         jinja_template = jinja2.Environment(loader=jinja2.FileSystemLoader(template_folder), enable_async=True)
         post_template = jinja_template.get_template('post.html')
 
-        title = self.post_data["data"]["post"]["title"]
-        subtitle = self.post_data["data"]["post"]["previewContent"]["subtitle"]
-        description = textwrap.shorten(subtitle, width=100, placeholder="...")
-        preview_image_id = self.post_data["data"]["post"]["previewImage"]["id"]
-        creator = self.post_data["data"]["post"]["creator"]
-        collection = self.post_data["data"]["post"]["collection"]
-        url = self.post_data["data"]["post"]["mediumUrl"]
+        title, subtitle, description, url, creator, collection, reading_time, free_access, updated_at, first_published_at, preview_image_id, tags = await self.generate_metadata()
 
         content, title, subtitle = await self._parse_and_render_content_html_post(
             self.post_data["data"]["post"]["content"],
@@ -336,13 +352,13 @@ class MediumParser:
             "url": url,
             "creator": creator,
             "collection": collection,
-            "readingTime": math.ceil(self.post_data["data"]["post"]["readingTime"]),
-            "freeAccess": "No" if self.post_data["data"]["post"]["isLocked"] else "Yes",
-            "updatedAt": convert_datetime_to_human_readable(self.post_data["data"]["post"]["updatedAt"]),
-            "firstPublishedAt": convert_datetime_to_human_readable(self.post_data["data"]["post"]["firstPublishedAt"]),
+            "readingTime": reading_time,
+            "freeAccess": free_access,
+            "updatedAt": updated_at,
+            "firstPublishedAt": first_published_at,
             "previewImageId": preview_image_id,
             "content": content,
-            "tags": self.post_data["data"]["post"]["tags"],
+            "tags": tags,
         }
         post_template_rendered = await post_template.render_async(post_context)
 
