@@ -1,5 +1,6 @@
 import hashlib
 import secrets
+import difflib
 import urllib.parse
 from datetime import datetime
 from functools import lru_cache
@@ -29,11 +30,7 @@ def is_valid_url(url):
 
 
 def getting_percontage_of_match(string: str, matched_string: str) -> int:
-    if matched_string in string:
-        return (len(matched_string) / len(string)) * 100
-    else:
-        return 0
-
+    return difflib.SequenceMatcher(None, string, matched_string).ratio() * 100
 
 def generate_random_sha256_hash():
     # Encode the input string to bytes before hashing

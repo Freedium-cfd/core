@@ -109,13 +109,15 @@ class MediumParser:
             #     continue
 
             if current_pos in range(4):
-                if paragraph["type"] == "H3":
+                if paragraph["type"] in ["H3", "H4"]:
+                    """
                     if title.endswith("…"):
                         logger.trace("Replace title")
                         title = paragraph["text"]
                         current_pos += 1
                         continue
-                    elif getting_percontage_of_match(paragraph["text"], title) > 80:
+                    """
+                    if getting_percontage_of_match(paragraph["text"], title) > 80:
                         logger.trace("Title was detected, ignore...")
                         current_pos += 1
                         continue
