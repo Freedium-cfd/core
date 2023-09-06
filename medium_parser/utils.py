@@ -7,12 +7,15 @@ from functools import lru_cache
 from urllib.parse import urlparse
 
 import aiohttp
+import string
 import minify_html as mh
 import tld
 from bs4 import BeautifulSoup
 from loguru import logger
 
 from . import TIMEOUT
+
+VALID_ID_CHARS = set(string.ascii_letters + string.digits)
 
 KNOWN_MEDIUM_NETLOC = ("javascript.plainenglish.io", "python.plainenglish.io", "levelup.gitconnected.com")
 KNOWN_MEDIUM_DOMAINS = ("medium.com", "towardsdatascience.com", "eand.co", "betterprogramming.pub", "curiouse.co", "betterhumans.pub")
@@ -55,7 +58,8 @@ def get_unix_ms() -> int:
 
 
 def sanitize_url(url):
-  """Sanitizes a URL by removing all query parameters.
+  """
+  Sanitizes a URL by removing all query parameters.
 
   Args:
     url: The URL to sanitize.
@@ -73,8 +77,10 @@ def sanitize_url(url):
 
 def is_valid_medium_post_id_hexadecimal(hex_string: str) -> bool:
         # Check if the string is a valid hexadecimal string
-        # if not hex_string.isalnum():
-        #     return False
+        # isalnum()
+        for char in hex_string:
+            if char not in VALID_ID_CHARS:
+                return False
 
         # Check if the string contains only lowercase hexadecimal characters
         # if not hex_string.islower():
