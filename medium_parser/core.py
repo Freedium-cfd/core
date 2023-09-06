@@ -288,6 +288,10 @@ class MediumParser:
                 embed_template_rendered = await embed_template.render_async(paragraph=paragraph, text=text_formater.get_text())
                 # out_paragraphs.append(embed_template_rendered)
                 logger.warning("Ignore MIXTAPE_EMBED paragraph type")
+            elif paragraph["type"] == "IFRAME":
+                iframe_template = jinja_env.from_string('<div><iframe src="http://localhost:7080/render_iframe/{{ frame_id }}" allowfullscreen="" frameborder="0" scrolling="no"></iframe></div>')
+                iframe_template_rendered = await iframe_template.render_async(frame_id=paragraph["iframe"]["mediaResource"]["id"])
+                out_paragraphs.append(iframe_template_rendered)
 
             else:
                 logger.error(f"Unknown {paragraph['type']}: {paragraph}")
