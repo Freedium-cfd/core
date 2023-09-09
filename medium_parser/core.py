@@ -291,7 +291,7 @@ class MediumParser:
             elif paragraph["type"] == "IFRAME":
                 iframe_template = jinja_env.from_string('<div><iframe src="http://localhost:7080/render_iframe/{{ frame_id }}" allowfullscreen="" frameborder="0" scrolling="no"></iframe></div>')
                 iframe_template_rendered = await iframe_template.render_async(frame_id=paragraph["iframe"]["mediaResource"]["id"])
-                out_paragraphs.append(iframe_template_rendered)
+                # out_paragraphs.append(iframe_template_rendered)
 
             else:
                 logger.error(f"Unknown {paragraph['type']}: {paragraph}")

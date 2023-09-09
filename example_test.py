@@ -15,7 +15,8 @@ async def main():
     logger.remove()
     logger.add(sys.stderr, level="TRACE")
 
-    dl = await MediumParser.from_url("https://medium.com/@cameronjosephjones/building-a-kpi-dashboard-in-streamlit-using-python-53273c3ee9c6")
+    # dl = await MediumParser.from_url()
+    dl = MediumParser("b79099b959a5")
     query_result = await dl.query()
 
     with open("query_result.json", "w") as f:

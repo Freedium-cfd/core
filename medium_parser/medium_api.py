@@ -13,15 +13,16 @@ async def query_post_by_id(post_id: str, from_cache: bool = True, timeout: int =
     headers = {
         "X-APOLLO-OPERATION-ID": generate_random_sha256_hash(),
         "X-APOLLO-OPERATION-NAME": "FullPostQuery",
-        "Accept": "multipart/mixed; deferSpec=20230727, application/json, application/json",  # <----- See deferSpec !!!
+        "Accept": "multipart/mixed; deferSpec=20220824, application/json, application/json",  # <----- See deferSpec !!!
         "Accept-Language": "en-US",
         "X-Obvious-CID": "android",
         "X-Xsrf-Token": "1",
         "X-Client-Date": str(get_unix_ms()),
-        "User-Agent": "donkey/4.5.1151200",  # <---- There is Medium version
+        "User-Agent": "donkey/4.5.1187420",  # <---- There is Medium version
         "Cache-Control": "public, max-age=-1",
         "Content-Type": "application/json",
         "Connection": "Keep-Alive",
+        "Cookie": "uid=b8d77b350800; sid=1:rgqF9g6pYuv8PJjvjRu5uBPGIYNUoElQ62HFOqewqvLL4sLoq3c+DQgBLPEocqbe",
     }
 
     json_data = {

@@ -2,16 +2,16 @@
   "data": {
     "post": {
       "__typename": "Post",
-      "id": "53273c3ee9c6",
-      "readingTime": 2.142452830188679,
+      "id": "b79099b959a5",
+      "readingTime": 7.931132075471698,
       "creator": {
         "__typename": "User",
-        "id": "f2b0fed45495",
-        "imageId": "1*BFaDco4GsUJGOBOXfrdNTw@2x.jpeg",
-        "username": "valeman",
-        "name": "Valeriy Manokhin, PhD, MBA, CQF",
-        "bio": "Principal Data Scientist, PhD in Machine Learning, creator of Awesome Conformal Prediction \ud83d\udc4dTip: hold down the Clap icon for up x50",
-        "tippingLink": "https://ko-fi.com/valeman",
+        "id": "e60a556ba1d4",
+        "imageId": "1*zQTC-GB1jFGDy3FdvERmNw.jpeg",
+        "username": "conradthegray",
+        "name": "Conrad Gray",
+        "bio": "I write about biotech, learning, computing and futurism | http://conradthegray.com",
+        "tippingLink": null,
         "viewerEdge": {
           "isUser": false,
           "isFollowing": false,
@@ -19,64 +19,198 @@
           "isMuting": false
         },
         "socialStats": {
-          "followingCount": 280,
-          "followerCount": 1255
+          "followingCount": 98,
+          "followerCount": 742
         },
         "newsletterV3": {
           "__typename": "NewsletterV3",
-          "id": "5ee7f3220297",
+          "id": "4481a7d94258",
           "viewerEdge": {
-            "id": "newsletterId:5ee7f3220297-viewerId:lo_6afc86561ea9",
+            "id": "newsletterId:4481a7d94258-viewerId:b8d77b350800",
             "isSubscribed": false
           }
         },
-        "isFollowing": null,
-        "mediumMemberAt": 1689840776000,
-        "twitterScreenName": "predict_addict"
+        "isFollowing": false,
+        "mediumMemberAt": 1590217063000,
+        "twitterScreenName": "conradthegray"
       },
-      "collection": null,
+      "collection": {
+        "__typename": "Collection",
+        "id": "661161fab0d0",
+        "name": "Predict",
+        "avatar": {
+          "__typename": "ImageMetadata",
+          "id": "1*EetZyjDw-19wRRBzc6fSMA.png",
+          "originalWidth": 120,
+          "originalHeight": 120,
+          "focusPercentX": null,
+          "focusPercentY": null,
+          "alt": null
+        },
+        "subscriberCount": 27377,
+        "viewerEdge": {
+          "isFollowing": false,
+          "isEditor": false,
+          "canEditPosts": false,
+          "canEditOwnPosts": false,
+          "isMuting": false
+        },
+        "newsletterV3": {
+          "__typename": "NewsletterV3",
+          "id": "73b3205d872a",
+          "viewerEdge": {
+            "id": "newsletterId:73b3205d872a-viewerId:b8d77b350800",
+            "isSubscribed": false
+          }
+        },
+        "slug": "predict",
+        "shortDescription": "where the future is written"
+      },
       "isLocked": true,
-      "firstPublishedAt": 1638118451739,
-      "latestPublishedVersion": "f21d720da55e",
-      "title": "Benchmarking Facebook Prophet",
+      "firstPublishedAt": 1694208784688,
+      "latestPublishedVersion": "2616aed23be6",
+      "title": "This is your captain, AI, speaking\u200a\u2014\u200aHow Automation Is Reshaping Aviation",
       "visibility": "LOCKED",
       "postResponses": {
-        "count": 1
+        "count": 0
       },
-      "clapCount": 100,
+      "clapCount": 0,
       "viewerEdge": {
         "clapCount": 0
       },
       "detectedLanguage": "en",
-      "mediumUrl": "https://valeman.medium.com/benchmarking-facebook-prophet-53273c3ee9c6",
-      "updatedAt": 1691768509630,
+      "mediumUrl": "https://medium.com/predict/this-is-your-captain-ai-speaking-how-automation-is-reshaping-aviation-b79099b959a5",
+      "updatedAt": 1694236685802,
       "allowResponses": true,
       "isProxyPost": false,
       "isSeries": false,
       "previewImage": {
-        "id": "1*elXZ_yBhCveV25sr_lEdJw.png"
+        "id": "0*JXr-pDOTNk_kToQz.jpeg"
       },
       "inResponseToPostResult": null,
       "inResponseToMediaResource": null,
       "inResponseToEntityType": null,
-      "canonicalUrl": "",
+      "canonicalUrl": "https://www.hplusweekly.com/p/the-future-of-flying",
       "previewContent": {
-        "subtitle": "Over the last year, I have written many posts explaining \ud835\ude01\ud835\uddf5\ud835\uddee\ud835\ude01 \ud835\uddf3\ud835\uddee\ud835\uddf0\ud835\uddf2\ud835\uddef\ud835\uddfc\ud835\uddfc\ud835\uddf8 #\ud835\uddfd\ud835\uddff\ud835\uddfc\ud835\uddfd\ud835\uddf5\ud835\uddf2\ud835\ude01 \ud835\uddf6\ud835\ude00 \ud835\uddee \ud835\uddfb\ud835\uddfc\ud835\uddfb-\ud835\uddfd\ud835\uddf2\ud835\uddff\ud835\uddf3\ud835\uddfc\ud835\uddff\ud835\uddfa\ud835\uddf6\ud835\uddfb\ud835\uddf4\u2026"
+        "subtitle": "Boeing sees the future in autonomous flight and Airbus is working on bringing it to commercial aircraft. But will the AI replace the\u2026"
       },
       "pinnedByCreatorAt": 0,
       "linkMetadataList": [
         {
-          "url": "https://towardsdatascience.com/predicting-the-future-with-facebook-s-prophet-bdfe11af10ff",
+          "url": "https://ko-fi.com/conradthegray",
+          "alts": []
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Maneuvering_Characteristics_Augmentation_System",
+          "alts": []
+        },
+        {
+          "url": "https://www.bloomberg.com/news/articles/2023-01-31/boeing-ceo-sees-self-flying-tech-coming-to-commercial-aircraft?leadSource=uverify%20wall",
+          "alts": []
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Instrument_landing_system",
+          "alts": []
+        },
+        {
+          "url": "https://www.airbus.com/en/newsroom/press-releases/2020-06-airbus-concludes-attol-with-fully-autonomous-flight-tests",
+          "alts": []
+        },
+        {
+          "url": "https://www.airbus.com/en/innovation/autonomous-connected/autonomous-flight",
+          "alts": []
+        },
+        {
+          "url": "https://www.airbus.com/en/newsroom/stories/2023-01-could-the-humble-dragonfly-help-pilots-during-flight",
+          "alts": []
+        },
+        {
+          "url": "https://www.airbus.com/en/newsroom/press-releases/2023-03-airbus-achieves-in-flight-autonomous-guidance-and-control-of-a",
+          "alts": []
+        },
+        {
+          "url": "https://www.npr.org/2022/03/01/1083664582/united-airlines-opens-its-own-flight-school-to-help-attract-pilots",
+          "alts": []
+        },
+        {
+          "url": "https://www.freethink.com/robots-ai/humanoid-robot-pilot",
           "alts": [
             {
-              "type": "ANDROID_APPLINK",
-              "url": "medium://p/bdfe11af10ff"
+              "type": "AMP",
+              "url": "https://www.freethink.com/robots-ai/humanoid-robot-pilot?amp=1"
+            }
+          ]
+        },
+        {
+          "url": "https://interestingengineering.com/innovation/ai-powered-f-16-jets",
+          "alts": []
+        },
+        {
+          "url": "https://www.hplusweekly.com/p/the-future-of-flying",
+          "alts": []
+        },
+        {
+          "url": "https://www.hplusweekly.com/",
+          "alts": []
+        },
+        {
+          "url": "https://www.theguardian.com/business/2022/jun/22/pilot-shortages-us-travel-chaos-airlines",
+          "alts": [
+            {
+              "type": "AMP",
+              "url": "https://amp.theguardian.com/business/2022/jun/22/pilot-shortages-us-travel-chaos-airlines"
             },
             {
               "type": "IOS_APPLINK",
-              "url": "medium://p/bdfe11af10ff"
+              "url": "gnmguardian://business/2022/jun/22/pilot-shortages-us-travel-chaos-airlines?contenttype=Article&source=applinks"
             }
           ]
+        },
+        {
+          "url": "https://www.ipsos.com/en-us/news-polls/Few-Would-be-Comfortable-with-Flying-on-Pilotless-Airliners",
+          "alts": []
+        },
+        {
+          "url": "https://medium.com/@conradthegray/membership",
+          "alts": []
+        },
+        {
+          "url": "https://edition.cnn.com/2023/04/19/business/pilot-shortage-retirement-tsunami/index.html",
+          "alts": [
+            {
+              "type": "AMP",
+              "url": "https://amp.cnn.com/cnn/2023/04/19/business/pilot-shortage-retirement-tsunami/index.html"
+            }
+          ]
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=dunXAGSOQwQ",
+          "alts": [
+            {
+              "type": "IOS_APPLINK",
+              "url": "vnd.youtube://www.youtube.com/watch?v=dunXAGSOQwQ&feature=applinks"
+            },
+            {
+              "type": "ANDROID_APPLINK",
+              "url": "vnd.youtube://www.youtube.com/watch?v=dunXAGSOQwQ&feature=applinks"
+            }
+          ]
+        },
+        {
+          "url": "https://www.lufthansa-aviation-training.com/-/european-flight-academy-launches-training-of-pilots",
+          "alts": []
+        },
+        {
+          "url": "https://xwing.com/",
+          "alts": []
+        },
+        {
+          "url": "https://corporate.ryanair.com/news/ryanair-launches-new-pilot-training-programme-with-aviomar-flight-academy/",
+          "alts": []
+        },
+        {
+          "url": "https://aerospace.honeywell.com/us/en/about-us/blogs/aviations-future-is-safer-more-efficient-and-more-autonomous",
+          "alts": []
         }
       ],
       "highlights": [],
@@ -84,35 +218,43 @@
       "tags": [
         {
           "__typename": "Tag",
-          "id": "time-series-forecasting",
-          "normalizedTagSlug": "time-series-forecasting",
-          "displayTitle": "Time Series Forecasting",
-          "followerCount": 1177,
-          "postCount": 1782
+          "id": "automation",
+          "normalizedTagSlug": "automation",
+          "displayTitle": "Automation",
+          "followerCount": 2271,
+          "postCount": 43749
         },
         {
           "__typename": "Tag",
-          "id": "facebook-prophet",
-          "normalizedTagSlug": "facebook-prophet",
-          "displayTitle": "Facebook Prophet",
-          "followerCount": 7,
-          "postCount": 109
+          "id": "artificial-intelligence",
+          "normalizedTagSlug": "artificial-intelligence",
+          "displayTitle": "Artificial Intelligence",
+          "followerCount": 2428942,
+          "postCount": 303765
         },
         {
           "__typename": "Tag",
-          "id": "time-series-analysis",
-          "normalizedTagSlug": "time-series-analysis",
-          "displayTitle": "Time Series Analysis",
-          "followerCount": 1160,
-          "postCount": 2881
+          "id": "aviation",
+          "normalizedTagSlug": "aviation",
+          "displayTitle": "Aviation",
+          "followerCount": 790,
+          "postCount": 12093
         },
         {
           "__typename": "Tag",
-          "id": "time-series-model",
-          "normalizedTagSlug": "time-series-model",
-          "displayTitle": "Time Series Model",
-          "followerCount": 51,
-          "postCount": 92
+          "id": "aviation-industry",
+          "normalizedTagSlug": "aviation-industry",
+          "displayTitle": "Aviation Industry",
+          "followerCount": 100,
+          "postCount": 959
+        },
+        {
+          "__typename": "Tag",
+          "id": "autonomous-flight",
+          "normalizedTagSlug": "autonomous-flight",
+          "displayTitle": "Autonomous Flight",
+          "followerCount": 1,
+          "postCount": 8
         }
       ],
       "content": {
@@ -121,8 +263,28 @@
           "sections": [
             {
               "__typename": "Section",
-              "name": "26e0",
+              "name": "edd4",
               "startIndex": 0,
+              "textLayout": null,
+              "imageLayout": null,
+              "videoLayout": null,
+              "backgroundImage": null,
+              "backgroundVideo": null
+            },
+            {
+              "__typename": "Section",
+              "name": "0fb5",
+              "startIndex": 47,
+              "textLayout": null,
+              "imageLayout": null,
+              "videoLayout": null,
+              "backgroundImage": null,
+              "backgroundVideo": null
+            },
+            {
+              "__typename": "Section",
+              "name": "6fec",
+              "startIndex": 49,
               "textLayout": null,
               "imageLayout": null,
               "videoLayout": null,
@@ -133,10 +295,10 @@
           "paragraphs": [
             {
               "__typename": "Paragraph",
-              "id": "f21d720da55e_0",
-              "name": "3470",
+              "id": "2616aed23be6_0",
+              "name": "f486",
               "href": null,
-              "text": "Benchmarking Facebook Prophet",
+              "text": "This is your captain, AI, speaking \u2014 How Automation Is Reshaping Aviation",
               "iframe": null,
               "layout": null,
               "markups": [],
@@ -149,10 +311,26 @@
             },
             {
               "__typename": "Paragraph",
-              "id": "f21d720da55e_1",
-              "name": "f663",
+              "id": "2616aed23be6_1",
+              "name": "331e",
               "href": null,
-              "text": "Over the last year, I have written many posts explaining \ud835\ude01\ud835\uddf5\ud835\uddee\ud835\ude01 \ud835\uddf3\ud835\uddee\ud835\uddf0\ud835\uddf2\ud835\uddef\ud835\uddfc\ud835\uddfc\ud835\uddf8 #\ud835\uddfd\ud835\uddff\ud835\uddfc\ud835\uddfd\ud835\uddf5\ud835\uddf2\ud835\ude01 \ud835\uddf6\ud835\ude00 \ud835\uddee \ud835\uddfb\ud835\uddfc\ud835\uddfb-\ud835\uddfd\ud835\uddf2\ud835\uddff\ud835\uddf3\ud835\uddfc\ud835\uddff\ud835\uddfa\ud835\uddf6\ud835\uddfb\ud835\uddf4 \ud835\uddf3\ud835\uddfc\ud835\uddff\ud835\uddf2\ud835\uddf0\ud835\uddee\ud835\ude00\ud835\ude01\ud835\uddf6\ud835\uddfb\ud835\uddf4 \ud835\uddee\ud835\uddf9\ud835\uddf4\ud835\uddfc\ud835\uddff\ud835\uddf6\ud835\ude01\ud835\uddf5\ud835\uddfa \ud835\ude01\ud835\uddf5\ud835\uddee\ud835\ude01 \ud835\uddfb\ud835\uddfc\ud835\ude01 \ud835\uddfc\ud835\uddfb\ud835\uddf9\ud835\ude06 \ud835\uddf1\ud835\uddfc\ud835\uddf2\ud835\ude00 \ud835\uddfb\ud835\uddfc\ud835\ude01 \ud835\ude04\ud835\uddfc\ud835\uddff\ud835\uddf8 \ud835\uddee\ud835\uddf0\ud835\uddff\ud835\uddfc\ud835\ude00\ud835\ude00 \ud835\uddee\ud835\uddfb\ud835\ude06 \ud835\uddff\ud835\uddf2\ud835\uddee\ud835\ude00\ud835\uddfc\ud835\uddfb\ud835\uddee\ud835\uddef\ud835\uddf9\ud835\uddf2 \ud835\ude00\ud835\uddf2\ud835\ude01 \ud835\uddfc\ud835\uddf3 #\ud835\ude01\ud835\uddf6\ud835\uddfa\ud835\uddf2\ud835\ude00\ud835\uddf2\ud835\uddff\ud835\uddf6\ud835\uddf2\ud835\ude00 \ud835\uddf1\ud835\uddee\ud835\ude01\ud835\uddee\ud835\ude00\ud835\uddf2\ud835\ude01\ud835\ude00, but also \ud83c\udd84\ud83c\udd7d\ud83c\udd73\ud83c\udd74\ud83c\udd81\ud83c\udd7f\ud83c\udd74\ud83c\udd81\ud83c\udd75\ud83c\udd7e\ud83c\udd81\ud83c\udd7c\ud83c\udd82 \ud83c\udd7c\ud83c\udd7e\ud83c\udd82\ud83c\udd83 \ud83c\udd7e\ud83c\udd75 \ud83c\udd7e\ud83c\udd83\ud83c\udd77\ud83c\udd74\ud83c\udd81 \ud83c\udd75\ud83c\udd7e\ud83c\udd81\ud83c\udd74\ud83c\udd72\ud83c\udd70\ud83c\udd82\ud83c\udd83\ud83c\udd78\ud83c\udd7d\ud83c\udd76 \ud83c\udd70\ud83c\udd7b\ud83c\udd76\ud83c\udd7e\ud83c\udd81\ud83c\udd78\ud83c\udd83\ud83c\udd77\ud83c\udd7c\ud83c\udd82. More importantly, as explained in several posts, developers can not rectify such issues as Facebook prophet contains pathological flaws inherent in the prophet\u2019s design itself.",
+              "text": "Boeing CEO sees the future in autonomous flight and Airbus is working on bringing it to commercial aircraft. But will the AI replace the pilots?",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "PQ",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_2",
+              "name": "fecb",
+              "href": null,
+              "text": "Modern passenger aircraft are highly automated machines. Apart from taxiing, take-off, and landing, the aircraft flies itself on autopilot. Aircraft manufacturers, however, plan to take the current automation to the next level with autonomous flight.",
               "iframe": null,
               "layout": null,
               "markups": [],
@@ -165,10 +343,10 @@
             },
             {
               "__typename": "Paragraph",
-              "id": "f21d720da55e_2",
-              "name": "b698",
+              "id": "2616aed23be6_3",
+              "name": "3080",
               "href": null,
-              "text": "Whilst academic research papers have highlighted performance issues with the prophet since 2017, the propagation of package popularity through the data science community has been fueled by \ud835\ude57\ud835\ude64\ud835\ude69\ud835\ude5d \ud835\ude5a\ud835\ude6d\ud835\ude58\ud835\ude5a\ud835\ude68\ud835\ude68\ud835\ude5e\ud835\ude6b\ud835\ude5a \ud835\ude58\ud835\ude61\ud835\ude56\ud835\ude5e\ud835\ude62\ud835\ude68 \ud835\ude5b\ud835\ude67\ud835\ude64\ud835\ude62 \ud835\ude69\ud835\ude5d\ud835\ude5a \ud835\ude64\ud835\ude67\ud835\ude5e\ud835\ude5c\ud835\ude5e\ud835\ude63\ud835\ude56\ud835\ude61 \ud835\ude59\ud835\ude5a\ud835\ude6b\ud835\ude5a\ud835\ude61\ud835\ude64\ud835\ude65\ud835\ude62\ud835\ude5a\ud835\ude63\ud835\ude69 \ud835\ude69\ud835\ude5a\ud835\ude56\ud835\ude62 \ud835\ude57\ud835\ude6a\ud835\ude69 \ud835\ude62\ud835\ude64\ud835\ude67\ud835\ude5a \ud835\ude5e\ud835\ude62\ud835\ude65\ud835\ude64\ud835\ude67\ud835\ude69\ud835\ude56\ud835\ude63\ud835\ude69\ud835\ude61\ud835\ude6e \ud835\ude57\ud835\ude6e \ud835\ude62\ud835\ude56\ud835\ude67\ud835\ude60\ud835\ude5a\ud835\ude69\ud835\ude5e\ud835\ude63\ud835\ude5c \ud835\ude64\ud835\ude5b \ud835\ude69\ud835\ude5d\ud835\ude5a \ud835\ude63\ud835\ude64\ud835\ude63-\ud835\ude65\ud835\ude5a\ud835\ude67\ud835\ude5b\ud835\ude64\ud835\ude67\ud835\ude62\ud835\ude5e\ud835\ude63\ud835\ude5c \ud835\ude65\ud835\ude56\ud835\ude58\ud835\ude60\ud835\ude56\ud835\ude5c\ud835\ude5a \ud835\ude6b\ud835\ude5e\ud835\ude56 \ud835\ude56\ud835\ude67\ud835\ude69\ud835\ude5e\ud835\ude58\ud835\ude61\ud835\ude5a\ud835\ude68 \ud835\ude64\ud835\ude63 \ud835\ude48\ud835\ude5a\ud835\ude59\ud835\ude5e\ud835\ude6a\ud835\ude62 \ud835\ude56\ud835\ude63\ud835\ude59 \ud835\ude68\ud835\ude64\ud835\ude58\ud835\ude5e\ud835\ude56\ud835\ude61 \ud835\ude62\ud835\ude5a\ud835\ude59\ud835\ude5e\ud835\ude56.",
+              "text": "In this article, we delve into the latest advancements in autonomous flight technology and explore how it may impact the aviation industry.",
               "iframe": null,
               "layout": null,
               "markups": [],
@@ -181,18 +359,18 @@
             },
             {
               "__typename": "Paragraph",
-              "id": "f21d720da55e_3",
-              "name": "7be8",
+              "id": "2616aed23be6_4",
+              "name": "765d",
               "href": null,
-              "text": "Pip install prophet \u2014 the solution to any forecasting accuracy issue",
+              "text": "",
               "iframe": null,
-              "layout": "INSET_CENTER",
+              "layout": "OUTSET_CENTER",
               "markups": [],
               "metadata": {
                 "__typename": "ImageMetadata",
-                "id": "1*jxk0QhfTSMN2xk0U7G_kbw.jpeg",
-                "originalWidth": 577,
-                "originalHeight": 433,
+                "id": "0*JXr-pDOTNk_kToQz.jpeg",
+                "originalWidth": 1200,
+                "originalHeight": 600,
                 "focusPercentX": null,
                 "focusPercentY": null,
                 "alt": null
@@ -205,10 +383,10 @@
             },
             {
               "__typename": "Paragraph",
-              "id": "f21d720da55e_4",
-              "name": "31d9",
+              "id": "2616aed23be6_5",
+              "name": "f23e",
               "href": null,
-              "text": "Therefore, it was interesting to test the inflated claims made by some of such articles. In the Medium article https://towardsdatascience.com/predicting-the-future-with-facebook-s-prophet-bdfe11af10ff, the author went so far as to claim that #facebookprophet can \u2018predict the future and used the package to predict Medium stats.",
+              "text": "The concept of autonomous flight is not new. Computers can already take off, fly, and safely land on their own. For example, AI has already successfully piloted an F-16 jet fighter. Researchers from the Korea Advanced Institute of Science and Technology (KAIST) have made a humanoid robot named PIBOT that successfully piloted a small airplane in a simulator. Now, Korean researchers are planning to give PIBOT control over a real plane.",
               "iframe": null,
               "layout": null,
               "markups": [
@@ -216,11 +394,24 @@
                   "__typename": "Markup",
                   "name": null,
                   "type": "A",
-                  "start": 111,
-                  "end": 200,
-                  "href": "https://towardsdatascience.com/predicting-the-future-with-facebook-s-prophet-bdfe11af10ff",
+                  "start": 125,
+                  "end": 180,
+                  "href": "https://interestingengineering.com/innovation/ai-powered-f-16-jets",
                   "title": "",
-                  "rel": "noopener",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                },
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 182,
+                  "end": 358,
+                  "href": "https://www.freethink.com/robots-ai/humanoid-robot-pilot",
+                  "title": "",
+                  "rel": "",
                   "anchorType": "LINK",
                   "userId": null,
                   "creatorIds": null
@@ -235,10 +426,254 @@
             },
             {
               "__typename": "Paragraph",
-              "id": "f21d720da55e_5",
-              "name": "2154",
+              "id": "2616aed23be6_6",
+              "name": "330d",
               "href": null,
-              "text": "With several quality #forecasting packages released over the past year, it is relatively easy for anyone to test such claims by running simple algorithms in #PyCaret\u2019s time series over the same simple dataset of the Medium writer\u2019s stats.",
+              "text": "Established aviation companies and startups are working on bringing autonomous flight to commercial passenger aircraft. One such startup is Xwing, which is offering an autonomous flight system named Superpilot where a computer flies the airplane with remote human operators on the ground as a backup. The company focuses right now on cargo flights. The passenger operations are next on the roadmap, once the cargo flights are proven to be safe. Avionics provider Honeywell has in its offer avionics and sensors ready for autonomous flight for military and cargo operations.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 140,
+                  "end": 145,
+                  "href": "https://xwing.com/",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                },
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 445,
+                  "end": 572,
+                  "href": "https://aerospace.honeywell.com/us/en/about-us/blogs/aviations-future-is-safer-more-efficient-and-more-autonomous",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_7",
+              "name": "176f",
+              "href": null,
+              "text": "The two big aircraft manufacturers \u2014 Boeing and Airbus \u2014 also see the future in autonomous flight. Boeing CEO admitted that in an interview in January 2023. But it is Airbus that leads the way in autonomous flight for commercial airliners.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 99,
+                  "end": 155,
+                  "href": "https://www.bloomberg.com/news/articles/2023-01-31/boeing-ceo-sees-self-flying-tech-coming-to-commercial-aircraft?leadSource=uverify%20wall",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_8",
+              "name": "a138",
+              "href": null,
+              "text": "Airbus\u2019 quest towards autonomous flight",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "H3",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_9",
+              "name": "fafe",
+              "href": null,
+              "text": "Airbus has a number of projects exploring different aspects of autonomous flight. Some of them focus on military applications, such as autonomous air-to-air refuelling. However many of them focus solely on commercial aviation.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 0,
+                  "end": 80,
+                  "href": "https://www.airbus.com/en/innovation/autonomous-connected/autonomous-flight",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                },
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 135,
+                  "end": 167,
+                  "href": "https://www.airbus.com/en/newsroom/press-releases/2023-03-airbus-achieves-in-flight-autonomous-guidance-and-control-of-a",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_10",
+              "name": "b322",
+              "href": null,
+              "text": "One of those civilian projects was the Autonomous Taxi, Take-Off and Landing (ATTOL) project. In 2020, the project achieved the world\u2019s first autonomous taxiing, take-off, and landing of a commercial aircraft. This was done by attaching cameras to an airplane and using the recorded footage from about 450 flights to train a machine-learning algorithm to autonomously navigate around the airport, take off, and land.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 39,
+                  "end": 84,
+                  "href": "https://www.airbus.com/en/newsroom/press-releases/2020-06-airbus-concludes-attol-with-fully-autonomous-flight-tests",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_11",
+              "name": "c809",
+              "href": null,
+              "text": "",
+              "iframe": {
+                "__typename": "Iframe",
+                "iframeHeight": 480,
+                "iframeWidth": 854,
+                "mediaResource": {
+                  "__typename": "MediaResource",
+                  "id": "941fd22cdbefe7ababb1645cdec66e9b",
+                  "iframeSrc": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2F9TIBeso4abU%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D9TIBeso4abU&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2F9TIBeso4abU%2Fhqdefault.jpg&key=a19fcc184b9711e1b4764040d3dc5c07&type=text%2Fhtml&schema=youtube",
+                  "thumbnailUrl": "https://i.embed.ly/1/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2F9TIBeso4abU%2Fhqdefault.jpg&key=a19fcc184b9711e1b4764040d3dc5c07"
+                }
+              },
+              "layout": "OUTSET_CENTER",
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "IFRAME",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_12",
+              "name": "8061",
+              "href": null,
+              "text": "Another Airbus project exploring autonomous flight for civilian airplanes is Dragonfly. Dragonfly aims to make the aircraft itself smarter and more aware of its surroundings to assist pilots during the most demanding phases of the flight \u2014 taxiing, take-off, and landing. Inspired by dragonflies and their 360\u00b0 vision, Airbus plans to add a suite of new sensors and cameras feeding the onboard AI systems with more data to provide pilots with more information and to take some tasks from them.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 88,
+                  "end": 97,
+                  "href": "https://www.airbus.com/en/newsroom/stories/2023-01-could-the-humble-dragonfly-help-pilots-during-flight",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_13",
+              "name": "b9f3",
+              "href": null,
+              "text": "",
+              "iframe": {
+                "__typename": "Iframe",
+                "iframeHeight": 480,
+                "iframeWidth": 854,
+                "mediaResource": {
+                  "__typename": "MediaResource",
+                  "id": "32c1248a0df73175338bb73d678aa680",
+                  "iframeSrc": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FnubL1I7sxEE%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DnubL1I7sxEE&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FnubL1I7sxEE%2Fhqdefault.jpg&key=a19fcc184b9711e1b4764040d3dc5c07&type=text%2Fhtml&schema=youtube",
+                  "thumbnailUrl": "https://i.embed.ly/1/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FnubL1I7sxEE%2Fhqdefault.jpg&key=a19fcc184b9711e1b4764040d3dc5c07"
+                }
+              },
+              "layout": "OUTSET_CENTER",
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "IFRAME",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_14",
+              "name": "6277",
+              "href": null,
+              "text": "Let\u2019s see how Project Dragonfly can help pilots, from taxiing to takeoff and landing.",
               "iframe": null,
               "layout": null,
               "markups": [],
@@ -251,18 +686,50 @@
             },
             {
               "__typename": "Paragraph",
-              "id": "f21d720da55e_6",
-              "name": "5dfc",
+              "id": "2616aed23be6_15",
+              "name": "206a",
               "href": null,
-              "text": "",
+              "text": "Navigating the airport can be a challenging task, especially in busy airports. The pilots need to listen to the ground control to tell them which runway they will take off from and which path to take to get to the runway, all while preparing the airplane for takeoff and flight. Dragonfly is going to help here by listening to the messages from ground control, transcribing them, displaying them on a screen, and also showing them on a map, illustrating how to navigate to the correct runway. This could be useful information for pilots unfamiliar with the airport.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_16",
+              "name": "28e0",
+              "href": null,
+              "text": "Airbus is also experimenting with object detection on the ground. I can imagine this system being able to read the markings on the airport and ensure that the pilots are following the correct path around the airport. The aircraft can also detect any obstacles on the ground and inform pilots about them. This system can provide valuable information in low visibility conditions.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_17",
+              "name": "74fa",
+              "href": null,
+              "text": "Airbus A350\u20131000 with new sensors for Project Dragonfly",
               "iframe": null,
               "layout": "INSET_CENTER",
               "markups": [],
               "metadata": {
                 "__typename": "ImageMetadata",
-                "id": "1*elXZ_yBhCveV25sr_lEdJw.png",
-                "originalWidth": 3256,
-                "originalHeight": 972,
+                "id": "0*OZIU6Bv2nZ5ZrHGv.png",
+                "originalWidth": 608,
+                "originalHeight": 377,
                 "focusPercentX": null,
                 "focusPercentY": null,
                 "alt": null
@@ -275,10 +742,40 @@
             },
             {
               "__typename": "Paragraph",
-              "id": "f21d720da55e_7",
-              "name": "8f11",
+              "id": "2616aed23be6_18",
+              "name": "8507",
               "href": null,
-              "text": "In the first test above, false prophet failed to outperform many simple algorithms on ALL point benchmarks such as MAE, RMSE, MAPE and SMAPE. Elementary methods such as linear regression, Lasso and KNN easily beat prophet.",
+              "text": "The new sensors and cameras can also help pilots land safely in difficult weather or low visibility conditions, even at airports without ILS (instrument landing system) equipment installed. Airbus goes even further than that and promises that airplanes with Dragonfly will be able to automatically land at any airport.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 137,
+                  "end": 178,
+                  "href": "https://en.wikipedia.org/wiki/Instrument_landing_system",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_19",
+              "name": "9150",
+              "href": null,
+              "text": "In case something goes really wrong and the crew is incapacitated or no longer able to control the aircraft, the aircraft itself will be able to find a path to the nearest suitable airport while taking into account factors such as the weather conditions or airspace restrictions and land safely.",
               "iframe": null,
               "layout": null,
               "markups": [],
@@ -291,66 +788,122 @@
             },
             {
               "__typename": "Paragraph",
-              "id": "f21d720da55e_8",
-              "name": "3ab6",
-              "href": null,
-              "text": "More importantly, in terms of probabilistic forecasting, prophet \ud835\ude5e\ud835\ude68 \ud835\ude5a\ud835\ude6b\ud835\ude5a\ud835\ude63 \ud835\ude6c\ud835\ude64\ud835\ude67\ud835\ude68\ud835\ude5a \ud835\ude56\ud835\ude68 \ud835\ude5e\ud835\ude69 \ud835\ude65\ud835\ude67\ud835\ude64\ud835\ude6b\ud835\ude5e\ud835\ude59\ud835\ude5a\ud835\ude68 \ud835\ude5e\ud835\ude63\ud835\ude58\ud835\ude64\ud835\ude67\ud835\ude67\ud835\ude5a\ud835\ude58\ud835\ude69 \ud835\ude56\ud835\ude63\ud835\ude59 \ud835\ude5c\ud835\ude67\ud835\ude64\ud835\ude68\ud835\ude68\ud835\ude61\ud835\ude6e \ud835\ude62\ud835\ude5e\ud835\ude68\ud835\ude61\ud835\ude5a\ud835\ude56\ud835\ude59\ud835\ude5e\ud835\ude63\ud835\ude5c \u2018\ud835\ude65\ud835\ude67\ud835\ude5a\ud835\ude59\ud835\ude5e\ud835\ude58\ud835\ude69\ud835\ude5e\ud835\ude64\ud835\ude63 \ud835\ude5e\ud835\ude63\ud835\ude69\ud835\ude5a\ud835\ude67\ud835\ude6b\ud835\ude56\ud835\ude61\ud835\ude68\u2019. A well-calibrated probabilistic predictor will output a prediction interval covering 90%\u201395% of the points. In this plot produced on a relatively simple and reasonably stable dataset, facebook prophet had 30%-40% points NOT covered by what is supposed to be \u2018good prediction intervals.\u2019 One can make only one conclusion \u2014 facebook prophet is a grossly inaccurate point predictor. It also produces wildly inaccurate PIs (prediction intervals), leaving users at risk of making wrong decisions, especially in critical, high-stakes applications.",
-              "iframe": null,
-              "layout": null,
-              "markups": [],
-              "metadata": null,
-              "mixtapeMetadata": null,
-              "type": "P",
-              "hasDropCap": null,
-              "dropCapImage": null,
-              "codeBlockMetadata": null
-            },
-            {
-              "__typename": "Paragraph",
-              "id": "f21d720da55e_9",
-              "name": "73aa",
-              "href": null,
-              "text": "One can argue that the Medium views data in March-19 were somewhat unstable, so prophet was given another test drive on Feb-19 data that is more stable.",
-              "iframe": null,
-              "layout": null,
-              "markups": [],
-              "metadata": null,
-              "mixtapeMetadata": null,
-              "type": "P",
-              "hasDropCap": null,
-              "dropCapImage": null,
-              "codeBlockMetadata": null
-            },
-            {
-              "__typename": "Paragraph",
-              "id": "f21d720da55e_10",
-              "name": "5a4a",
-              "href": null,
-              "text": "As expected, it has failed to outperform other relatively simple forecasting algorithms. And again, it had produced terrible probabilistic predictions.",
-              "iframe": null,
-              "layout": null,
-              "markups": [],
-              "metadata": null,
-              "mixtapeMetadata": null,
-              "type": "P",
-              "hasDropCap": null,
-              "dropCapImage": null,
-              "codeBlockMetadata": null
-            },
-            {
-              "__typename": "Paragraph",
-              "id": "f21d720da55e_11",
-              "name": "24ec",
+              "id": "2616aed23be6_20",
+              "name": "67be",
               "href": null,
               "text": "",
+              "iframe": {
+                "__typename": "Iframe",
+                "iframeHeight": 480,
+                "iframeWidth": 854,
+                "mediaResource": {
+                  "__typename": "MediaResource",
+                  "id": "4551ed81bc7e3563f042d8fbf8bbf23a",
+                  "iframeSrc": "https://cdn.embedly.com/widgets/media.html?src=https%3A%2F%2Fwww.youtube.com%2Fembed%2FapgeeQE2H7Y%3Ffeature%3Doembed&display_name=YouTube&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DapgeeQE2H7Y&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FapgeeQE2H7Y%2Fhqdefault.jpg&key=a19fcc184b9711e1b4764040d3dc5c07&type=text%2Fhtml&schema=youtube",
+                  "thumbnailUrl": "https://i.embed.ly/1/image?url=https%3A%2F%2Fi.ytimg.com%2Fvi%2FapgeeQE2H7Y%2Fhqdefault.jpg&key=a19fcc184b9711e1b4764040d3dc5c07"
+                }
+              },
+              "layout": "OUTSET_CENTER",
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "IFRAME",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_21",
+              "name": "954e",
+              "href": null,
+              "text": "I don\u2019t think fully autonomous, pilotless passenger airplanes are coming anytime soon. However, Project Dragonfly opens the possibility for single-pilot cockpits. That is something that airlines, facing pilot shortages and wanting to reduce operating costs, might be interested in implementing.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_22",
+              "name": "06d7",
+              "href": null,
+              "text": "There are not enough pilots",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "H3",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_23",
+              "name": "2f9b",
+              "href": null,
+              "text": "When the entire world was closed in 2020, in an effort to save as much money as possible, many airlines scaled down and reduced the number of pilots they employ. Older pilots, born in the 1950s and 1960s, who were approaching their retirement age, took this as an opportunity to retire early. Those older pilots who did not retire during the lockdowns are now getting closer to their retirement and will be leaving the industry in the next couple of years.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 293,
+                  "end": 394,
+                  "href": "https://edition.cnn.com/2023/04/19/business/pilot-shortage-retirement-tsunami/index.html",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_24",
+              "name": "4c11",
+              "href": null,
+              "text": "Everything would be okay if the flight schools produced enough new pilots to replace retired pilots. But that is not the case.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_25",
+              "name": "af9f",
+              "href": null,
+              "text": "In this article, we delve into the latest advancements in autonomous flight technology and explore how it may impact the aviation industry.",
               "iframe": null,
               "layout": "INSET_CENTER",
               "markups": [],
               "metadata": {
                 "__typename": "ImageMetadata",
-                "id": "1*x0On4zb1P2VNf67vsrBabw.png",
-                "originalWidth": 2232,
-                "originalHeight": 669,
+                "id": "0*qdKo-PYCGN3JdqVP.png",
+                "originalWidth": 960,
+                "originalHeight": 642,
                 "focusPercentX": null,
                 "focusPercentY": null,
                 "alt": null
@@ -363,13 +916,674 @@
             },
             {
               "__typename": "Paragraph",
-              "id": "f21d720da55e_12",
-              "name": "5283",
+              "id": "2616aed23be6_26",
+              "name": "4423",
               "href": null,
-              "text": "One has to question the utility of an algorithm that produces wildly inaccurate point and grossly inaccurate probabilistic predictions, making it extremely risky to use in any decision-making.",
+              "text": "Airlines such as United Airlines, Lufthansa and Ryanair opened their own flight schools to bring more new pilots into the industry. But even the pilot schools struggle as there are not that many young people who want to become pilots.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 17,
+                  "end": 32,
+                  "href": "https://www.npr.org/2022/03/01/1083664582/united-airlines-opens-its-own-flight-school-to-help-attract-pilots",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                },
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 34,
+                  "end": 43,
+                  "href": "https://www.lufthansa-aviation-training.com/-/european-flight-academy-launches-training-of-pilots",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                },
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 48,
+                  "end": 55,
+                  "href": "https://corporate.ryanair.com/news/ryanair-launches-new-pilot-training-programme-with-aviomar-flight-academy/",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_27",
+              "name": "b26e",
+              "href": null,
+              "text": "(For a more detailed explanation of the pilot shortages, I recommend checking this video from an actual airline pilot)",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 1,
+                  "end": 117,
+                  "href": "https://www.youtube.com/watch?v=dunXAGSOQwQ",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_28",
+              "name": "0c4f",
+              "href": null,
+              "text": "The shortage of pilots is a major problem for airlines. We have seen in the last year what kind of chaos a lack of staff (not only pilots but also within flight and ground crew) can cause. Even though there are limits on how long a pilot can work, those who are in the industry might be pushed to their limit, which may affect the overall safety the airline industry worked hard to achieve.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 56,
+                  "end": 187,
+                  "href": "https://www.theguardian.com/business/2022/jun/22/pilot-shortages-us-travel-chaos-airlines",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_29",
+              "name": "dc56",
+              "href": null,
+              "text": "The demand for flying is recovering after Covid lockdowns. The new airplanes they ordered are being delivered, but they don\u2019t have enough crew members to staff them, and the pilot shortage does not seem to be going away anytime soon. All those factors make airlines explore any possible paths to resolve those issues. One of them involves increasing automation and possibly removing one pilot from the cockpit.",
               "iframe": null,
               "layout": null,
               "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_30",
+              "name": "746f",
+              "href": null,
+              "text": "From two pilots to one",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "H3",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_31",
+              "name": "cf38",
+              "href": null,
+              "text": "Reducing the number of people in the cockpit is not something new. There used to be three, four, and sometimes even more people in the cockpit required to fly a plane. Over time, as technology progressed, responsibilities and tasks have been automated to the point where we are today with only two pilots needed to fly a passenger aircraft.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_32",
+              "name": "53d9",
+              "href": null,
+              "text": "But moving from two pilots to one pilot is a different story than moving from three to two. The second pilot plays a vital role in ensuring the safety of the flight. Their job is to double-check the decisions made by the pilot flying the airplane and raise any concerns. They also act as a backup \u2014 if something happens to the pilot flying, they are there ready to step in and ensure the safety of the flight.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_33",
+              "name": "9dd5",
+              "href": null,
+              "text": "When the airlines moved from three pilots to two, there was always another pilot in the cockpit. Removing the second pilot removes multiple checks and procedures put in place to catch as many mistakes as possible before they cause a catastrophe. The second pilot is also there to check if everything is okay with their colleague.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_34",
+              "name": "584c",
+              "href": null,
+              "text": "Airbus says they are working on a computer vision system that can detect if the pilot flying is in any way incapacitated and take over the control if needed. The question is if that system will be better at keeping the pilot alert than another human in the cockpit engaging with their fellow colleague.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_35",
+              "name": "be48",
+              "href": null,
+              "text": "Airbus can make an argument that the sole human pilot in the cockpit is the backup. The plane will be smart enough to safely take off and land on its own, and a human pilot is there to monitor the aircraft and step in if something goes wrong.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_36",
+              "name": "845f",
+              "href": null,
+              "text": "When badly designed software crashes airplanes",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "H3",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_37",
+              "name": "96f9",
+              "href": null,
+              "text": "Before airlines can move to a highly automated cockpit with only one human pilot, the aircraft manufacturers will have to prove the systems they introduce meet the high safety standards the airline industry has developed from lessons learned over the years. Often, those lessons were paid for in human lives.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_38",
+              "name": "90dd",
+              "href": null,
+              "text": "We have already seen how much damage badly designed software controlling an aircraft can do with Boeing\u2019s infamous Maneuvering Characteristics Augmentation System, or MCAS for short.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 115,
+                  "end": 162,
+                  "href": "https://en.wikipedia.org/wiki/Maneuvering_Characteristics_Augmentation_System",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_39",
+              "name": "7a06",
+              "href": null,
+              "text": "MCAS was the main reason for two deadly crashes that resulted in 346 people being killed in 2019. Shortly after these crashes, all of Boeing\u2019s new 737 MAX airplanes were grounded worldwide. Boeing had to pay an estimated $20 billion in fines, compensation, and legal fees. On top of that, Boeing lost more than $60 billion from 1,200 cancelled orders.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_40",
+              "name": "6dfd",
+              "href": null,
+              "text": "The MCAS scandal has shown how costly badly designed software can be and severely tarnished Boeing\u2019s reputation and public trust. If Airbus does not want to experience what Boeing went through, it needs to make sure AI-powered aircraft automation is safe and robust.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_41",
+              "name": "2fd4",
+              "href": null,
+              "text": "AI-powered automation as a way to augment the pilots, not to replace them",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "H3",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_42",
+              "name": "b012",
+              "href": null,
+              "text": "Airlines would love to introduce fully autonomous aircraft. But I don\u2019t think this is going to happen anytime soon.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_43",
+              "name": "ca6a",
+              "href": null,
+              "text": "Removing even one pilot from the cockpit will cause a total rewrite of safety procedures that the aviation industry developed over decades. These procedures, often learned the hard way and paid for in human lives, make air travel the safest mode of transport in human history.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_44",
+              "name": "26d9",
+              "href": null,
+              "text": "There is also the question of how would the passengers react. Would they be comfortable boarding an aircraft with no trained human overseeing what the machine is doing and stepping in if something goes wrong? According to a survey conducted in 2018, the answer is no and only 15% of Americans would be comfortable on board a pilotless aircraft.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 209,
+                  "end": 343,
+                  "href": "https://www.ipsos.com/en-us/news-polls/Few-Would-be-Comfortable-with-Flying-on-Pilotless-Airliners",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_45",
+              "name": "9ce4",
+              "href": null,
+              "text": "A single-pilot cockpit is more likely to happen.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_46",
+              "name": "df4b",
+              "href": null,
+              "text": "Introducing more automation into the cockpit will take time and will require cooperation between aircraft manufacturers, airlines, safety organisations, and pilots to get it right. In the meantime, I believe many pilots will benefit from any help that can make their job easier and ensure safe journeys. These new, experimental tools provide more information for the pilots about their surroundings \u2014 information that might be crucial to avoid a disaster. Instead of replacing pilots, the AI in the cockpit can be a partner augmenting humans.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_47",
+              "name": "56a7",
+              "href": null,
+              "text": "Originally published at https://www.hplusweekly.com.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 24,
+                  "end": 51,
+                  "href": "https://www.hplusweekly.com/p/the-future-of-flying",
+                  "title": "",
+                  "rel": "",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                },
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "EM",
+                  "start": 0,
+                  "end": 52,
+                  "href": null,
+                  "title": null,
+                  "rel": null,
+                  "anchorType": null,
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_48",
+              "name": "c58f",
+              "href": null,
+              "text": "H+ Weekly sheds light on the bleeding edge of technology and how advancements in AI, robotics, and biotech can usher in abundance, expand humanity\u2019s horizons, and redefine what it means to be human.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 0,
+                  "end": 9,
+                  "href": "https://www.hplusweekly.com/",
+                  "title": "",
+                  "rel": "noopener ugc nofollow",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                },
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "EM",
+                  "start": 0,
+                  "end": 198,
+                  "href": null,
+                  "title": null,
+                  "rel": null,
+                  "anchorType": null,
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_49",
+              "name": "8a9f",
+              "href": null,
+              "text": "If you found this article interesting or useful, remember to follow me, or sign up for my newsletter for more content like this.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 75,
+                  "end": 100,
+                  "href": "https://www.hplusweekly.com/",
+                  "title": "",
+                  "rel": "noopener ugc nofollow",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                },
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "EM",
+                  "start": 0,
+                  "end": 128,
+                  "href": null,
+                  "title": null,
+                  "rel": null,
+                  "anchorType": null,
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_50",
+              "name": "ca73",
+              "href": null,
+              "text": "If you haven\u2019t already, you could also consider subscribing to Medium. Your membership fee directly supports, not just me, but other writers you read too. You\u2019ll also get full unrestricted access to every story on Medium.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 48,
+                  "end": 69,
+                  "href": "https://medium.com/@conradthegray/membership",
+                  "title": "",
+                  "rel": "noopener",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                },
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "EM",
+                  "start": 0,
+                  "end": 221,
+                  "href": null,
+                  "title": null,
+                  "rel": null,
+                  "anchorType": null,
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_51",
+              "name": "41c3",
+              "href": null,
+              "text": "Using my referral link to sign up will grant me a small kickback with zero effect on your membership, so thank you if you choose to do so.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "EM",
+                  "start": 0,
+                  "end": 138,
+                  "href": null,
+                  "title": null,
+                  "rel": null,
+                  "anchorType": null,
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "2616aed23be6_52",
+              "name": "4371",
+              "href": null,
+              "text": "Or you can buy me a coffee.",
+              "iframe": null,
+              "layout": null,
+              "markups": [
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "A",
+                  "start": 0,
+                  "end": 27,
+                  "href": "https://ko-fi.com/conradthegray",
+                  "title": "",
+                  "rel": "noopener ugc nofollow",
+                  "anchorType": "LINK",
+                  "userId": null,
+                  "creatorIds": null
+                },
+                {
+                  "__typename": "Markup",
+                  "name": null,
+                  "type": "EM",
+                  "start": 0,
+                  "end": 27,
+                  "href": null,
+                  "title": null,
+                  "rel": null,
+                  "anchorType": null,
+                  "userId": null,
+                  "creatorIds": null
+                }
+              ],
               "metadata": null,
               "mixtapeMetadata": null,
               "type": "P",
@@ -385,10 +1599,8 @@
     "meterPost": {
       "__typename": "MeteringInfo",
       "maxUnlockCount": 3,
-      "unlocksRemaining": 2,
-      "postIds": [
-        "53273c3ee9c6"
-      ]
+      "unlocksRemaining": 0,
+      "postIds": []
     }
   }
 }
