@@ -2,16 +2,16 @@
   "data": {
     "post": {
       "__typename": "Post",
-      "id": "b79099b959a5",
-      "readingTime": 7.931132075471698,
+      "id": "8d4308ca1f0c",
+      "readingTime": 3.100314465408805,
       "creator": {
         "__typename": "User",
-        "id": "e60a556ba1d4",
-        "imageId": "1*zQTC-GB1jFGDy3FdvERmNw.jpeg",
-        "username": "conradthegray",
-        "name": "Conrad Gray",
-        "bio": "I write about biotech, learning, computing and futurism | http://conradthegray.com",
-        "tippingLink": null,
+        "id": "e4cbe924ccb",
+        "imageId": "1*j-h09TiaKTgYsIvVAHPa4Q@2x.jpeg",
+        "username": "hnasr",
+        "name": "Hussein Nasser",
+        "bio": "Software Engineer passionate about Backend Engineering, Get access to all my articles by joining medium https://medium.com/@hnasr/membership",
+        "tippingLink": "https://www.buymeacoffee.com/hnasr",
         "viewerEdge": {
           "isUser": false,
           "isFollowing": false,
@@ -19,242 +19,106 @@
           "isMuting": false
         },
         "socialStats": {
-          "followingCount": 98,
-          "followerCount": 742
+          "followingCount": 3,
+          "followerCount": 13220
         },
         "newsletterV3": {
           "__typename": "NewsletterV3",
-          "id": "4481a7d94258",
+          "id": "928fb39cb882",
           "viewerEdge": {
-            "id": "newsletterId:4481a7d94258-viewerId:lo_d85406cf451e",
+            "id": "newsletterId:928fb39cb882-viewerId:b8d77b350800",
             "isSubscribed": false
           }
         },
-        "isFollowing": null,
-        "mediumMemberAt": 1590217063000,
-        "twitterScreenName": "conradthegray"
+        "isFollowing": false,
+        "mediumMemberAt": 1666205413000,
+        "twitterScreenName": "hnasr"
       },
-      "collection": {
-        "__typename": "Collection",
-        "id": "661161fab0d0",
-        "name": "Predict",
-        "avatar": {
-          "__typename": "ImageMetadata",
-          "id": "1*EetZyjDw-19wRRBzc6fSMA.png",
-          "originalWidth": 120,
-          "originalHeight": 120,
-          "focusPercentX": null,
-          "focusPercentY": null,
-          "alt": null
-        },
-        "subscriberCount": 27381,
-        "viewerEdge": {
-          "isFollowing": false,
-          "isEditor": false,
-          "canEditPosts": false,
-          "canEditOwnPosts": false,
-          "isMuting": false
-        },
-        "newsletterV3": {
-          "__typename": "NewsletterV3",
-          "id": "73b3205d872a",
-          "viewerEdge": {
-            "id": "newsletterId:73b3205d872a-viewerId:lo_d85406cf451e",
-            "isSubscribed": false
-          }
-        },
-        "slug": "predict",
-        "shortDescription": "where the future is written"
-      },
+      "collection": null,
       "isLocked": true,
-      "firstPublishedAt": 1694208784688,
-      "latestPublishedVersion": "2616aed23be6",
-      "title": "This is your captain, AI, speaking\u200a\u2014\u200aHow Automation Is Reshaping Aviation",
+      "firstPublishedAt": 1681622239230,
+      "latestPublishedVersion": "d8b0f964e17f",
+      "title": "How Slow is SELECT * ?",
       "visibility": "LOCKED",
       "postResponses": {
-        "count": 0
+        "count": 2
       },
-      "clapCount": 0,
+      "clapCount": 354,
       "viewerEdge": {
         "clapCount": 0
       },
       "detectedLanguage": "en",
-      "mediumUrl": "https://medium.com/predict/this-is-your-captain-ai-speaking-how-automation-is-reshaping-aviation-b79099b959a5",
-      "updatedAt": 1694236685802,
+      "mediumUrl": "https://medium.com/@hnasr/how-slow-is-select-8d4308ca1f0c",
+      "updatedAt": 1687010866734,
       "allowResponses": true,
       "isProxyPost": false,
       "isSeries": false,
       "previewImage": {
-        "id": "0*JXr-pDOTNk_kToQz.jpeg"
+        "id": "1*NkVVGY1zIrgCD7y8fofe0g@2x.jpeg"
       },
       "inResponseToPostResult": null,
       "inResponseToMediaResource": null,
       "inResponseToEntityType": null,
-      "canonicalUrl": "https://www.hplusweekly.com/p/the-future-of-flying",
+      "canonicalUrl": "",
       "previewContent": {
-        "subtitle": "Boeing sees the future in autonomous flight and Airbus is working on bringing it to commercial aircraft. But will the AI replace the\u2026"
+        "subtitle": "In a row-store database engine, rows are stored in units called pages. Each page has a fixed header and contains multiple rows, with each\u2026"
       },
       "pinnedByCreatorAt": 0,
-      "linkMetadataList": [
+      "linkMetadataList": [],
+      "highlights": [
         {
-          "url": "https://ko-fi.com/conradthegray",
-          "alts": []
-        },
-        {
-          "url": "https://en.wikipedia.org/wiki/Maneuvering_Characteristics_Augmentation_System",
-          "alts": []
-        },
-        {
-          "url": "https://www.bloomberg.com/news/articles/2023-01-31/boeing-ceo-sees-self-flying-tech-coming-to-commercial-aircraft?leadSource=uverify%20wall",
-          "alts": []
-        },
-        {
-          "url": "https://en.wikipedia.org/wiki/Instrument_landing_system",
-          "alts": []
-        },
-        {
-          "url": "https://www.airbus.com/en/newsroom/press-releases/2020-06-airbus-concludes-attol-with-fully-autonomous-flight-tests",
-          "alts": []
-        },
-        {
-          "url": "https://www.airbus.com/en/innovation/autonomous-connected/autonomous-flight",
-          "alts": []
-        },
-        {
-          "url": "https://www.airbus.com/en/newsroom/stories/2023-01-could-the-humble-dragonfly-help-pilots-during-flight",
-          "alts": []
-        },
-        {
-          "url": "https://www.airbus.com/en/newsroom/press-releases/2023-03-airbus-achieves-in-flight-autonomous-guidance-and-control-of-a",
-          "alts": []
-        },
-        {
-          "url": "https://www.npr.org/2022/03/01/1083664582/united-airlines-opens-its-own-flight-school-to-help-attract-pilots",
-          "alts": []
-        },
-        {
-          "url": "https://www.freethink.com/robots-ai/humanoid-robot-pilot",
-          "alts": [
+          "__typename": "Quote",
+          "id": "anon_b39e4ddd5200",
+          "postId": "8d4308ca1f0c",
+          "userId": "anon",
+          "startOffset": 0,
+          "endOffset": 80,
+          "paragraphs": [
             {
-              "type": "AMP",
-              "url": "https://www.freethink.com/robots-ai/humanoid-robot-pilot?amp=1"
+              "__typename": "Paragraph",
+              "id": "anon_b39e4ddd5200_quote_0",
+              "name": "2200",
+              "href": null,
+              "text": "Using SELECT * means that the database optimizer cannot choose index-only scans. For example, let\u2019s say you need the IDs of students who scored above 90, and you have an index on the grades column that includes the student ID as a non-key, this index is\u200aperfect for this query.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
             }
-          ]
-        },
-        {
-          "url": "https://interestingengineering.com/innovation/ai-powered-f-16-jets",
-          "alts": []
-        },
-        {
-          "url": "https://www.hplusweekly.com/p/the-future-of-flying",
-          "alts": []
-        },
-        {
-          "url": "https://www.hplusweekly.com/",
-          "alts": []
-        },
-        {
-          "url": "https://www.theguardian.com/business/2022/jun/22/pilot-shortages-us-travel-chaos-airlines",
-          "alts": [
-            {
-              "type": "AMP",
-              "url": "https://amp.theguardian.com/business/2022/jun/22/pilot-shortages-us-travel-chaos-airlines"
-            },
-            {
-              "type": "IOS_APPLINK",
-              "url": "gnmguardian://business/2022/jun/22/pilot-shortages-us-travel-chaos-airlines?contenttype=Article&source=applinks"
-            }
-          ]
-        },
-        {
-          "url": "https://www.ipsos.com/en-us/news-polls/Few-Would-be-Comfortable-with-Flying-on-Pilotless-Airliners",
-          "alts": []
-        },
-        {
-          "url": "https://medium.com/@conradthegray/membership",
-          "alts": []
-        },
-        {
-          "url": "https://edition.cnn.com/2023/04/19/business/pilot-shortage-retirement-tsunami/index.html",
-          "alts": [
-            {
-              "type": "AMP",
-              "url": "https://amp.cnn.com/cnn/2023/04/19/business/pilot-shortage-retirement-tsunami/index.html"
-            }
-          ]
-        },
-        {
-          "url": "https://www.youtube.com/watch?v=dunXAGSOQwQ",
-          "alts": [
-            {
-              "type": "IOS_APPLINK",
-              "url": "vnd.youtube://www.youtube.com/watch?v=dunXAGSOQwQ&feature=applinks"
-            },
-            {
-              "type": "ANDROID_APPLINK",
-              "url": "vnd.youtube://www.youtube.com/watch?v=dunXAGSOQwQ&feature=applinks"
-            }
-          ]
-        },
-        {
-          "url": "https://www.lufthansa-aviation-training.com/-/european-flight-academy-launches-training-of-pilots",
-          "alts": []
-        },
-        {
-          "url": "https://xwing.com/",
-          "alts": []
-        },
-        {
-          "url": "https://corporate.ryanair.com/news/ryanair-launches-new-pilot-training-programme-with-aviomar-flight-academy/",
-          "alts": []
-        },
-        {
-          "url": "https://aerospace.honeywell.com/us/en/about-us/blogs/aviations-future-is-safer-more-efficient-and-more-autonomous",
-          "alts": []
+          ],
+          "quoteType": null
         }
       ],
-      "highlights": [],
       "responsesLocked": false,
       "tags": [
         {
           "__typename": "Tag",
-          "id": "automation",
-          "normalizedTagSlug": "automation",
-          "displayTitle": "Automation",
-          "followerCount": 2272,
-          "postCount": 43749
+          "id": "database",
+          "normalizedTagSlug": "database",
+          "displayTitle": "Database",
+          "followerCount": 3718,
+          "postCount": 38242
         },
         {
           "__typename": "Tag",
-          "id": "artificial-intelligence",
-          "normalizedTagSlug": "artificial-intelligence",
-          "displayTitle": "Artificial Intelligence",
-          "followerCount": 2433297,
-          "postCount": 303765
+          "id": "sql",
+          "normalizedTagSlug": "sql",
+          "displayTitle": "Sql",
+          "followerCount": 5094,
+          "postCount": 25416
         },
         {
           "__typename": "Tag",
-          "id": "aviation",
-          "normalizedTagSlug": "aviation",
-          "displayTitle": "Aviation",
-          "followerCount": 791,
-          "postCount": 12093
-        },
-        {
-          "__typename": "Tag",
-          "id": "aviation-industry",
-          "normalizedTagSlug": "aviation-industry",
-          "displayTitle": "Aviation Industry",
-          "followerCount": 100,
-          "postCount": 959
-        },
-        {
-          "__typename": "Tag",
-          "id": "autonomous-flight",
-          "normalizedTagSlug": "autonomous-flight",
-          "displayTitle": "Autonomous Flight",
-          "followerCount": 1,
-          "postCount": 8
+          "id": "data-science",
+          "normalizedTagSlug": "data-science",
+          "displayTitle": "Data Science",
+          "followerCount": 2467459,
+          "postCount": 254199
         }
       ],
       "content": {
@@ -263,11 +127,11 @@
           "sections": [
             {
               "__typename": "Section",
-              "name": null,
+              "name": "fa11",
               "startIndex": 0,
-              "textLayout": null,
-              "imageLayout": null,
-              "videoLayout": null,
+              "textLayout": "FLOW",
+              "imageLayout": "NONE",
+              "videoLayout": "NO_VIDEO",
               "backgroundImage": null,
               "backgroundVideo": null
             }
@@ -275,85 +139,37 @@
           "paragraphs": [
             {
               "__typename": "Paragraph",
-              "id": "2616aed23be6_0",
-              "name": "f486",
+              "id": "d8b0f964e17f_0",
+              "name": "d3fe",
               "href": null,
-              "text": "This is your captain, AI, speaking \u2014 How Automation Is Reshaping Aviation",
+              "text": "How Slow is SELECT * ? (A deep dive)",
               "iframe": null,
               "layout": null,
               "markups": [],
               "metadata": null,
               "mixtapeMetadata": null,
-              "type": "H3",
+              "type": "H2",
               "hasDropCap": null,
               "dropCapImage": null,
               "codeBlockMetadata": null
             },
             {
               "__typename": "Paragraph",
-              "id": "2616aed23be6_1",
-              "name": "331e",
-              "href": null,
-              "text": "Boeing CEO sees the future in autonomous flight and Airbus is working on bringing it to commercial aircraft. But will the AI replace the pilots?",
-              "iframe": null,
-              "layout": null,
-              "markups": [],
-              "metadata": null,
-              "mixtapeMetadata": null,
-              "type": "PQ",
-              "hasDropCap": null,
-              "dropCapImage": null,
-              "codeBlockMetadata": null
-            },
-            {
-              "__typename": "Paragraph",
-              "id": "2616aed23be6_2",
-              "name": "fecb",
-              "href": null,
-              "text": "Modern passenger aircraft are highly automated machines. Apart from taxiing, take-off, and landing, the aircraft flies itself on autopilot. Aircraft manufacturers, however, plan to take the current automation to the next level with autonomous flight.",
-              "iframe": null,
-              "layout": null,
-              "markups": [],
-              "metadata": null,
-              "mixtapeMetadata": null,
-              "type": "P",
-              "hasDropCap": null,
-              "dropCapImage": null,
-              "codeBlockMetadata": null
-            },
-            {
-              "__typename": "Paragraph",
-              "id": "2616aed23be6_3",
-              "name": "3080",
-              "href": null,
-              "text": "In this article, we delve into the latest advancements in autonomous flight technology and explore how it may impact the aviation industry.",
-              "iframe": null,
-              "layout": null,
-              "markups": [],
-              "metadata": null,
-              "mixtapeMetadata": null,
-              "type": "P",
-              "hasDropCap": null,
-              "dropCapImage": null,
-              "codeBlockMetadata": null
-            },
-            {
-              "__typename": "Paragraph",
-              "id": "2616aed23be6_4",
-              "name": "765d",
+              "id": "d8b0f964e17f_1",
+              "name": "56f6",
               "href": null,
               "text": "",
               "iframe": null,
-              "layout": "OUTSET_CENTER",
+              "layout": "INSET_CENTER",
               "markups": [],
               "metadata": {
                 "__typename": "ImageMetadata",
-                "id": "0*JXr-pDOTNk_kToQz.jpeg",
+                "id": "1*NkVVGY1zIrgCD7y8fofe0g@2x.jpeg",
                 "originalWidth": 1200,
-                "originalHeight": 600,
-                "focusPercentX": null,
-                "focusPercentY": null,
-                "alt": null
+                "originalHeight": 1200,
+                "focusPercentX": -1,
+                "focusPercentY": -1,
+                "alt": ""
               },
               "mixtapeMetadata": null,
               "type": "IMG",
@@ -363,40 +179,13 @@
             },
             {
               "__typename": "Paragraph",
-              "id": "2616aed23be6_5",
-              "name": "f23e",
+              "id": "d8b0f964e17f_2",
+              "name": "4a31",
               "href": null,
-              "text": "The concept of autonomous flight is not new. Computers can already take off, fly, and safely land on their own. For example, AI has already successfully piloted an F-16 jet fighter. Researchers from the Korea Advanced Institute of Science and Technology (KAIST) have made a humanoid robot named PIBOT that successfully piloted a small airplane in a simulator. Now, Korean researchers are planning to give PIBOT control over a real plane.",
+              "text": "In a row-store database engine, rows are stored in units called pages. Each page has a fixed header and contains multiple rows, with each row having a record header followed by its respective columns. For instance, consider the following example in PostgreSQL:",
               "iframe": null,
               "layout": null,
-              "markups": [
-                {
-                  "__typename": "Markup",
-                  "name": null,
-                  "type": "A",
-                  "start": 125,
-                  "end": 180,
-                  "href": "https://interestingengineering.com/innovation/ai-powered-f-16-jets",
-                  "title": "",
-                  "rel": "",
-                  "anchorType": "LINK",
-                  "userId": null,
-                  "creatorIds": null
-                },
-                {
-                  "__typename": "Markup",
-                  "name": null,
-                  "type": "A",
-                  "start": 182,
-                  "end": 358,
-                  "href": "https://www.freethink.com/robots-ai/humanoid-robot-pilot",
-                  "title": "",
-                  "rel": "",
-                  "anchorType": "LINK",
-                  "userId": null,
-                  "creatorIds": null
-                }
-              ],
+              "markups": [],
               "metadata": null,
               "mixtapeMetadata": null,
               "type": "P",
@@ -406,40 +195,37 @@
             },
             {
               "__typename": "Paragraph",
-              "id": "2616aed23be6_6",
-              "name": "330d",
+              "id": "d8b0f964e17f_3",
+              "name": "2961",
               "href": null,
-              "text": "Established aviation companies and startups are working on bringing autonomous flight to commercial passenger aircraft. One such startup is Xwing, which is offering an autonomous flight system named Superpilot where a computer flies the airplane with remote human operators on the ground as a backup. The company focuses right now on cargo flights. The passenger operations are next on the roadmap, once the cargo flights are proven to be safe. Avionics provider Honeywell has in its offer avionics and sensors ready for autonomous flight for military and cargo operations.",
+              "text": "",
+              "iframe": null,
+              "layout": "INSET_CENTER",
+              "markups": [],
+              "metadata": {
+                "__typename": "ImageMetadata",
+                "id": "1*pHmjLG59FPCk6vVBzbqrRA@2x.jpeg",
+                "originalWidth": 1200,
+                "originalHeight": 1200,
+                "focusPercentX": -1,
+                "focusPercentY": -1,
+                "alt": ""
+              },
+              "mixtapeMetadata": null,
+              "type": "IMG",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_4",
+              "name": "9c72",
+              "href": null,
+              "text": "When the database fetches a page and places it in the shared buffer pool, we gain access to all rows and columns within that page. So, the question arises: if we have all the columns readily available in memory, why would SELECT * be slow and costly? Is it really as slow as people claim it to be? And if so why is it so? In this post, we will explore these questions and more.",
               "iframe": null,
               "layout": null,
-              "markups": [
-                {
-                  "__typename": "Markup",
-                  "name": null,
-                  "type": "A",
-                  "start": 140,
-                  "end": 145,
-                  "href": "https://xwing.com/",
-                  "title": "",
-                  "rel": "",
-                  "anchorType": "LINK",
-                  "userId": null,
-                  "creatorIds": null
-                },
-                {
-                  "__typename": "Markup",
-                  "name": null,
-                  "type": "A",
-                  "start": 445,
-                  "end": 572,
-                  "href": "https://aerospace.honeywell.com/us/en/about-us/blogs/aviations-future-is-safer-more-efficient-and-more-autonomous",
-                  "title": "",
-                  "rel": "",
-                  "anchorType": "LINK",
-                  "userId": null,
-                  "creatorIds": null
-                }
-              ],
+              "markups": [],
               "metadata": null,
               "mixtapeMetadata": null,
               "type": "P",
@@ -449,40 +235,10 @@
             },
             {
               "__typename": "Paragraph",
-              "id": "2616aed23be6_7",
-              "name": "176f",
+              "id": "d8b0f964e17f_5",
+              "name": "c783",
               "href": null,
-              "text": "The two big aircraft manufacturers \u2014 Boeing and Airbus \u2014 also see the future in autonomous flight. Boeing CEO admitted that in an interview in January 2023. But it is Airbus that leads the way in autonomous flight for commercial airliners.",
-              "iframe": null,
-              "layout": null,
-              "markups": [
-                {
-                  "__typename": "Markup",
-                  "name": null,
-                  "type": "A",
-                  "start": 99,
-                  "end": 155,
-                  "href": "https://www.bloomberg.com/news/articles/2023-01-31/boeing-ceo-sees-self-flying-tech-coming-to-commercial-aircraft?leadSource=uverify%20wall",
-                  "title": "",
-                  "rel": "",
-                  "anchorType": "LINK",
-                  "userId": null,
-                  "creatorIds": null
-                }
-              ],
-              "metadata": null,
-              "mixtapeMetadata": null,
-              "type": "P",
-              "hasDropCap": null,
-              "dropCapImage": null,
-              "codeBlockMetadata": null
-            },
-            {
-              "__typename": "Paragraph",
-              "id": "2616aed23be6_8",
-              "name": "a138",
-              "href": null,
-              "text": "Airbus\u2019 quest towards autonomous flight",
+              "text": "Kiss Index-Only Scans Goodbye",
               "iframe": null,
               "layout": null,
               "markups": [],
@@ -495,40 +251,299 @@
             },
             {
               "__typename": "Paragraph",
-              "id": "2616aed23be6_9",
-              "name": "fafe",
+              "id": "d8b0f964e17f_6",
+              "name": "2200",
               "href": null,
-              "text": "Airbus has a number of projects exploring different aspects of autonomous flight. Some of them focus on military applications, such as autonomous air-to-air refuelling. However many of them focus solely on commercial aviation.",
+              "text": "Using SELECT * means that the database optimizer cannot choose index-only scans. For example, let\u2019s say you need the IDs of students who scored above 90, and you have an index on the grades column that includes the student ID as a non-key, this index is\u200aperfect for this query.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_7",
+              "name": "b9e6",
+              "href": null,
+              "text": "However, since you asked for all fields, the database needs to access the heap data page to get the remaining fields increasing random reads resulting in far more I/Os. In contrast, the database could have only scanned the grades index and returned the IDs if you hadn\u2019t used SELECT *.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_8",
+              "name": "9ffa",
+              "href": null,
+              "text": "Deserialization Cost",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "H3",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_9",
+              "name": "c134",
+              "href": null,
+              "text": "Deserialization, or decoding, is the process of converting raw bytes into data types. This involves taking a sequence of bytes (typically from a file, network communication, or another source) and converting it back into a more structured data format, such as objects or variables in a programming language.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_10",
+              "name": "5ec7",
+              "href": null,
+              "text": "When you perform a SELECT * query, the database needs to deserialize all columns, even those you may not need for your specific use case. This can increase the computational overhead and slow down query performance. By only selecting the necessary columns, you can reduce the deserialization cost and improve the efficiency of your queries.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_11",
+              "name": "a83d",
+              "href": null,
+              "text": "Not All Columns Are Inline",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "H3",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_12",
+              "name": "2d03",
+              "href": null,
+              "text": "One significant issue with SELECT * queries is that not all columns are stored inline within the page. Large columns, such as text or blobs, may be stored in external tables and only retrieved when requested (Postgres TOAST tables are example). These columns are often compressed, so when you perform a SELECT * query with many text fields, geometry data, or blobs, you place an additional load on the database to fetch the values from external tables, decompress them, and return the results to the client.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_13",
+              "name": "db99",
+              "href": null,
+              "text": "Network Cost",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "H3",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_14",
+              "name": "468a",
+              "href": null,
+              "text": "Before the query result is sent to the client, it must be serialized according to the communication protocol supported by the database. The more data needs to be serialized, the more work is required from the CPU. After the bytes are serialized, they are transmitted through TCP/IP. The more segments you need to send, the higher the cost of transmission, which ultimately affects network latency.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_15",
+              "name": "90e6",
+              "href": null,
+              "text": "Returning all columns may require deserialization of large columns, such as strings or blobs, that clients may never use.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_16",
+              "name": "4b79",
+              "href": null,
+              "text": "Client Deserialization",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "H3",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_17",
+              "name": "362d",
+              "href": null,
+              "text": "Once the client receives the raw bytes, the client app must deserialize the data to whatever language the client uses, adding to the overall processing time. The more data is in the pipe the slower this process.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_18",
+              "name": "f4f6",
+              "href": null,
+              "text": "Unpredictability",
               "iframe": null,
               "layout": null,
               "markups": [
                 {
                   "__typename": "Markup",
                   "name": null,
-                  "type": "A",
+                  "type": "STRONG",
                   "start": 0,
-                  "end": 80,
-                  "href": "https://www.airbus.com/en/innovation/autonomous-connected/autonomous-flight",
-                  "title": "",
-                  "rel": "",
-                  "anchorType": "LINK",
-                  "userId": null,
-                  "creatorIds": null
-                },
-                {
-                  "__typename": "Markup",
-                  "name": null,
-                  "type": "A",
-                  "start": 135,
-                  "end": 167,
-                  "href": "https://www.airbus.com/en/newsroom/press-releases/2023-03-airbus-achieves-in-flight-autonomous-guidance-and-control-of-a",
-                  "title": "",
-                  "rel": "",
-                  "anchorType": "LINK",
+                  "end": 16,
+                  "href": null,
+                  "title": null,
+                  "rel": null,
+                  "anchorType": null,
                   "userId": null,
                   "creatorIds": null
                 }
               ],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "H3",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_19",
+              "name": "361e",
+              "href": null,
+              "text": "Using SELECT * on the client side even if you have a single field can introduce unpredictability. Think of this example, you have a table with one or two fields and your app does a SELECT * , blazing fast two integer fields.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_20",
+              "name": "64d2",
+              "href": null,
+              "text": "However, later the admin decided to add an XML field, JSON, blob and other fields that are populated and used by other apps. While your code did not change at all, it will suddenly slow down because it is now picking up all the extra fields that your app didn\u2019t need to begin with.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_21",
+              "name": "f7ec",
+              "href": null,
+              "text": "Summary",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "H3",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_22",
+              "name": "8b40",
+              "href": null,
+              "text": "In conclusion, a SELECT * query involves many complex processes, so it\u2019s best to only select the fields you need to avoid unnecessary overhead. Keep in mind that if your table has few columns with simple data types, the overhead of a SELECT * query might be negligible. However, it\u2019s generally good practice to be selective about the columns you retrieve in your queries.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
+              "metadata": null,
+              "mixtapeMetadata": null,
+              "type": "P",
+              "hasDropCap": null,
+              "dropCapImage": null,
+              "codeBlockMetadata": null
+            },
+            {
+              "__typename": "Paragraph",
+              "id": "d8b0f964e17f_23",
+              "name": "9edb",
+              "href": null,
+              "text": "Thank you.",
+              "iframe": null,
+              "layout": null,
+              "markups": [],
               "metadata": null,
               "mixtapeMetadata": null,
               "type": "P",
@@ -544,10 +559,8 @@
     "meterPost": {
       "__typename": "MeteringInfo",
       "maxUnlockCount": 3,
-      "unlocksRemaining": 2,
-      "postIds": [
-        "b79099b959a5"
-      ]
+      "unlocksRemaining": 0,
+      "postIds": []
     }
   }
 }
