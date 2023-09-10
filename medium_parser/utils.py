@@ -73,7 +73,8 @@ def sanitize_url(url):
   query = parsed_url.query
   if query:
     parsed_url = parsed_url._replace(query='')
-  return urllib.parse.urlunparse(parsed_url)
+  sanitized_url = urllib.parse.urlunparse(parsed_url)
+  return sanitized_url.removesuffix("/")
 
 
 def is_valid_medium_post_id_hexadecimal(hex_string: str) -> bool:
