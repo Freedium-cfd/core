@@ -35,6 +35,7 @@ def is_valid_url(url):
 def getting_percontage_of_match(string: str, matched_string: str) -> int:
     return difflib.SequenceMatcher(None, string, matched_string).ratio() * 100
 
+
 def generate_random_sha256_hash():
     # Encode the input string to bytes before hashing
     random_input_bytes = secrets.token_bytes()

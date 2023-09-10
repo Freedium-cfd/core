@@ -22,7 +22,7 @@ async def query_post_by_id(post_id: str, from_cache: bool = True, timeout: int =
         "Cache-Control": "public, max-age=-1",
         "Content-Type": "application/json",
         "Connection": "Keep-Alive",
-        "Cookie": "uid=b8d77b350800; sid=1:rgqF9g6pYuv8PJjvjRu5uBPGIYNUoElQ62HFOqewqvLL4sLoq3c+DQgBLPEocqbe",
+        # "Cookie": "uid=b8d77b350800; sid=1:rgqF9g6pYuv8PJjvjRu5uBPGIYNUoElQ62HFOqewqvLL4sLoq3c+DQgBLPEocqbe",
     }
 
     json_data = {
