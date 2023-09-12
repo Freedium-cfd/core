@@ -68,7 +68,7 @@
     <div class="w-full px-4 md:px-6 text-xl text-gray-800 leading-normal" style="font-family:Georgia,serif">
         <div class="font-sans">
             <p class="text-base md:text-sm text-green-500 font-bold pb-3">
-                <a href="https://fmsreliability.medium.com/mcnemar-test-335c8697535b" class="text-sm md:text-sm text-green-500 font-bold no-underline hover:underline ">&lt; Go to the original</a>
+                <a href="https://ai.plainenglish.io/bayes-classifiers-in-depth-e0582a48a291" class="text-sm md:text-sm text-green-500 font-bold no-underline hover:underline ">&lt; Go to the original</a>
             </p>
             
                 <img alt="Preview image"
@@ -77,30 +77,30 @@
                             margin: auto"
                      loading="eager"
                      role="presentation"
-                     src="https://miro.medium.com/v2/resize:fit:700/0*bei4NZrd1MVuQcO-.png">
+                     src="https://miro.medium.com/v2/resize:fit:700/1*vq7XdSjiojraqTwbMrqjxQ.png">
             
-            <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl">McNemar Test</h1>
-            
+            <h1 class="font-bold font-sans break-normal text-gray-900 pt-6 pb-2 text-3xl md:text-4xl">Bayes Classifiers in depth</h1>
+            <h2 class="font-medium font-sans break-normal text-gray-600 pt-1 pb-3 text-1xl md:text-1xl">Bayes Theorem, Hypothesis, Probability, Machine Learning</h2>
         </div>
         <div class="bg-gray-100 border border-gray-300 m-2">
             <div class="flex items-center space-x-4 p-4">
                 <div class="flex-shrink-0">
-                    <a href="https://medium.com/@fmsreliability" target="_blank" title="Reliability Engineering and Management Consultant focused on improving product reliability and increasing equipment availability." class="block relative">
-                        <img src="https://miro.medium.com/v2/resize:fill:88:88/0*PP-oaOyGFli6duMh.jpeg"
-                             alt="Fred Schenkelberg"
+                    <a href="https://medium.com/@peterkaras" target="_blank" title="AI and software developer, Student at Slovak University of Technology, works at Kempelen Institute of Intelligent Technologies." class="block relative">
+                        <img src="https://miro.medium.com/v2/resize:fill:88:88/0*49aKWqeqAFMIZadE."
+                             alt="Peter Karas"
                              class="rounded-full h-11 w-11 no-lightense">
                         <div class="absolute bottom-0 right-0 h-3 w-3 border-2 border-white bg-green-500 rounded-full"></div>
                     </a>
                 </div>
                 <div class="flex-grow">
-                    <a href="https://medium.com/@fmsreliability"
+                    <a href="https://medium.com/@peterkaras"
                        target="_blank"
-                       title="Reliability Engineering and Management Consultant focused on improving product reliability and increasing equipment availability."
-                       class="block font-semibold text-gray-900">Fred Schenkelberg</a>
+                       title="AI and software developer, Student at Slovak University of Technology, works at Kempelen Institute of Intelligent Technologies."
+                       class="block font-semibold text-gray-900">Peter Karas</a>
                     <button class="text-sm text-white bg-green-500 px-3 py-1 rounded-lg mt-1">
-                        <a href="https://medium.com/@fmsreliability"
+                        <a href="https://medium.com/@peterkaras"
                            target="_blank"
-                           title="Reliability Engineering and Management Consultant focused on improving product reliability and increasing equipment availability."
+                           title="AI and software developer, Student at Slovak University of Technology, works at Kempelen Institute of Intelligent Technologies."
                            class="block text-sm text-white">Follow</a>
                     </button>
                 </div>
@@ -108,17 +108,61 @@
             <div class="px-4 pb-2">
                 <div class="flex flex-wrap items-center space-x-2 text-sm text-gray-500">
                     
-                    <span class="text-gray-500">~4 min read</span>
+                        <a href="https://medium.com/ai-in-plain-english"
+                           title="New AI, ML and Data Science articles every day."
+                           target="_blank"
+                           class="flex items-center space-x-1">
+                            <img src="https://miro.medium.com/v2/resize:fill:48:48/1*9zAmnK08gUCmZX7q0McVKw@2x.png"
+                                 alt="Artificial Intelligence in Plain English"
+                                 class="h-4 w-4 rounded-full no-lightense">
+                            <p>Artificial Intelligence in Plain English</p>
+                        </a>
+                        <span>·</span>
+                    
+                    <span class="text-gray-500">~7 min read</span>
                     <span class="md:inline">·</span>
-                    <span class="text-gray-500">April 10, 2018 (Updated: April 10, 2018)</span>
+                    <span class="text-gray-500">May 3, 2023 (Updated: June 13, 2023)</span>
                     <span class="md:inline">·</span>
                     <span class="text-yellow-500">Free: No</span>
                 </div>
             </div>
         </div>
-        <p class="leading-8 mt-7"><em>Originally published at </em><em><a style="text-decoration: underline;" rel="" title="" href="http://accendoreliability.com/mcnemar-test/" target="_blank">Accendo Reliability</a></em><em>.</em></p>
+        <h2 class="font-bold font-sans break-normal text-gray-900 text-l md:text-xl "><em>Bayes Theorem, Hypothesis, Probability, Machine Learning</em></h2><p class="leading-8 mt-7">Bayesian classifiers are a type of <strong>probabilistic machine learning system</strong> that classifies data using <strong>Bayes’ theorem</strong>. The Bayes’ theorem gives a method for calculating the probability of a <strong>hypothesis</strong> given the probability of the data and the prior probability of the hypothesis. In a Bayesian classifier, the hypothesis is the data’s class label, and the data is the data instance’s features or attributes. Given that they assign probabilities to each class label for a given data instance, Bayesian classifiers are also known as probabilistic classifiers. As the predicted label for the data instance, the class label with the highest probability is chosen. Text classification, spam filtering, and image recognition are all prominent applications for Bayesian classifiers.</p><h1 class="font-bold font-sans break-normal text-gray-900 text-1xl md:text-2xl pt-12">A hypothesis and Bayes’ theorem</h1><p class="leading-8 mt-3"><strong>A hypothesis</strong> is a statement or proposition regarding an unknown event or phenomena in the context of Bayes’ theorem. It denotes a potential explanation or forecast for the data.</p><p class="leading-8 mt-7"><strong>The theorem of Bayes</strong> is a fundamental notion in probability theory and statistics. It provides a method for calculating the probability of a hypothesis given the probability of the data and the prior probability of the hypothesis. The theorem is named after Thomas Bayes, an English mathematician and statistician who developed it in the 18th century.</p><p class="leading-8 mt-7">According to Bayes’ theorem, the probability of a hypothesis <strong><em>H</em></strong> given data <strong><em>D</em></strong> is proportional to the likelihood of the data given the hypothesis multiplied by the hypothesis’s prior probability:</p><div class="mt-7"><img alt="None" style="margin: auto;" class="pt-5" loading="lazy" loading="eager" role="presentation" src="https://miro.medium.com/v2/resize:fit:700/1*_kgPcoZo_UgOu42jGqAcQw.png"></div><p class="leading-8 mt-7">where:</p><ul class="list-disc pl-8 mt-2"><li class='mt-3'><strong><em>P(H | D)</em></strong> is the posterior probability of the hypothesis given the data. It represents our updated belief in the hypothesis after observing the data.</li><li class='mt-3'><strong><em>P(D | H)</em></strong> is the likelihood of the data given the hypothesis. It represents the probability of observing the data if the hypothesis is true.</li><li class='mt-3'><strong><em>P(H)</em></strong> is the prior probability of the hypothesis. It represents our initial belief in the hypothesis before observing the data.</li><li class='mt-3'><strong><em>P(D)</em></strong> is the probability of the data. It represents the probability of observing the data regardless of the hypothesis.</li></ul><p class="leading-8 mt-7">As more data is gathered, we can use Bayes’ theorem to <strong>update our beliefs</strong> about a hypothesis. <strong>The prior probability </strong><strong><em>P(H)</em></strong><em> </em>represents our<strong> initial belief</strong> in the hypothesis. We <strong>update </strong>our belief based on <strong>the likelihood</strong> of the evidence given the hypothesis, which is represented by the term <strong><em>P(D | H).</em></strong> <strong>The posterior probability</strong> of the hypothesis given the data, denoted by the notation <strong><em>P(H | D)</em></strong>, represents our <strong>revised belief</strong> in the hypothesis following data observation.</p><h1 class="font-bold font-sans break-normal text-gray-900 text-1xl md:text-2xl pt-12">Example of Bayes’ theorem</h1><p class="leading-8 mt-3">Assume we want to predict whether or not a person has a disease based on their symptoms. One possibility is that the person has the sickness, while another is that the person does not have the condition. As we gather more information, we can use Bayes’ theorem to update our belief in these hypotheses.</p><p class="leading-8 mt-7">As an illustration of Bayes’ theorem, imagine we have a disease test that is 95% accurate. This indicates that if a person has the disease, the test will accurately identify them 95% of the time, and if a person does not have the condition, the test will correctly identify them 95% of the time.</p><p class="leading-8 mt-7">Assume that 1% of the population is infected with the disease. What is the probability that a person with the disease has the disease if we randomly select someone from the public and give them the test?</p><p class="leading-8 mt-7">We can use Bayes’ theorem to answer this question. Let H be the hypothesis that the person has the disease, and let D be the data that the test is positive. Then we can use the equation above to solve our problem.</p><div class="mt-7"><img alt="Bayes’ theorem" style="margin: auto;" class="pt-5" loading="lazy" loading="eager" role="presentation" src="https://miro.medium.com/v2/resize:fit:700/1*_kgPcoZo_UgOu42jGqAcQw.png"></div><p class="leading-8 mt-7">where:</p><ul class="list-disc pl-8 mt-2"><li class='mt-3'><strong><em>P(H)</em></strong> is the prior probability of the hypothesis (1% in this case),</li><li class='mt-3'><strong><em>P(D | H)</em></strong> is the likelihood of the data given the hypothesis (95% if the person has the disease),</li><li class='mt-3'>and <strong><em>P(D)</em></strong> is the probability of the data (the probability of a positive test result).</li></ul><p class="leading-8 mt-7"><strong>To calculate </strong><strong><em>P(D)</em></strong><strong>,</strong> we need to consider both cases where the person has the disease and where they do not. If the person has the disease, the probability of a positive test result is 95%. If the person does not have the disease, the probability of a false positive (a positive test result when the person does not have the disease) is 1% (since 99% of people do not have the disease). Therefore:</p><div class="mt-7"><img alt="None" style="margin: auto;" class="pt-5" loading="lazy" loading="eager" role="presentation" src="https://miro.medium.com/v2/resize:fit:700/1*MrRb3vGw6-RQzkesKKwHRg.png"></div><div class="mt-7"><img alt="None" style="margin: auto;" class="pt-5" loading="lazy" loading="eager" role="presentation" src="https://miro.medium.com/v2/resize:fit:700/1*IjGWUdvaPdwXPs6wUCP7Pg.png"></div><div class="mt-7"><img alt="None" style="margin: auto;" class="pt-5" loading="lazy" loading="eager" role="presentation" src="https://miro.medium.com/v2/resize:fit:700/1*hj0siy4nRnLDWKl8BFm2Hg.png"></div><p class="leading-8 mt-7">After that, we can use Bayes’ theorem<strong><em> </em></strong><strong>to calculate</strong><strong><em> P(H | D)</em></strong>. Therefore:</p><div class="mt-7"><img alt="None" style="margin: auto;" class="pt-5" loading="lazy" loading="eager" role="presentation" src="https://miro.medium.com/v2/resize:fit:700/1*AiwGMclyB57DEyWrjHhd1Q.png"></div><div class="mt-7"><img alt="None" style="margin: auto;" class="pt-5" loading="lazy" loading="eager" role="presentation" src="https://miro.medium.com/v2/resize:fit:700/1*GCbDFpUu49l3Fjtn1ZMC_Q.png"></div><h2 class="font-bold font-sans break-normal text-gray-900 text-l md:text-xl pt-8">Conclusion on the example</h2><p class="leading-8 mt-3">This means that the probability that the person actually has the disease given a positive test result is only 48.8%, even though the test is 95% accurate. This illustrates the importance of considering the prior probability of the hypothesis when interpreting the results of a test or experiment.</p><p class="leading-8 mt-7">However, the type of <strong>probability distribution</strong> can have an effect on the Bayes’ theorem. In practice, depending on the task at hand, various distributions are more typically utilized. The prior probability distribution and the likelihood function are both crucial components of the Bayesian model in Bayesian inference. The prior distribution represents our initial views about the parameter(s) of interest prior to witnessing any data, and the likelihood function provides the likelihood of observing the data given the parameter(s).Some common probability distributions used in Bayesian inference include:</p><ol class="list-decimal pl-8 mt-2"><li class='mt-3'><strong>Normal or Gaussian distribution</strong>: This distribution is often used when the parameter of interest is continuous and has a normal distribution. It is characterized by two parameters, the mean and standard deviation.</li><li class='mt-3'><strong>Beta distribution</strong>: This distribution is often used when the parameter of interest is a probability, such as the success probability of a Bernoulli trial. It is characterized by two parameters, alpha and beta.</li><li class='mt-3'><strong>Poisson distribution</strong>: This distribution is often used when the parameter of interest represents a count, such as the number of events in a fixed time interval. It is characterized by a single parameter, lambda.</li><li class='mt-3'><strong>Exponential distribution</strong>: This distribution is often used when the parameter of interest represents a rate, such as the rate at which events occur. It is characterized by a single parameter, lambda.</li></ol><p class="leading-8 mt-7">These are only a few of the probability distributions that can be utilized in Bayesian inference. The distribution used is determined on the specific problem and the type of the data being studied. Furthermore, if you want to learn more about probability distributions, visit the link below.</p><p class="leading-8 mt-7">Having defined all the necessary theory behind Bayes’ theorem, there are several <strong>types of Bayesian classifiers</strong>, including:</p><ol class="list-decimal pl-8 mt-2"><li class='mt-3'><strong>Naive Bayes Classifier</strong>: This is the simplest and most popular Bayesian classifier. It assumes that the features are independent of each other given the class label. This assumption allows for fast and efficient training and classification. Naive Bayes classifiers are commonly used in text classification and spam filtering.</li><li class='mt-3'><strong>Bayesian Belief Network Classifier</strong>: This is a more complex Bayesian classifier that models the dependencies between features using a directed acyclic graph. Bayesian belief network classifiers can handle more complex data structures than naive Bayes classifiers.</li><li class='mt-3'><strong>Tree-Augmented Naive Bayes Classifier</strong>: This is an extension of the naive Bayes classifier that adds a tree structure to model the dependencies between features. The tree structure is learned from the data during training.</li><li class='mt-3'><strong>Bayesian Network Classifier</strong>: This is a more general Bayesian classifier that models the dependencies between features using a directed acyclic graph. The Bayesian network classifier can handle cyclic dependencies between features.</li><li class='mt-3'><strong>Non-Naive Bayes</strong>: Instead of assuming that the features are independent of each other, we model the conditional probability of the class label given all the features directly, using a joint probability distribution over all the features.</li></ol><p class="leading-8 mt-7">Moreover, if you want to learn about these types of Bayesian classifiers you may follow this link (<em>to be posted</em>). Finally, we can move on to the implementation of a simple Bayes classifier. I will demonstrate the simple code in python.</p><pre style="display: flex; flex-direction: column; justify-content: center;" class="mt-7"><code style="overflow-x: auto;" class="language-python">from sklearn.naive_bayes import MultinomialNB
+from sklearn.feature_extraction.text import CountVectorizer
+
+# Define the training data
+train_data = [&#39This is a positive message&#39, 
+              &#39This is a negative message&#39, 
+              &#39This is a neutral message&#39]
+
+# Define the corresponding class labels
+train_labels = [&#39positive&#39, &#39negative&#39, &#39neutral&#39]
+
+# Initialize the CountVectorizer to convert text into a matrix of word frequencies
+count_vectorizer = CountVectorizer()
+
+# Use the CountVectorizer to transform the training data into a matrix of word frequencies
+train_matrix = count_vectorizer.fit_transform(train_data)
+
+# Initialize the MultinomialNB classifier
+naive_bayes = MultinomialNB()
+
+# Train the classifier on the training data and corresponding labels
+naive_bayes.fit(train_matrix, train_labels)
+
+# Define a test message to classify
+test_message = &#39This is a new message&#39
+
+# Use the CountVectorizer to transform the test message into a matrix of word frequencies
+test_matrix = count_vectorizer.transform([test_message])
+
+# Use the trained classifier to predict the class label for the test message
+predicted_label = naive_bayes.predict(test_matrix)[0]
+
+# Print the predicted class label
+print(predicted_label)</code></pre><p class="leading-8 mt-7">However, if you want to catch my other articles, I recommend reading about logistic regression or optimization techniques in machine learning.</p><p class="leading-8 mt-7">or</p><h2 class="font-bold font-sans break-normal text-gray-900 text-l md:text-xl pt-8">And make sure to follow me to catch my new articles.</h2><p class="leading-8 mt-3"><em>More content at </em><em><a style="text-decoration: underline;" rel="" title="" href="https://plainenglish.io/" target="_blank"><strong>PlainEnglish.io</strong></a></em><em>.</em></p><p class="leading-8 mt-7"><em>Sign up for our </em><em><a style="text-decoration: underline;" rel="" title="" href="http://newsletter.plainenglish.io/" target="_blank"><strong>free weekly newsletter</strong></a></em><em>. Follow us on </em><strong><a style="text-decoration: underline;" rel="" title="" href="https://twitter.com/inPlainEngHQ" target="_blank"><em>Twitter</em></a></strong>, <em><strong><em><a style="text-decoration: underline;" rel="" title="" href="https://www.linkedin.com/company/inplainenglish/" target="_blank">LinkedIn</a></em></strong></em><em>, </em><em><strong><em><a style="text-decoration: underline;" rel="" title="" href="https://www.youtube.com/channel/UCtipWUghju290NWcn8jhyAw" target="_blank">YouTube</a></em></strong></em><em>, and </em><em><strong><em><a style="text-decoration: underline;" rel="" title="" href="https://discord.gg/GtDtUAvyhW" target="_blank">Discord</a></em></strong></em><em><strong>.</strong></em></p>
         <div class="flex flex-wrap gap-2 mt-5">
-            <a title="Articles" target="_blank" href="https://medium.com/tag/articles"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#articles</span></a><a title="Cre Preparation Notes" target="_blank" href="https://medium.com/tag/cre-preparation-notes"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#cre-preparation-notes</span></a>
+            <a title="Bayesian Statistics" target="_blank" href="https://medium.com/tag/bayesian-statistics"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#bayesian-statistics</span></a><a title="Statistics" target="_blank" href="https://medium.com/tag/statistics"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#statistics</span></a><a title="Machine Learning" target="_blank" href="https://medium.com/tag/machine-learning"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#machine-learning</span></a><a title="Python" target="_blank" href="https://medium.com/tag/python"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#python</span></a><a title="Learning" target="_blank" href="https://medium.com/tag/learning"><span class="text-green-500 bg-green-100 px-2 py-1 rounded-full text-xs">#learning</span></a>
         </div>
         <div class="container w-full md:max-w-3xl mx-auto pt-12"></div>
     </div>

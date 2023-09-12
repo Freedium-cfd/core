@@ -1,4 +1,5 @@
 import math
+import tld
 import textwrap
 
 import jinja2
@@ -177,7 +178,10 @@ class MediumParser:
                 out_paragraphs.append(subheader_template_rendered)
             elif paragraph["type"] == "IMG":
                 image_template = jinja_env.from_string(
-                        '<div class="mt-7"><img alt="{{ paragraph.metadata.alt }}" style="margin: auto;" class="pt-5" loading="lazy" loading="eager" role="presentation" src="https://miro.medium.com/v2/resize:fit:700/{{ paragraph.metadata.id }}"></div>'
+                    '<div class="mt-7"><img alt="{{ paragraph.metadata.alt }}" style="margin: auto;" class="pt-5" loading="lazy" loading="eager" role="presentation" src="https://miro.medium.com/v2/resize:fit:700/{{ paragraph.metadata.id }}"></div>'
+                )
+                image_caption_template = jinja_env.from_string(
+                    "<figcaption class='mt-3 text-sm text-center text-gray-500'>{{ paragraph.text }}</figcaption>"
                 )
                 if paragraph["layout"] == "OUTSET_ROW":
                     image_templates_row = []
@@ -202,6 +206,8 @@ class MediumParser:
                 else:
                     image_template_rendered = await image_template.render_async(paragraph=paragraph)
                     out_paragraphs.append(image_template_rendered)
+                    if paragraph["text"]:
+                        out_paragraphs.append(await image_caption_template.render_async(paragraph=paragraph))
             elif paragraph["type"] == "P":
                 css_class = ["leading-8"]
                 paragraph_template = jinja_env.from_string('<p class="{{ css_class }}">{{ text }}</p>')
@@ -274,21 +280,33 @@ class MediumParser:
                 out_paragraphs.append(pq_template_rendered)
             elif paragraph["type"] == 'MIXTAPE_EMBED':
                 embed_template = jinja_env.from_string("""
-<div class="border border-gray-300 mt-7">
-<a rel="noopener follow" target="_blank" href="{{ paragraph.mixtapeMetadata.href }}">
-    <div class="flex h-36">{{ text }}<div class="w-44 bg-cover bg-center no-lightense" style='background-image: url("https://miro.medium.com/v2/resize:fit:160/{{ paragraph.mixtapeMetadata.thumbnailImageId }}");'>
-</div>
-    </div>
-</a>
-</div>
+<div class="flex border border-gray-300 p-2 mt-7 justify-center items-center overflow-hidden"><a rel="noopener follow" href="{{ url }}" target="_blank"> <div class="flex flex-row justify-between p-2 overflow-hidden"><div class="flex flex-col justify-center"><h2 class="text-black text-base font-bold">{{ embed_title }}</h2><div class="mt-2 block"><h3 class="text-grey-darker text-sm">{{ embed_description }}</h3></div><div class="mt-5" style=""><p class="text-grey-darker text-xs">{{ embed_site }}</p></div></div><div class="relative flex flew-row h-40 w-72"><div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://miro.medium.com/v2/resize:fit:320/{{ paragraph.mixtapeMetadata.thumbnailImageId }}')"></div></div></div> </a></div>
 """)
-                embed_template_rendered = await embed_template.render_async(paragraph=paragraph, text=text_formater.get_text())
-                # out_paragraphs.append(embed_template_rendered)
+                url = paragraph["mixtapeMetadata"]["href"]
+                text_raw = paragraph["text"]
+
+                if len(paragraph["markups"]) != 3:
+                    logger.warning("Ignore MIXTAPE_EMBED paragraph type, since we can't split text")
+                    continue
+
+                title_range = paragraph["markups"][1]
+                description_range = paragraph["markups"][2]
+
+                embed_title = text_raw[title_range["start"]:title_range["end"]]
+                embed_description = text_raw[description_range["start"]:description_range["end"]]
+                embed_site = tld.get_fld(url)
+
+                logger.error(embed_title)
+                logger.error(embed_description)
+                logger.error(embed_site)
+
+                embed_template_rendered = await embed_template.render_async(paragraph=paragraph, url=url, embed_title=embed_title, embed_description=embed_description, embed_site=embed_site)
+                out_paragraphs.append(embed_template_rendered)
                 logger.warning("Ignore MIXTAPE_EMBED paragraph type")
             elif paragraph["type"] == "IFRAME":
                 iframe_template = jinja_env.from_string('<div><iframe src="http://localhost:7080/render_iframe/{{ frame_id }}" allowfullscreen="" frameborder="0" scrolling="no"></iframe></div>')
                 iframe_template_rendered = await iframe_template.render_async(frame_id=paragraph["iframe"]["mediaResource"]["id"])
-                # out_paragraphs.append(iframe_template_rendered)
+                out_paragraphs.append(iframe_template_rendered)
 
             else:
                 logger.error(f"Unknown {paragraph['type']}: {paragraph}")
