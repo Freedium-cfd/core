@@ -102,7 +102,7 @@ class MediumParser:
             paragraph = paragraphs[current_pos]
             logger.trace(f"Current paragraph #{current_pos} data: {paragraph}")
 
-            # if paragraph["id"] != "6a2488b6163c_33":
+            # if paragraph["id"] != "81ffb8033397_32":
             #     current_pos += 1
             #     continue
 
