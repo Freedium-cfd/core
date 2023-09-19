@@ -297,9 +297,9 @@ class MediumParser:
                 embed_description = text_raw[description_range["start"]:description_range["end"]]
                 embed_site = tld.get_fld(url)
 
-                logger.error(embed_title)
-                logger.error(embed_description)
-                logger.error(embed_site)
+                # logger.error(embed_title)
+                # logger.error(embed_description)
+                # logger.error(embed_site)
 
                 embed_template_rendered = await embed_template.render_async(paragraph=paragraph, url=url, embed_title=embed_title, embed_description=embed_description, embed_site=embed_site)
                 out_paragraphs.append(embed_template_rendered)
