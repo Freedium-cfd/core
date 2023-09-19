@@ -17,14 +17,12 @@ except ImportError:
 import tld
 from bs4 import BeautifulSoup
 
-from . import TIMEOUT
-
 VALID_ID_CHARS = set(string.ascii_letters + string.digits)
 
 KNOWN_MEDIUM_NETLOC = ("javascript.plainenglish.io", "python.plainenglish.io", "levelup.gitconnected.com")
-KNOWN_MEDIUM_DOMAINS = ("medium.com", "towardsdatascience.com", "eand.co", "betterprogramming.pub", "curiouse.co", "betterhumans.pub")
+KNOWN_MEDIUM_DOMAINS = ("medium.com", "towardsdatascience.com", "eand.co", "betterprogramming.pub", "curiouse.co", "betterhumans.pub", "uxdesign.cc")
 
-NOT_MEDIUM_DOMAINS = ("github.com", "yandex.ru", "google.com", "yandex.kz")
+NOT_MEDIUM_DOMAINS = ("github.com", "yandex.ru", "google.com", "yandex.kz", "youtube.com")
 
 
 def is_valid_url(url):
@@ -99,11 +97,11 @@ def is_valid_medium_post_id_hexadecimal(hex_string: str) -> bool:
         return True
 
 
-async def resolve_medium_short_link_v1(short_url_id: str) -> str:
+async def resolve_medium_short_link_v1(short_url_id: str, timeout: int = 5) -> str:
     async with aiohttp.ClientSession() as client:
         request = await client.get(
             f"https://rsci.app.link/{short_url_id}",
-            timeout=TIMEOUT,
+            timeout=timeout,
             headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"},
             allow_redirects=False,
         )
@@ -111,13 +109,13 @@ async def resolve_medium_short_link_v1(short_url_id: str) -> str:
     return await get_medium_post_id_by_url(post_url)
 
 
-async def get_medium_post_id_by_url(url: str) -> str:
+async def get_medium_post_id_by_url(url: str, timeout: int = 5) -> str:
     parsed_url = urlparse(url)
     if parsed_url.path.startswith("/p/"):
         post_id = parsed_url.path.rsplit("/p/")[1]
     elif parsed_url.netloc == "link.medium.com":
         short_url_id = parsed_url.path.removeprefix("/")
-        return await resolve_medium_short_link_v1(short_url_id)
+        return await resolve_medium_short_link_v1(short_url_id, timeout)
     else:
         post_url = parsed_url.path.split("/")[-1]
         post_id = post_url.split("-")[-1]
@@ -128,9 +126,9 @@ async def get_medium_post_id_by_url(url: str) -> str:
     return post_id
 
 
-async def get_medium_post_id_by_url_old(url: str) -> str:
+async def get_medium_post_id_by_url_old(url: str, timeout: int = 5) -> str:
     async with aiohttp.ClientSession() as client:
-        request = await client.get(url, timeout=TIMEOUT)
+        request = await client.get(url, timeout=timeout)
         response = await request.text()
     soup = BeautifulSoup(response, "html.parser")
     type_meta_tag = soup.head.find("meta", property="og:type")
@@ -164,7 +162,7 @@ def get_fld(url: str):
         return fld
 
 
-async def is_valid_medium_url(url: str) -> bool:
+async def is_valid_medium_url(url: str, timeout: int = 5) -> bool:
     """
     Check if the url is a valid medium.com url
 
@@ -185,7 +183,7 @@ async def is_valid_medium_url(url: str) -> bool:
 
     # Second stage
     async with aiohttp.ClientSession() as client:
-        request = await client.get(url, timeout=TIMEOUT)
+        request = await client.get(url, timeout=timeout)
         response = await request.text()
 
     soup = BeautifulSoup(response, "html.parser")

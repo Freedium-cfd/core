@@ -38,5 +38,3 @@ from . import exceptions as medium_parser_exceptions
 
 post_id_correlation: ContextVar[Optional[str]] = ContextVar("post_id_correlation", default="UNKNOWN_ID")
 jinja_env = jinja2.Environment(enable_async=True)
-
-TIMEOUT = 5

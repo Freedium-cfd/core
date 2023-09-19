@@ -28,23 +28,24 @@ from .utils import (
 
 
 class MediumParser:
-    __slots__ = ('__post_id', 'post_data', 'jinja')
+    __slots__ = ('__post_id', 'post_data', 'jinja', 'timeout')
 
-    def __init__(self, post_id: str):
+    def __init__(self, post_id: str, timeout: int):
+        self.timeout = timeout
         self.post_id = post_id
         self.post_data = None
 
     @classmethod
-    async def from_url(cls, url: str) -> 'MediumParser':
+    async def from_url(cls, url: str, timeout: int) -> 'MediumParser':
         sanitized_url = sanitize_url(url)
-        if is_valid_url(url) and not await is_valid_medium_url(sanitized_url):
+        if is_valid_url(url) and not await is_valid_medium_url(sanitized_url, timeout):
             raise InvalidURL(f'Invalid medium URL: {sanitized_url}')
 
-        post_id = await get_medium_post_id_by_url(sanitized_url)
+        post_id = await get_medium_post_id_by_url(sanitized_url, timeout)
         if not post_id:
             raise InvalidMediumPostURL(f'Could not find medium post ID for URL: {sanitized_url}')
 
-        return cls(post_id)
+        return cls(post_id, timeout)
 
     @property
     def post_id(self):
@@ -61,9 +62,9 @@ class MediumParser:
     def post_id(self):
         return self.__post_id
 
-    async def query(self, use_cache: bool = True, timeout: int = 3):
+    async def query(self, use_cache: bool = True):
         try:
-            post_data = await query_post_by_id(self.post_id, use_cache, timeout)
+            post_data = await query_post_by_id(self.post_id, use_cache, self.timeout)
         except Exception as ex:
             logger.exception(ex)
             post_data = None
