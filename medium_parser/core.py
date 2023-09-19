@@ -280,7 +280,7 @@ class MediumParser:
                 out_paragraphs.append(pq_template_rendered)
             elif paragraph["type"] == 'MIXTAPE_EMBED':
                 embed_template = jinja_env.from_string("""
-<div class="flex border border-gray-300 p-2 mt-7 justify-center items-center overflow-hidden"><a rel="noopener follow" href="{{ url }}" target="_blank"> <div class="flex flex-row justify-between p-2 overflow-hidden"><div class="flex flex-col justify-center"><h2 class="text-black text-base font-bold">{{ embed_title }}</h2><div class="mt-2 block"><h3 class="text-grey-darker text-sm">{{ embed_description }}</h3></div><div class="mt-5" style=""><p class="text-grey-darker text-xs">{{ embed_site }}</p></div></div><div class="relative flex flew-row h-40 w-72"><div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://miro.medium.com/v2/resize:fit:320/{{ paragraph.mixtapeMetadata.thumbnailImageId }}')"></div></div></div> </a></div>
+<div class="flex border border-gray-300 p-2 mt-7 justify-center items-center overflow-hidden"><a rel="noopener follow" href="{{ url }}" target="_blank"> <div class="flex flex-row justify-between p-2 overflow-hidden"><div class="flex flex-col justify-center p-2"><h2 class="text-black text-base font-bold">{{ embed_title }}</h2><div class="mt-2 block"><h3 class="text-grey-darker text-sm">{{ embed_description }}</h3></div><div class="mt-5" style=""><p class="text-grey-darker text-xs">{{ embed_site }}</p></div></div><div class="relative flex flew-row h-40 w-72"><div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://miro.medium.com/v2/resize:fit:320/{{ paragraph.mixtapeMetadata.thumbnailImageId }}')"></div></div></div> </a></div>
 """)
                 url = paragraph["mixtapeMetadata"]["href"]
                 text_raw = paragraph["text"]
@@ -304,7 +304,7 @@ class MediumParser:
                 out_paragraphs.append(embed_template_rendered)
                 logger.warning("Ignore MIXTAPE_EMBED paragraph type")
             elif paragraph["type"] == "IFRAME":
-                iframe_template = jinja_env.from_string('<div><iframe src="http://localhost:7080/render_iframe/{{ frame_id }}" allowfullscreen="" frameborder="0" scrolling="no"></iframe></div>')
+                iframe_template = jinja_env.from_string('<div><iframe src="https://freedium.cfd/render_iframe/{{ frame_id }}" allowfullscreen="" frameborder="0" scrolling="no"></iframe></div>')
                 iframe_template_rendered = await iframe_template.render_async(frame_id=paragraph["iframe"]["mediaResource"]["id"])
                 out_paragraphs.append(iframe_template_rendered)
 

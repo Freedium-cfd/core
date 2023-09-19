@@ -3,15 +3,19 @@ import secrets
 import difflib
 import urllib.parse
 from datetime import datetime
+from loguru import logger
 from functools import lru_cache
 from urllib.parse import urlparse
 
 import aiohttp
 import string
-import minify_html as mh
+try:
+    import minify_html as mh
+except ImportError:
+    logger.warning("No minify :/ Ignoring....")
+    mh = None
 import tld
 from bs4 import BeautifulSoup
-from loguru import logger
 
 from . import TIMEOUT
 
@@ -142,7 +146,11 @@ async def get_medium_post_id_by_url_old(url: str) -> str:
 
 
 def minify_html(html: str) -> str:
-    return mh.minify(html, remove_processing_instructions=True)
+    if mh:
+        return mh.minify(html, remove_processing_instructions=True)
+    else:
+        logger.warning("No minify toolkits...")
+        return html
 
 
 @lru_cache(maxsize=200)
