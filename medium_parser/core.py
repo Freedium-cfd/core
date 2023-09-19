@@ -287,6 +287,7 @@ class MediumParser:
 
                 if len(paragraph["markups"]) != 3:
                     logger.warning("Ignore MIXTAPE_EMBED paragraph type, since we can't split text")
+                    current_pos += 1
                     continue
 
                 title_range = paragraph["markups"][1]
