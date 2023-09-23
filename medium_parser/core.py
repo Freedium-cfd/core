@@ -148,20 +148,20 @@ class MediumParser:
             else:
                 text_formater = parse_paragraph_text(paragraph["text"], paragraph["markups"])
 
-            for highlight in highlights:
-                for highlight_paragraph in highlight["paragraphs"]:
-                    if highlight_paragraph["name"] == paragraph["name"]:
-                        logger.trace("Apply highlight to this paragraph")
-                        if highlight_paragraph["text"] != text_formater.get_text():
-                            logger.warning("Highlighted text and paragraph text are not the same! Skip...")
+                for highlight in highlights:
+                    for highlight_paragraph in highlight["paragraphs"]:
+                        if highlight_paragraph["name"] == paragraph["name"]:
+                            logger.trace("Apply highlight to this paragraph")
+                            if highlight_paragraph["text"] != text_formater.get_text():
+                                logger.warning("Highlighted text and paragraph text are not the same! Skip...")
+                                break
+                            quote_markup_template = '<mark style="background-color: rgb(200 227 200);">{{ text }}</mark>'
+                            text_formater.set_template(
+                                highlight["startOffset"],
+                                highlight["endOffset"],
+                                quote_markup_template,
+                            )
                             break
-                        quote_markup_template = '<mark style="background-color: rgb(200 227 200);">{{ text }}</mark>'
-                        text_formater.set_template(
-                            highlight["startOffset"],
-                            highlight["endOffset"],
-                            quote_markup_template,
-                        )
-                        break
 
             if paragraph["type"] == "H3":
                 css_class = []
