@@ -13,7 +13,7 @@ async def query_post_by_id(post_id: str, from_cache: bool = True, timeout: int =
     headers = {
         "X-APOLLO-OPERATION-ID": generate_random_sha256_hash(),
         "X-APOLLO-OPERATION-NAME": "FullPostQuery",
-        "Accept": "multipart/mixed; deferSpec=20220824, application/json, application/json",  # <----- See deferSpec !!!
+        "Accept": "multipart/mixed; deferSpec=20220824, application/json, application/json",
         "Accept-Language": "en-US",
         "X-Obvious-CID": "android",
         "X-Xsrf-Token": "1",

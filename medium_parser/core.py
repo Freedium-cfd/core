@@ -16,6 +16,7 @@ from .exceptions import (
 from .medium_api import query_post_by_id
 from .models.html_result import HtmlResult
 from .time import convert_datetime_to_human_readable
+from aiohttp_client_cache import SQLiteBackend
 from .toolkits.rl_string_helper.rl_string_helper import RLStringHelper, parse_markups, split_overlapping_ranges
 from .utils import (
     get_medium_post_id_by_url,
@@ -62,6 +63,15 @@ class MediumParser:
     def post_id(self):
         return self.__post_id
 
+    async def delete_from_cache(self, post_id: str = None):
+        if not post_id:
+            post_id = self.post_id
+
+        cache = SQLiteBackend('medium_cache.sqlite')
+        await cache.responses.delete(post_id)
+
+        return True
+
     async def query(self, use_cache: bool = True):
         try:
             post_data = await query_post_by_id(self.post_id, use_cache, self.timeout)
@@ -70,6 +80,7 @@ class MediumParser:
             post_data = None
 
         if not post_data or not isinstance(post_data, dict) or post_data.get("error") or not post_data.get("data") or not post_data.get("data").get("post"):
+            # await self.delete_from_cache()
             raise MediumPostQueryError(f'Could not query post by ID from API: {self.post_id}')
 
         self.post_data = post_data
