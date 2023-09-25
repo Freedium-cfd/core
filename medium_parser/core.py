@@ -29,15 +29,16 @@ from .utils import (
 
 
 class MediumParser:
-    __slots__ = ('__post_id', 'post_data', 'jinja', 'timeout')
+    __slots__ = ('__post_id', 'post_data', 'jinja', 'timeout', 'host_address')
 
-    def __init__(self, post_id: str, timeout: int):
+    def __init__(self, post_id: str, timeout: int, host_address: str):
         self.timeout = timeout
+        self.host_address = host_address
         self.post_id = post_id
         self.post_data = None
 
     @classmethod
-    async def from_url(cls, url: str, timeout: int) -> 'MediumParser':
+    async def from_url(cls, url: str, timeout: int, host_address: str) -> 'MediumParser':
         sanitized_url = sanitize_url(url)
         if is_valid_url(url) and not await is_valid_medium_url(sanitized_url, timeout):
             raise InvalidURL(f'Invalid medium URL: {sanitized_url}')
@@ -46,7 +47,7 @@ class MediumParser:
         if not post_id:
             raise InvalidMediumPostURL(f'Could not find medium post ID for URL: {sanitized_url}')
 
-        return cls(post_id, timeout)
+        return cls(post_id, timeout, host_address)
 
     @property
     def post_id(self):
@@ -86,9 +87,9 @@ class MediumParser:
         self.post_data = post_data
         return self.post_data
 
-    @staticmethod
-    async def _parse_and_render_content_html_post(content: dict, title: str, subtitle: str, preview_image_id: str, highlights: list) -> tuple[list, str, str]:
+    async def _parse_and_render_content_html_post(self, content: dict, title: str, subtitle: str, preview_image_id: str, highlights: list, tags: list) -> tuple[list, str, str]:
         paragraphs = content["bodyModel"]["paragraphs"]
+        tags_list = [tag["displayTitle"] for tag in tags]
         out_paragraphs = []
         current_pos = 0
 
@@ -119,7 +120,7 @@ class MediumParser:
             #     continue
 
             if current_pos in range(4):
-                if paragraph["type"] in ["H3", "H4"]:
+                if paragraph["type"] in ["H3", "H4", "H2"]:
                     """
                     if title.endswith("…"):
                         logger.trace("Replace title")
@@ -131,22 +132,20 @@ class MediumParser:
                         logger.trace("Title was detected, ignore...")
                         current_pos += 1
                         continue
-                elif paragraph["type"] in ["H4", "P"] and subtitle:
-                    is_paragraph_subtitle = getting_percontage_of_match(paragraph["text"], title) > 70
-                    if is_paragraph_subtitle:  #  and subtitle.endswith("…")
-                        if len(paragraph["text"]) > 100:
-                            logger.warning("Subtitle is too long")
-                            subtitle = None
-                        else:
-                            logger.trace("Replace subtitle")
-                            subtitle = paragraph["text"]
-                            current_pos += 1
-                            continue
-                    elif getting_percontage_of_match(paragraph["text"], subtitle) > 75:
+                if paragraph["type"] in ["H4"]:
+                    if paragraph["text"] in tags_list:
+                        logger.trace("Tag was detected, ignore...")
+                        current_pos += 1
+                        continue
+                if paragraph["type"] in ["H4", "P"]:
+                    is_paragraph_subtitle = getting_percontage_of_match(paragraph["text"], subtitle) > 80
+                    if is_paragraph_subtitle and not subtitle.endswith("…"):
                         logger.trace("Subtitle was detected, ignore...")
                         subtitle = paragraph["text"]
                         current_pos += 1
                         continue
+                    elif subtitle.endswith("…") and len(paragraph["text"]) > 100:
+                        subtitle = None
                 elif paragraph["type"] == "IMG":
                     if paragraph["metadata"]["id"] == preview_image_id:
                         logger.trace("Preview image was detected, ignore...")
@@ -174,23 +173,30 @@ class MediumParser:
                             )
                             break
 
-            if paragraph["type"] == "H3":
+            if paragraph["type"] == "H2":
                 css_class = []
                 if out_paragraphs:
                     css_class.append("pt-12")
-                header_template = jinja_env.from_string('<h1 class="font-bold font-sans break-normal text-gray-900 text-1xl md:text-2xl {{ css_class }}">{{ text }}</h1>')
+                header_template = jinja_env.from_string('<h2 class="font-bold font-sans break-normal text-gray-900 text-1xl md:text-2xl {{ css_class }}">{{ text }}</h2>')
+                header_template_rendered = await header_template.render_async(text=text_formater.get_text(), css_class="".join(css_class))
+                out_paragraphs.append(header_template_rendered)
+            elif paragraph["type"] == "H3":
+                css_class = []
+                if out_paragraphs:
+                    css_class.append("pt-12")
+                header_template = jinja_env.from_string('<h3 class="font-bold font-sans break-normal text-gray-900 text-1xl md:text-2xl {{ css_class }}">{{ text }}</h3>')
                 header_template_rendered = await header_template.render_async(text=text_formater.get_text(), css_class="".join(css_class))
                 out_paragraphs.append(header_template_rendered)
             elif paragraph["type"] == "H4":
                 css_class = []
                 if out_paragraphs:
                     css_class.append("pt-8")
-                subheader_template = jinja_env.from_string('<h2 class="font-bold font-sans break-normal text-gray-900 text-l md:text-xl {{ css_class }}">{{ text }}</h2>')
-                subheader_template_rendered = await subheader_template.render_async(text=text_formater.get_text(), css_class="".join(css_class))
-                out_paragraphs.append(subheader_template_rendered)
+                header_template = jinja_env.from_string('<h4 class="font-bold font-sans break-normal text-gray-900 text-l md:text-xl {{ css_class }}">{{ text }}</h4>')
+                header_template_rendered = await header_template.render_async(text=text_formater.get_text(), css_class="".join(css_class))
+                out_paragraphs.append(header_template_rendered)
             elif paragraph["type"] == "IMG":
                 image_template = jinja_env.from_string(
-                    '<div class="mt-7"><img alt="{{ paragraph.metadata.alt }}" style="margin: auto;" class="pt-5" loading="lazy" loading="eager" role="presentation" src="https://miro.medium.com/v2/resize:fit:700/{{ paragraph.metadata.id }}"></div>'
+                    '<div class="mt-7"><img alt="{{ paragraph.metadata.alt }}" style="margin: auto;" class="pt-5 lazy" role="presentation" data-src="https://miro.medium.com/v2/resize:fit:700/{{ paragraph.metadata.id }}"></div>'
                 )
                 image_caption_template = jinja_env.from_string(
                     "<figcaption class='mt-3 text-sm text-center text-gray-500'>{{ paragraph.text }}</figcaption>"
@@ -292,7 +298,7 @@ class MediumParser:
                 out_paragraphs.append(pq_template_rendered)
             elif paragraph["type"] == 'MIXTAPE_EMBED':
                 embed_template = jinja_env.from_string("""
-<div class="flex border border-gray-300 p-2 mt-7 justify-center items-center overflow-hidden"><a rel="noopener follow" href="{{ url }}" target="_blank"> <div class="flex flex-row justify-between p-2 overflow-hidden"><div class="flex flex-col justify-center p-2"><h2 class="text-black text-base font-bold">{{ embed_title }}</h2><div class="mt-2 block"><h3 class="text-grey-darker text-sm">{{ embed_description }}</h3></div><div class="mt-5" style=""><p class="text-grey-darker text-xs">{{ embed_site }}</p></div></div><div class="relative flex flew-row h-40 w-72"><div class="absolute inset-0 bg-cover bg-center" style="background-image: url('https://miro.medium.com/v2/resize:fit:320/{{ paragraph.mixtapeMetadata.thumbnailImageId }}')"></div></div></div> </a></div>
+<div class="flex border border-gray-300 p-2 mt-7 justify-center items-center overflow-hidden"><a rel="noopener follow" href="{{ url }}" target="_blank"> <div class="flex flex-row justify-between p-2 overflow-hidden"><div class="flex flex-col justify-center p-2"><h2 class="text-black text-base font-bold">{{ embed_title }}</h2><div class="mt-2 block"><h3 class="text-grey-darker text-sm">{{ embed_description }}</h3></div><div class="mt-5" style=""><p class="text-grey-darker text-xs">{{ embed_site }}</p></div></div><div class="relative flex flew-row h-40 w-72"><div class="lazy absolute inset-0 bg-cover bg-center" data-bg="https://miro.medium.com/v2/resize:fit:320/{{ paragraph.mixtapeMetadata.thumbnailImageId }}"></div></div></div> </a></div>
 """)
                 url = paragraph["mixtapeMetadata"]["href"]
                 text_raw = paragraph["text"]
@@ -309,16 +315,11 @@ class MediumParser:
                 embed_description = text_raw[description_range["start"]:description_range["end"]]
                 embed_site = tld.get_fld(url)
 
-                # logger.error(embed_title)
-                # logger.error(embed_description)
-                # logger.error(embed_site)
-
                 embed_template_rendered = await embed_template.render_async(paragraph=paragraph, url=url, embed_title=embed_title, embed_description=embed_description, embed_site=embed_site)
                 out_paragraphs.append(embed_template_rendered)
-                logger.warning("Ignore MIXTAPE_EMBED paragraph type")
             elif paragraph["type"] == "IFRAME":
-                iframe_template = jinja_env.from_string('<div><iframe src="https://freedium.cfd/render_iframe/{{ frame_id }}" allowfullscreen="" frameborder="0" scrolling="no"></iframe></div>')
-                iframe_template_rendered = await iframe_template.render_async(frame_id=paragraph["iframe"]["mediaResource"]["id"])
+                iframe_template = jinja_env.from_string('<div class="mt-7"><iframe class="lazy" data-src="{{ host_address }}/render_iframe/{{ iframe_id }}" allowfullscreen="" frameborder="0" scrolling="no"></iframe></div>')
+                iframe_template_rendered = await iframe_template.render_async(host_address=self.host_address, iframe_id=paragraph["iframe"]["mediaResource"]["id"])
                 out_paragraphs.append(iframe_template_rendered)
 
             else:
@@ -372,6 +373,7 @@ class MediumParser:
             subtitle,
             preview_image_id,
             self.post_data["data"]["post"]["highlights"],
+            tags
         )
 
         post_page_title_raw = "{{ title }} | by {{ creator.name }}"
