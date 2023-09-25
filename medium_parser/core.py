@@ -144,7 +144,7 @@ class MediumParser:
                         subtitle = paragraph["text"]
                         current_pos += 1
                         continue
-                    elif subtitle.endswith("…") and len(paragraph["text"]) > 100:
+                    elif subtitle and subtitle.endswith("…") and len(paragraph["text"]) > 100:
                         subtitle = None
                 elif paragraph["type"] == "IMG":
                     if paragraph["metadata"]["id"] == preview_image_id:

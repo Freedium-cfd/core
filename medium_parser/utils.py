@@ -35,6 +35,8 @@ def is_valid_url(url):
 
 
 def getting_percontage_of_match(string: str, matched_string: str) -> int:
+    if string is None or matched_string is None:
+        return 0
     return difflib.SequenceMatcher(None, string, matched_string).ratio() * 100
 
 
