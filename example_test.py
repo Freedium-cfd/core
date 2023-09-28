@@ -16,7 +16,7 @@ async def main():
     logger.add(sys.stderr, level="TRACE")
 
     # dl = await MediumParser.from_url("")
-    dl = MediumParser("3c882ea8537d", 8, "localhost")
+    dl = MediumParser("d8f9aa42f6a0", 8, "localhost")
     query_result = await dl.query()
 
     with open("query_result.json", "w") as f:

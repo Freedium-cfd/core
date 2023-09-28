@@ -115,7 +115,7 @@ class MediumParser:
             paragraph = paragraphs[current_pos]
             logger.trace(f"Current paragraph #{current_pos} data: {paragraph}")
 
-            # if paragraph["id"] != "81ffb8033397_32":
+            # if paragraph["id"] != "4e05d2d0ffcb_3":
             #     current_pos += 1
             #     continue
 
@@ -291,10 +291,12 @@ class MediumParser:
             elif paragraph["type"] == "BQ":
                 bq_template = jinja_env.from_string('<blockquote style="box-shadow: inset 3px 0 0 0 #242424;" class="px-5 pt-3 pb-3 mt-5"><p style="font-style: italic;">{{ text }}</p></blockquote>')
                 bq_template_rendered = await bq_template.render_async(text=text_formater.get_text())
+                logger.trace(bq_template_rendered)
                 out_paragraphs.append(bq_template_rendered)
             elif paragraph["type"] == "PQ":
                 pq_template = jinja_env.from_string('<blockquote class="mt-7 text-2xl ml-5" style="color: #6B6B6B;"><p>{{ text }}</p></blockquote>')
                 pq_template_rendered = await pq_template.render_async(text=text_formater.get_text())
+                logger.trace(pq_template_rendered)
                 out_paragraphs.append(pq_template_rendered)
             elif paragraph["type"] == 'MIXTAPE_EMBED':
                 embed_template = jinja_env.from_string("""
