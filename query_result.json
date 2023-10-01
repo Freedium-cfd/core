@@ -20,7 +20,7 @@
         },
         "socialStats": {
           "followingCount": 249,
-          "followerCount": 7890
+          "followerCount": 7897
         },
         "newsletterV3": {
           "__typename": "NewsletterV3",
@@ -47,7 +47,7 @@
           "focusPercentY": null,
           "alt": null
         },
-        "subscriberCount": 34185,
+        "subscriberCount": 34187,
         "viewerEdge": {
           "isFollowing": false,
           "isEditor": false,
@@ -179,7 +179,7 @@
       "highlights": [
         {
           "__typename": "Quote",
-          "id": "anon_d4696284b333",
+          "id": "anon_554162debf2",
           "postId": "d8f9aa42f6a0",
           "userId": "anon",
           "startOffset": 0,
@@ -187,7 +187,7 @@
           "paragraphs": [
             {
               "__typename": "Paragraph",
-              "id": "anon_d4696284b333_quote_0",
+              "id": "anon_554162debf2_quote_0",
               "name": "e2e9",
               "href": null,
               "text": "Some components (eg AppComponent) and most of the services (with exception of services from lazy loaded modules and services provided in @Component decorator) in our Angular application will be instantiated only once during the application startup.",
@@ -252,39 +252,39 @@
           "id": "javascript",
           "normalizedTagSlug": "javascript",
           "displayTitle": "JavaScript",
-          "followerCount": 982579,
-          "postCount": 239289
+          "followerCount": 993069,
+          "postCount": 239529
         },
         {
           "__typename": "Tag",
           "id": "angular",
           "normalizedTagSlug": "angular",
           "displayTitle": "Angular",
-          "followerCount": 130485,
-          "postCount": 28627
+          "followerCount": 132226,
+          "postCount": 28671
         },
         {
           "__typename": "Tag",
           "id": "typescript",
           "normalizedTagSlug": "typescript",
           "displayTitle": "Typescript",
-          "followerCount": 171690,
-          "postCount": 26362
+          "followerCount": 173287,
+          "postCount": 26395
         },
         {
           "__typename": "Tag",
           "id": "angular2",
           "normalizedTagSlug": "angular2",
           "displayTitle": "Angular2",
-          "followerCount": 4121,
-          "postCount": 3441
+          "followerCount": 4123,
+          "postCount": 3440
         },
         {
           "__typename": "Tag",
           "id": "rxjs",
           "normalizedTagSlug": "rxjs",
           "displayTitle": "Rxjs",
-          "followerCount": 1798,
+          "followerCount": 1801,
           "postCount": 2547
         }
       ],
