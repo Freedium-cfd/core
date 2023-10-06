@@ -1,4 +1,5 @@
 import math
+import urllib.parse
 import tld
 import textwrap
 
@@ -315,7 +316,12 @@ class MediumParser:
 
                 embed_title = text_raw[title_range["start"]:title_range["end"]]
                 embed_description = text_raw[description_range["start"]:description_range["end"]]
-                embed_site = tld.get_fld(url)
+                try:
+                    embed_site = tld.get_fld(url)
+                except Exception as ex:
+                    logger.warning(f"Can't get embed site fld: {ex}. Using custom logic...")
+                    parsed_url = urllib.parse.urlparse(url)
+                    embed_site = parsed_url.hostname
 
                 embed_template_rendered = await embed_template.render_async(paragraph=paragraph, url=url, embed_title=embed_title, embed_description=embed_description, embed_site=embed_site)
                 out_paragraphs.append(embed_template_rendered)
