@@ -2,18 +2,22 @@ import hashlib
 import secrets
 import difflib
 import urllib.parse
+from aiohttp_retry import RetryClient
 from datetime import datetime
 from loguru import logger
 from functools import lru_cache
 from urllib.parse import urlparse
-
 import aiohttp
 import string
+
+from . import retry_options
+
 try:
     import minify_html as mh
 except ImportError:
-    logger.warning("No minify :/ Ignoring....")
+    logger.warning("No minify available. Ignoring....")
     mh = None
+
 import tld
 from bs4 import BeautifulSoup
 
@@ -100,8 +104,9 @@ def is_valid_medium_post_id_hexadecimal(hex_string: str) -> bool:
 
 
 async def resolve_medium_short_link_v1(short_url_id: str, timeout: int = 5) -> str:
-    async with aiohttp.ClientSession() as client:
-        request = await client.get(
+    async with aiohttp.ClientSession() as session:
+        retry_client = RetryClient(client_session=session, raise_for_status=False, retry_options=retry_options)
+        request = await retry_client.get(
             f"https://rsci.app.link/{short_url_id}",
             timeout=timeout,
             headers={"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36"},
@@ -129,8 +134,9 @@ async def get_medium_post_id_by_url(url: str, timeout: int = 5) -> str:
 
 
 async def get_medium_post_id_by_url_old(url: str, timeout: int = 5) -> str:
-    async with aiohttp.ClientSession() as client:
-        request = await client.get(url, timeout=timeout)
+    async with aiohttp.ClientSession() as session:
+        retry_client = RetryClient(client_session=session, raise_for_status=False, retry_options=retry_options)
+        request = await retry_client.get(url, timeout=timeout)
         response = await request.text()
     soup = BeautifulSoup(response, "html.parser")
     type_meta_tag = soup.head.find("meta", property="og:type")
@@ -184,8 +190,9 @@ async def is_valid_medium_url(url: str, timeout: int = 5) -> bool:
         logger.warning(f"url '{url}' wasn't detected in known medium domains")
 
     # Second stage
-    async with aiohttp.ClientSession() as client:
-        request = await client.get(url, timeout=timeout)
+    async with aiohttp.ClientSession() as session:
+        retry_client = RetryClient(client_session=session, raise_for_status=False, retry_options=retry_options)
+        request = await retry_client.get(url, timeout=timeout)
         response = await request.text()
 
     soup = BeautifulSoup(response, "html.parser")

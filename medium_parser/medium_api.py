@@ -1,7 +1,8 @@
 from aiohttp_client_cache import CachedSession
+from aiohttp_retry import RetryClient
 from loguru import logger
 
-from . import medium_session, post_id_correlation
+from . import medium_session, post_id_correlation, retry_options, MEDIUM_AUTH_COOKIES
 from .time import get_unix_ms
 from .utils import generate_random_sha256_hash
 
@@ -22,7 +23,7 @@ async def query_post_by_id(post_id: str, from_cache: bool = True, timeout: int =
         "Cache-Control": "public, max-age=-1",
         "Content-Type": "application/json",
         "Connection": "Keep-Alive",
-        "Cookie": "uid=b8d77b350800; sid=1:rgqF9g6pYuv8PJjvjRu5uBPGIYNUoElQ62HFOqewqvLL4sLoq3c+DQgBLPEocqbe",
+        "Cookie": MEDIUM_AUTH_COOKIES,
     }
 
     json_data = {
@@ -37,14 +38,16 @@ async def query_post_by_id(post_id: str, from_cache: bool = True, timeout: int =
     async with CachedSession(cache=medium_session) as session:
         if not from_cache:
             async with session.disabled():
-                request = await session.post(
+                retry_client = RetryClient(client_session=session, raise_for_status=False, retry_options=retry_options)
+                request = await retry_client.post(
                     "https://medium.com/_/graphql",
                     headers=headers,
                     json=json_data,
                     timeout=timeout,
                 )
         else:
-            request = await session.post(
+            retry_client = RetryClient(client_session=session, raise_for_status=False, retry_options=retry_options)
+            request = await retry_client.post(
                 "https://medium.com/_/graphql",
                 headers=headers,
                 json=json_data,
