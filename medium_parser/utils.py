@@ -6,11 +6,11 @@ from aiohttp_retry import RetryClient
 from datetime import datetime
 from loguru import logger
 from functools import lru_cache
-from urllib.parse import urlparse
+from urllib.parse import urlparse, parse_qs
 import aiohttp
 import string
 
-from . import retry_options
+from . import retry_options, exceptions
 
 try:
     import minify_html as mh
@@ -26,7 +26,7 @@ VALID_ID_CHARS = set(string.ascii_letters + string.digits)
 KNOWN_MEDIUM_NETLOC = ("javascript.plainenglish.io", "python.plainenglish.io", "levelup.gitconnected.com")
 KNOWN_MEDIUM_DOMAINS = ("medium.com", "towardsdatascience.com", "eand.co", "betterprogramming.pub", "curiouse.co", "betterhumans.pub", "uxdesign.cc")
 
-NOT_MEDIUM_DOMAINS = ("github.com", "yandex.ru", "google.com", "yandex.kz", "youtube.com", "nytimes.com", "wsj.com", "reddit.com", "elpais.com")
+NOT_MEDIUM_DOMAINS = ("github.com", "yandex.ru", "yandex.kz", "youtube.com", "nytimes.com", "wsj.com", "reddit.com", "elpais.com", "forbes.com")
 
 
 def is_valid_url(url):
@@ -120,6 +120,24 @@ async def get_medium_post_id_by_url(url: str, timeout: int = 5) -> str:
     parsed_url = urlparse(url)
     if parsed_url.path.startswith("/p/"):
         post_id = parsed_url.path.rsplit("/p/")[1]
+    elif parsed_url.netloc == "www.google.com" and parsed_url.path.startswith("/url"):
+        parsed_query = parse_qs(parsed_url.query)
+        if parsed_query.get("url") and len(parsed_query["url"]) == 1:
+            post_url = parsed_query["url"][0]
+            return await get_medium_post_id_by_url(post_url)
+        return False
+    elif parsed_url.netloc == "12ft.io":
+        parsed_query = parse_qs(parsed_url.query)
+        if parsed_query.get("q") and len(parsed_query["q"]) == 1:
+            post_url = parsed_query["q"][0]
+            return await get_medium_post_id_by_url(post_url)
+        return False
+    elif parsed_url.path.startswith("/m/global-identity-2"):
+        parsed_query = parse_qs(parsed_url.query)
+        if parsed_query.get("redirectUrl") and len(parsed_query["redirectUrl"]) == 1:
+            post_url = parsed_query["redirectUrl"][0]
+            return await get_medium_post_id_by_url(post_url)
+        return False
     elif parsed_url.netloc == "link.medium.com":
         short_url_id = parsed_url.path.removeprefix("/")
         return await resolve_medium_short_link_v1(short_url_id, timeout)
@@ -181,8 +199,11 @@ async def is_valid_medium_url(url: str, timeout: int = 5) -> bool:
     domain = get_fld(url)
     parsed_url = urlparse(url)
 
+    if domain in ["12ft.io", "google.com"]:
+        return True
+
     if domain in NOT_MEDIUM_DOMAINS:
-        return False
+        raise exceptions.NotValidMediumURL("100% not valid Medium URL")
 
     if domain in KNOWN_MEDIUM_DOMAINS or parsed_url.netloc in KNOWN_MEDIUM_NETLOC:
         return True
@@ -192,7 +213,12 @@ async def is_valid_medium_url(url: str, timeout: int = 5) -> bool:
     # Second stage
     async with aiohttp.ClientSession() as session:
         retry_client = RetryClient(client_session=session, raise_for_status=False, retry_options=retry_options)
-        request = await retry_client.get(url, timeout=timeout)
+
+        try:
+            request = await retry_client.get(url, timeout=timeout)
+        except Exception as ex:
+            raise exceptions.PageLoadingError(ex) from ex
+
         response = await request.text()
 
     soup = BeautifulSoup(response, "html.parser")
