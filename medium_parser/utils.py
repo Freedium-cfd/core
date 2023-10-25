@@ -136,6 +136,9 @@ async def get_medium_post_id_by_url(url: str, timeout: int = 5) -> str:
         if parsed_query.get("url") and len(parsed_query["url"]) == 1:
             post_url = parsed_query["url"][0]
             return await get_medium_post_id_by_url(post_url)
+        elif parsed_query.get("q") and len(parsed_query["q"]) == 1:
+            post_url = parsed_query["q"][0]
+            return await get_medium_post_id_by_url(post_url)
         return False
     elif parsed_url.netloc == "12ft.io":
         parsed_query = parse_qs(parsed_url.query)
