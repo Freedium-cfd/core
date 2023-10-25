@@ -40,8 +40,8 @@ class MediumParser:
 
     @classmethod
     async def from_url(cls, url: str, timeout: int, host_address: str) -> 'MediumParser':
-        # sanitized_url = sanitize_url(url)
-        sanitized_url = url
+        sanitized_url = sanitize_url(url)
+        # sanitized_url = url
         if is_valid_url(url) and not await is_valid_medium_url(sanitized_url, timeout):
             raise InvalidURL(f'Invalid medium URL: {sanitized_url}')
 

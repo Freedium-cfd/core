@@ -66,7 +66,7 @@ def get_unix_ms() -> int:
     return milliseconds_since_epoch
 
 
-def sanitize_url(url):
+def unquerify_url(url):
   """
   Sanitizes a URL by removing all query parameters.
 
@@ -83,6 +83,11 @@ def sanitize_url(url):
     parsed_url = parsed_url._replace(query='')
   sanitized_url = urllib.parse.urlunparse(parsed_url)
   return sanitized_url.removesuffix("/")
+
+
+def sanitize_url(url):
+    sanitized_url = url.removesuffix("/page/2")
+    return sanitized_url.removesuffix("/")
 
 
 def is_valid_medium_post_id_hexadecimal(hex_string: str) -> bool:
