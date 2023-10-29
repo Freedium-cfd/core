@@ -154,8 +154,7 @@ class MediumParser:
                         current_pos += 1
                         continue
 
-            if paragraph["type"] in ["IMG"]:
-                logger.trace(f"Ignore paragraph type from parsing text_formater: {paragraph['type']}")
+            if paragraph["text"] is None:
                 text_formater = None
             else:
                 text_formater = parse_paragraph_text(paragraph["text"], paragraph["markups"])
@@ -201,7 +200,7 @@ class MediumParser:
                     '<div class="mt-7"><img alt="{{ paragraph.metadata.alt }}" style="margin: auto;" class="pt-5 lazy" role="presentation" data-src="https://miro.medium.com/v2/resize:fit:700/{{ paragraph.metadata.id }}"></div>'
                 )
                 image_caption_template = jinja_env.from_string(
-                    "<figcaption class='mt-3 text-sm text-center text-gray-500'>{{ paragraph.text }}</figcaption>"
+                    "<figcaption class='mt-3 text-sm text-center text-gray-500'>{{ text }}</figcaption>"
                 )
                 if paragraph["layout"] == "OUTSET_ROW":
                     image_templates_row = []
@@ -227,7 +226,7 @@ class MediumParser:
                     image_template_rendered = await image_template.render_async(paragraph=paragraph)
                     out_paragraphs.append(image_template_rendered)
                     if paragraph["text"]:
-                        out_paragraphs.append(await image_caption_template.render_async(paragraph=paragraph))
+                        out_paragraphs.append(await image_caption_template.render_async(text=text_formater.get_text()))
             elif paragraph["type"] == "P":
                 css_class = ["leading-8"]
                 paragraph_template = jinja_env.from_string('<p class="{{ css_class }}">{{ text }}</p>')
@@ -302,7 +301,7 @@ class MediumParser:
                 out_paragraphs.append(pq_template_rendered)
             elif paragraph["type"] == 'MIXTAPE_EMBED':
                 embed_template = jinja_env.from_string("""
-<div class="flex border border-gray-300 p-2 mt-7 justify-center items-center overflow-hidden"><a rel="noopener follow" href="{{ url }}" target="_blank"> <div class="flex flex-row justify-between p-2 overflow-hidden"><div class="flex flex-col justify-center p-2"><h2 class="text-black text-base font-bold">{{ embed_title }}</h2><div class="mt-2 block"><h3 class="text-grey-darker text-sm">{{ embed_description }}</h3></div><div class="mt-5" style=""><p class="text-grey-darker text-xs">{{ embed_site }}</p></div></div><div class="relative flex flew-row h-40 w-72"><div class="lazy absolute inset-0 bg-cover bg-center" data-bg="https://miro.medium.com/v2/resize:fit:320/{{ paragraph.mixtapeMetadata.thumbnailImageId }}"></div></div></div> </a></div>
+<div class="flex border border-gray-300 p-2 mt-7 items-center overflow-hidden"><a rel="noopener follow" href="{{ url }}" target="_blank"> <div class="flex flex-row justify-between p-2 overflow-hidden"><div class="flex flex-col justify-center p-2"><h2 class="text-black text-base font-bold">{{ embed_title }}</h2><div class="mt-2 block"><h3 class="text-grey-darker text-sm">{{ embed_description }}</h3></div><div class="mt-5" style=""><p class="text-grey-darker text-xs">{{ embed_site }}</p></div></div><div class="relative flex flew-row h-40 w-72"><div class="lazy absolute inset-0 bg-cover bg-center" data-bg="https://miro.medium.com/v2/resize:fit:320/{{ paragraph.mixtapeMetadata.thumbnailImageId }}"></div></div></div> </a></div>
 """)
                 url = paragraph["mixtapeMetadata"]["href"]
                 text_raw = paragraph["text"]
@@ -347,9 +346,9 @@ class MediumParser:
             return result
 
     async def generate_metadata(self, as_dict: bool = False) -> tuple:
-        title = self.post_data["data"]["post"]["title"]
-        subtitle = self.post_data["data"]["post"]["previewContent"]["subtitle"]
-        description = textwrap.shorten(subtitle, width=100, placeholder="...")
+        title = RLStringHelper(self.post_data["data"]["post"]["title"]).get_text()
+        subtitle = RLStringHelper(self.post_data["data"]["post"]["previewContent"]["subtitle"]).get_text()
+        description = RLStringHelper(textwrap.shorten(subtitle, width=100, placeholder="...")).get_text()
         preview_image_id = self.post_data["data"]["post"]["previewImage"]["id"]
         creator = self.post_data["data"]["post"]["creator"]
         collection = self.post_data["data"]["post"]["collection"]
