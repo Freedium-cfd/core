@@ -13,10 +13,11 @@ jinja2_env = jinja2.Environment(
 
 async def main():
     logger.remove()
-    logger.add(sys.stderr, level="INFO")
+    # logger.add(sys.stderr, level="INFO")
+    logger.add(sys.stderr, level="TRACE")
 
     # dl = await MediumParser.from_url("")
-    dl = MediumParser("d8f9aa42f6a0", 8, "localhost")
+    dl = MediumParser("d4222bd1a0b3", 8, "localhost")
     query_result = await dl.query(use_cache=False)
 
     with open("query_result.json", "w") as f:
