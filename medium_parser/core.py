@@ -178,21 +178,21 @@ class MediumParser:
                 css_class = []
                 if out_paragraphs:
                     css_class.append("pt-12")
-                header_template = jinja_env.from_string('<h2 class="font-bold font-sans break-normal text-gray-900 text-1xl md:text-2xl {{ css_class }}">{{ text }}</h2>')
+                header_template = jinja_env.from_string('<h2 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-1xl md:text-2xl {{ css_class }}">{{ text }}</h2>')
                 header_template_rendered = await header_template.render_async(text=text_formater.get_text(), css_class="".join(css_class))
                 out_paragraphs.append(header_template_rendered)
             elif paragraph["type"] == "H3":
                 css_class = []
                 if out_paragraphs:
                     css_class.append("pt-12")
-                header_template = jinja_env.from_string('<h3 class="font-bold font-sans break-normal text-gray-900 text-1xl md:text-2xl {{ css_class }}">{{ text }}</h3>')
+                header_template = jinja_env.from_string('<h3 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-1xl md:text-2xl {{ css_class }}">{{ text }}</h3>')
                 header_template_rendered = await header_template.render_async(text=text_formater.get_text(), css_class="".join(css_class))
                 out_paragraphs.append(header_template_rendered)
             elif paragraph["type"] == "H4":
                 css_class = []
                 if out_paragraphs:
                     css_class.append("pt-8")
-                header_template = jinja_env.from_string('<h4 class="font-bold font-sans break-normal text-gray-900 text-l md:text-xl {{ css_class }}">{{ text }}</h4>')
+                header_template = jinja_env.from_string('<h4 class="font-bold font-sans break-normal text-gray-900 dark:text-gray-100 text-l md:text-xl {{ css_class }}">{{ text }}</h4>')
                 header_template_rendered = await header_template.render_async(text=text_formater.get_text(), css_class="".join(css_class))
                 out_paragraphs.append(header_template_rendered)
             elif paragraph["type"] == "IMG":
@@ -200,7 +200,7 @@ class MediumParser:
                     '<div class="mt-7"><img alt="{{ paragraph.metadata.alt }}" style="margin: auto;" class="pt-5 lazy" role="presentation" data-src="https://miro.medium.com/v2/resize:fit:700/{{ paragraph.metadata.id }}"></div>'
                 )
                 image_caption_template = jinja_env.from_string(
-                    "<figcaption class='mt-3 text-sm text-center text-gray-500'>{{ text }}</figcaption>"
+                    "<figcaption class='mt-3 text-sm text-center text-gray-500 dark:text-gray-200'>{{ text }}</figcaption>"
                 )
                 if paragraph["layout"] == "OUTSET_ROW":
                     image_templates_row = []
@@ -286,7 +286,7 @@ class MediumParser:
                 else:
                     code_css_class.append('nohighlight')
                     css_class.append('p-4')
-                pre_template = jinja_env.from_string('<pre style="display: flex; flex-direction: column; justify-content: center;" class="{{ css_class }}"><code style="overflow-x: auto;" class="{{ code_css_class }}">{{ text }}</code></pre>')
+                pre_template = jinja_env.from_string('<pre style="display: flex; flex-direction: column; justify-content: center;" class="{{ css_class }} dark:bg-gray-600"><code style="overflow-x: auto;" class="{{ code_css_class }} dark:bg-gray-600">{{ text }}</code></pre>')
                 pre_template_rendered = await pre_template.render_async(text=text_formater.get_text(), css_class=" ".join(css_class), code_css_class=" ".join(code_css_class))
                 out_paragraphs.append(pre_template_rendered)
             elif paragraph["type"] == "BQ":
