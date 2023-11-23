@@ -117,7 +117,7 @@ class MediumParser:
             paragraph = paragraphs[current_pos]
             logger.trace(f"Current paragraph #{current_pos} data: {paragraph}")
 
-            # if paragraph["id"] != "22e948f0dd82_113":
+            # if paragraph["id"] != "19a8a643295d_41":
             #     current_pos += 1
             #     continue
 
@@ -346,7 +346,7 @@ class MediumParser:
             return result
 
     async def generate_metadata(self, as_dict: bool = False) -> tuple:
-        title = RLStringHelper(self.post_data["data"]["post"]["title"]).get_text()
+        title = RLStringHelper(self.post_data["data"]["post"]["title"]).get_text()  # quote_html=False
         subtitle = RLStringHelper(self.post_data["data"]["post"]["previewContent"]["subtitle"]).get_text()
         description = RLStringHelper(textwrap.shorten(subtitle, width=100, placeholder="...")).get_text()
         preview_image_id = self.post_data["data"]["post"]["previewImage"]["id"]
