@@ -75,13 +75,17 @@ class MediumParser:
 
     async def query(self, use_cache: bool = True):
         if use_cache:
+            logger.debug("Using cache backend")
             post_data = cache.pull(self.post_id)
             if post_data:
+                logger.debug("post query was found on cache")
                 post_data = post_data.json()
-        else:
+        if not post_data:
+            logger.debug("Not using cache backend")
             try:
                 post_data = await query_post_by_id(self.post_id, self.timeout)
             except Exception as ex:
+                logger.debug("Error while querying post by Medium API")
                 logger.exception(ex)
                 post_data = None
 
