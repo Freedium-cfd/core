@@ -93,8 +93,10 @@ class MediumParser:
         if not post_data or not isinstance(post_data, dict) or post_data.get("error") or not post_data.get("data") or not post_data.get("data").get("post"):
             raise MediumPostQueryError(f'Could not query post by ID from API: {self.post_id}')
 
+        if not use_cache:
+            cache.push(self.post_id, post_data)
+
         self.post_data = post_data
-        cache.push(self.post_id, post_data)
         return self.post_data
 
     async def _parse_and_render_content_html_post(self, content: dict, title: str, subtitle: str, preview_image_id: str, highlights: list, tags: list) -> tuple[list, str, str]:
