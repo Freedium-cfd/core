@@ -68,7 +68,9 @@ class SQLiteCacheBackend:
                 return CacheResponse(cache[0])
 
     def push(self, key: str, value: str) -> None:
-        if not isinstance(value, str):
+        if isinstance(value, dict):
+            value = json.dumps(value)
+        elif not isinstance(value, str):
             raise ValueError(f"value argument should be only string type not {type(value).__name__}")
         with self.connection:
             self.cursor.execute("INSERT OR REPLACE INTO cache VALUES (:0, :1)", {'0': key, '1': value})
