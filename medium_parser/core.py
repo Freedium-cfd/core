@@ -40,7 +40,6 @@ class MediumParser:
     @classmethod
     async def from_url(cls, url: str, timeout: int, host_address: str) -> 'MediumParser':
         sanitized_url = sanitize_url(url)
-        # sanitized_url = url
         if is_valid_url(url) and not await is_valid_medium_url(sanitized_url, timeout):
             raise InvalidURL(f'Invalid medium URL: {sanitized_url}')
 
@@ -127,7 +126,8 @@ class MediumParser:
             paragraph = paragraphs[current_pos]
             logger.trace(f"Current paragraph #{current_pos} data: {paragraph}")
 
-            # if paragraph["id"] != "19a8a643295d_41":
+            # For debugging stuff...
+            # if paragraph["id"] != "":
             #     current_pos += 1
             #     continue
 

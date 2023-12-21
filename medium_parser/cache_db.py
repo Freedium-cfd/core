@@ -39,6 +39,10 @@ class SQLiteCacheBackend:
         with self.connection:
             return self.cursor.execute("SELECT * FROM cache").fetchall()
 
+    def all_length(self) -> int:
+        with self.connection:
+            return self.cursor.execute("SELECT COUNT(*) FROM cache").fetchone()[0]
+
     def random(self, size: int):
         with self.connection:
             return self.cursor.execute("SELECT * FROM cache ORDER BY RANDOM() LIMIT :0", {'0': size}).fetchall()
@@ -55,7 +59,6 @@ class SQLiteCacheBackend:
                 print(error)
             self.cursor.execute("SELECT zstd_incremental_maintenance(null, 1);")
             self.cursor.execute("vacuum;")
-            
 
     def init_db(self):
         with self.connection:
