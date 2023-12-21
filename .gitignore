@@ -160,5 +160,5 @@ cython_debug/
 #.idea/
 
 medium_cache.sqlite
-# query_result.json
-# medium.html
+query_result.json
+medium.html
