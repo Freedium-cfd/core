@@ -72,22 +72,28 @@ class MediumParser:
 
         return True
 
-    async def query(self, use_cache: bool = True):
-        if use_cache:
-            logger.debug("Using cache backend")
-            post_data = cache.pull(self.post_id)
-            if post_data:
-                logger.debug("post query was found on cache")
-                post_data = post_data.json()
+    async def get_post_data_from_cache(self):
+        logger.debug("Using cache backend")
+        post_data = cache.pull(self.post_id)
+        if post_data:
+            logger.debug("post query was found on cache")
+            return post_data.json()
+        return None
 
-        if not use_cache or not post_data:
-            logger.debug("Not using cache backend")
-            try:
-                post_data = await query_post_by_id(self.post_id, self.timeout)
-            except Exception as ex:
-                logger.debug("Error while querying post by Medium API")
-                logger.exception(ex)
-                post_data = None
+    async def get_post_data_from_api(self):
+        logger.debug("Cache backend disabled, using API")
+        try:
+            return await query_post_by_id(self.post_id, self.timeout)
+        except Exception as ex:
+            logger.debug("Error while querying post by Medium API")
+            logger.exception(ex)
+            return None
+
+    async def query(self, use_cache: bool = True):
+        post_data = await self.get_post_data_from_cache() if use_cache else None
+
+        if not post_data:
+            post_data = await self.get_post_data_from_api()
 
         if not post_data or not isinstance(post_data, dict) or post_data.get("error") or not post_data.get("data") or not post_data.get("data").get("post"):
             raise MediumPostQueryError(f'Could not query post by ID from API: {self.post_id}')
@@ -109,13 +115,6 @@ class MediumParser:
             parsed_markups = parse_markups(markups)
             fixed_markups = split_overlapping_ranges(parsed_markups)
 
-            _last_fixed_markup = None
-            for i in range(len(fixed_markups) * 7):
-                fixed_markups = split_overlapping_ranges(fixed_markups)
-                if _last_fixed_markup and len(fixed_markups) == len(fixed_markups):
-                    break
-                _last_fixed_markup = fixed_markups
-
             for markup in fixed_markups:
                 text_formater.set_template(markup["start"], markup["end"], markup["template"])
 
@@ -132,13 +131,6 @@ class MediumParser:
 
             if current_pos in range(4):
                 if paragraph["type"] in ["H3", "H4", "H2"]:
-                    """
-                    if title.endswith("…"):
-                        logger.trace("Replace title")
-                        title = paragraph["text"]
-                        current_pos += 1
-                        continue
-                    """
                     if getting_percontage_of_match(paragraph["text"], title) > 80:
                         logger.trace("Title was detected, ignore...")
                         current_pos += 1
@@ -352,9 +344,9 @@ class MediumParser:
 
         return out_paragraphs, title, subtitle
 
-    async def render_as_html(self, minify: bool = True, template_folder: str = './templates'):
+    async def render_as_html(self, template_folder: str = './templates'):
         try:
-            result = await self._render_as_html(minify, template_folder)
+            result = await self._render_as_html(template_folder)
         except Exception as ex:
             raise MediumParserException(ex) from ex
         else:
@@ -380,7 +372,7 @@ class MediumParser:
 
         return title, subtitle, description, url, creator, collection, reading_time, free_access, updated_at, first_published_at, preview_image_id, tags
 
-    async def _render_as_html(self, minify: bool = True, template_folder: str = './templates') -> 'HtmlResult':
+    async def _render_as_html(self, template_folder: str = './templates') -> 'HtmlResult':
         if not self.post_data:
             logger.warning(f'No post data found for post ID: {self.post_id}. Querying...')
             await self.query()
