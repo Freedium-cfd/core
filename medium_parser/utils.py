@@ -12,12 +12,6 @@ import string
 
 from . import retry_options, exceptions
 
-try:
-    import minify_html as mh
-except ImportError:
-    logger.warning("No minify available. Ignoring....")
-    mh = None
-
 import tld
 from bs4 import BeautifulSoup
 
@@ -187,14 +181,6 @@ async def get_medium_post_id_by_url_old(url: str, timeout: int = 5) -> str:
     path = parsed_url.path.strip("/")
     parsed_value = path.split("/")[-1]
     return parsed_value
-
-
-def minify_html(html: str) -> str:
-    if mh:
-        return mh.minify(html, remove_processing_instructions=True)
-    else:
-        logger.warning("No minify toolkits...")
-        return html
 
 
 @lru_cache(maxsize=200)
