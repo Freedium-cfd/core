@@ -131,6 +131,12 @@ async def get_medium_post_id_by_url(url: str, timeout: int = 5) -> str:
             post_url = parsed_query["u"][0]
             return await get_medium_post_id_by_url(post_url)
         return False
+    elif parsed_url.netloc == "webcache.googleusercontent.com" and parsed_url.path.startswith("/search"):
+        parsed_query = parse_qs(parsed_url.query)
+        if parsed_query.get("q") and len(parsed_query["q"]) == 1:
+            post_url = parsed_query["q"][0].removeprefix("cache:")
+            return await get_medium_post_id_by_url(post_url)
+        return False
     elif parsed_url.netloc == "www.google.com" and parsed_url.path.startswith("/url"):
         parsed_query = parse_qs(parsed_url.query)
         if parsed_query.get("url") and len(parsed_query["url"]) == 1:
@@ -213,7 +219,7 @@ async def is_valid_medium_url(url: str, timeout: int = 5) -> bool:
     domain = get_fld(url)
     parsed_url = urlparse(url)
 
-    if domain in ["12ft.io", "google.com", "facebook.com"]:
+    if domain in ["12ft.io", "google.com", "facebook.com", "googleusercontent.com"]:
         return True
 
     if domain in NOT_MEDIUM_DOMAINS:
